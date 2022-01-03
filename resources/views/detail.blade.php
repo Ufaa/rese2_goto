@@ -37,10 +37,10 @@
       {{$item->name}}
     </td>
     <td>
-      {{$item->area_id}}
+      {{$item->getArea()}}
     </td>
     <td>
-      {{$item->genre_id}}
+      {{$item->getGenre()}}
     </td>
     <td>
       {{$item->description}}

@@ -37,10 +37,10 @@
       {{$item->name}}
     </td>
     <td>
-      {{ $item->getArea() }}
+      {{$item->getArea()}}
     </td>
     <td>
-      {{$item->getGenre() }}
+      {{$item->getGenre()}}
     </td>
     <td>
       {{$item->description}}

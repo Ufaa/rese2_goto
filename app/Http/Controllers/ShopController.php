@@ -15,8 +15,7 @@ class ShopController extends Controller
     return view('index', ['items' => $items]);
   }
 
-//詳細表示
-
+//詳細表示（※できていない！！）
   public function detail()
   {
     $items = Shop::all();
