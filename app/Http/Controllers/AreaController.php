@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AreaController extends Controller
-//エリア情報修正　※一時的
+
 {
+//エリア情報修正　※一時的
     public function index()
     {
         $items = Area::all();

@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Like extends Model
 {
-    use HasFactory;
+    public function shop()
+    {
+        return $this->hasOne('App\Models\Shop');
+    }
 }

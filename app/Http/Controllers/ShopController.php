@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class ShopController extends Controller
 //一覧表示
 {
-  public function index()
+  public function index(Request $request)
   {
     $items = Shop::all();
     return view('index', ['items' => $items]);
@@ -36,4 +36,5 @@ class ShopController extends Controller
       DB::delete('delete from shops where id =:id', $param);
       return redirect('/');
   }
+
   }

@@ -16,17 +16,13 @@
     text-align: center;
   }
 </style>
-@section('title', 'index.blade.php')
+@section('title', 'genre.blade.php')
 
 @section('content')
 <table>
   <tr>
     <th>id</th>
     <th>name</th>
-    <th>area</th>
-    <th>genre</th>
-    <th>descreption</th>
-    <th>image</th>
   </tr>
   @foreach ($items as $item)
   <tr>
@@ -35,18 +31,6 @@
     </td>
     <td>
       {{$item->name}}
-    </td>
-    <td>
-      {{ $item->getArea() }}
-    </td>
-    <td>
-      {{$item->getGenre() }}
-    </td>
-    <td>
-      {{$item->description}}
-    </td>
-    <td>
-      {{$item->image_url}}
     </td>
   </tr>
   @endforeach

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AreaController;
+use App\Http\Controllers\GenreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,8 @@ Route::post('/delete', [ShopController::class, 'remove']);
 Route::get('/area', [AreaController::class, 'index'])->name('area');
 Route::get('/areadelete', [AreaController::class, 'delete']);
 Route::post('/areadelete', [AreaController::class, 'remove']);
+
+//ジャンル情報修正　※一時的
+Route::get('/genre', [GenreController::class, 'index'])->name('genre');
+Route::get('/genredelete', [GenreController::class, 'delete']);
+Route::post('/genredelete', [GenreController::class, 'remove']);
