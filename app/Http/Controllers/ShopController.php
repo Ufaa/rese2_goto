@@ -16,9 +16,16 @@ class ShopController extends Controller
   }
 
 //詳細表示（※できていない！！）
-  public function detail()
+  // public function detail()
+  // {
+  //   $items = Shop::all();
+  //   return view('detail', ['items' => $items]);
+//  }
+//詳細表示試行２
+  public function show($id)
   {
-    $items = Shop::all();
+    $items = Shop::find($id);
+
     return view('detail', ['items' => $items]);
   }
 

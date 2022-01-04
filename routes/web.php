@@ -17,7 +17,10 @@ use App\Http\Controllers\GenreController;
 */
 
 Route::get('/', [ShopController::class, 'index']);
-Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
+//Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
+// 本の詳細
+Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('detail');
+
 //削除機能　※一時的
 Route::get('/delete', [ShopController::class, 'delete']);
 Route::post('/delete', [ShopController::class, 'remove']);

@@ -27,6 +27,7 @@
     <th>genre</th>
     <th>descreption</th>
     <th>image</th>
+    <th>詳細</th>
   </tr>
   @foreach ($items as $item)
   <tr>
@@ -47,6 +48,11 @@
     </td>
     <td>
       {{$item->image_url}}
+    </td>
+    <td>
+      <form action="{{route('detail',$item->id)}}" method="get">
+        <button type="submit" class="btn btn-primary">詳しく見る</button>
+      </form>
     </td>
   </tr>
   @endforeach

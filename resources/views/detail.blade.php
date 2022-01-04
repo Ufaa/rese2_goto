@@ -16,7 +16,7 @@
     text-align: center;
   }
 </style>
-@section('title', 'index.blade.php')
+@section('title', 'detail.blade.php')
 
 @section('content')
 <table>
@@ -31,22 +31,22 @@
   @foreach ($items as $item)
   <tr>
     <td>
-      {{$item->id}}
+      {{optional($item)->id}}
     </td>
     <td>
-      {{$item->name}}
+      {{optional($item)->name}}
     </td>
     <td>
-      {{$item->getArea()}}
+      {{optional($item)->getArea}}
     </td>
     <td>
-      {{$item->getGenre()}}
+      {{optional($item)->getGenre}}
     </td>
     <td>
-      {{$item->description}}
+      {{optional($item)->descreption}}
     </td>
     <td>
-      {{$item->image_url}}
+      {{optional($item)->image_url}}
     </td>
   </tr>
   @endforeach

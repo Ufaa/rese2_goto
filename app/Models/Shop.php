@@ -26,4 +26,5 @@ class Shop extends Model
     {
         return optional($this->genre)->name;
     }
+
 }
