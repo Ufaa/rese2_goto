@@ -16,10 +16,14 @@ use App\Http\Controllers\GenreController;
 |
 */
 
+//店舗一覧ページ
 Route::get('/', [ShopController::class, 'index']);
-//Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
-// 本の詳細
+//店舗詳細ページ
 Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('detail');
+//検索機能　※できてない
+//Route::post('/search', [ShopController::class, 'search'])->name('search');
+Route::get('/find', [ShopController::class, 'find']);
+Route::post('/find', [ShopController::class, 'search']);
 
 //削除機能　※一時的
 Route::get('/delete', [ShopController::class, 'delete']);

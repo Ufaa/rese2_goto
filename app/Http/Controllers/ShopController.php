@@ -15,18 +15,31 @@ class ShopController extends Controller
     return view('index', ['items' => $items]);
   }
 
-//詳細表示（※できていない！！）
-  // public function detail()
-  // {
-  //   $items = Shop::all();
-  //   return view('detail', ['items' => $items]);
-//  }
-//詳細表示試行２
+//詳細表示
   public function show(int $id)
   {
     $item = Shop::find($id);
     return view('detail', ['item' => $item]);
   }
+
+  //検索機能 ※できてない（1ページでできてない）
+  public function find()
+  {
+    return view('find', ['input' => '']);
+  }
+  //一旦保存
+  public function search(Request $request)
+  {
+    $item = Shop::where('name', 'LIKE', "%{$request->input}%")->first();
+    $param = [
+      'input' => $request->input,
+      'item' => $item
+    ];
+    return view('find', $param);
+  }
+
+  //一旦保存（条件分岐）
+  // }
 
 //削除機能（※一時的）
   public function delete(Request $request)
