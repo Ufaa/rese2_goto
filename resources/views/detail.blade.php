@@ -28,7 +28,7 @@
     <th>descreption</th>
     <th>image</th>
   </tr>
-  @foreach ($items as $item)
+
   <tr>
     <td>
       {{optional($item)->id}}
@@ -37,18 +37,18 @@
       {{optional($item)->name}}
     </td>
     <td>
-      {{optional($item)->getArea}}
+      {{$item->area->name}}
     </td>
     <td>
-      {{optional($item)->getGenre}}
+      {{$item->genre->name}}
     </td>
     <td>
-      {{optional($item)->descreption}}
+      {{optional($item)->description}}
     </td>
     <td>
-      {{optional($item)->image_url}}
+      <img src="{{$item->image_url}}" alt="{{$item->name}}" width="100px">
     </td>
   </tr>
-  @endforeach
+
 </table>
 @endsection

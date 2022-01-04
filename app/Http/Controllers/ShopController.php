@@ -22,11 +22,10 @@ class ShopController extends Controller
   //   return view('detail', ['items' => $items]);
 //  }
 //詳細表示試行２
-  public function show($id)
+  public function show(int $id)
   {
-    $items = Shop::find($id);
-
-    return view('detail', ['items' => $items]);
+    $item = Shop::find($id);
+    return view('detail', ['item' => $item]);
   }
 
 //削除機能（※一時的）

@@ -38,16 +38,16 @@
       {{$item->name}}
     </td>
     <td>
-      {{$item->getArea()}}
+      {{$item->area->name}}
     </td>
     <td>
-      {{$item->getGenre()}}
+      {{$item->genre->name}}
     </td>
     <td>
       {{$item->description}}
     </td>
     <td>
-      {{$item->image_url}}
+      <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
     </td>
     <td>
       <form action="{{route('detail',$item->id)}}" method="get">
