@@ -21,20 +21,22 @@
 @section('content')
 <form action="find" method="POST">
   @csrf
-  <input type="text" name="input" value="{{$input ?? ''}}">
+  <input type="text" name="name" value="{{$input ?? ''}}">
   <select class="area_class" name="area" placeholder="エリア">
-    <option value="1 || 2 || 3">All Area</option>
+    <!-- <option value="1 || 2 || 3">All Area</option> -->
+    <option [ngValue]=""></option>
     <option value="1">東京都</option>
     <option value="2">大阪府</option>
     <option value="3">福岡県</option>
   </select>
   <select class="genre_class" name="genre" placeholder="ジャンル">
-    <option value="1 || 2 || 3 || 4 || 5 ">All Genre</option>
+    <!-- <option value="1 || 2 || 3 || 4 || 5 ">All Genre</option> -->
+    <option [ngValue]=""></option>
     <option value="1">寿司</option>
     <option value="2">焼肉</option>
     <option value="3">居酒屋</option>
-    <option value="3">イタリアン</option>
-    <option value="3">ラーメン</option>
+    <option value="4">イタリアン</option>
+    <option value="5">ラーメン</option>
   </select>
   <input type="submit" value="見つける">
   <button class="reset" type="button" onclick="location.href='/'">リセット</button>

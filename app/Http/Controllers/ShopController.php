@@ -22,24 +22,67 @@ class ShopController extends Controller
     return view('detail', ['item' => $item]);
   }
 
-  //検索機能 ※できてない（1ページでできてない）
+  //検索機能
   public function find()
   {
     return view('find', ['input' => '']);
   }
-  //一旦保存
+
   public function search(Request $request)
   {
-    $item = Shop::where('name', 'LIKE', "%{$request->input}%")->first();
-    $param = [
-      'input' => $request->input,
-      'item' => $item
-    ];
-    return view('find', $param);
+    $name = $request->name;
+    $area = $request->area;
+    $genre = $request->genre;
+    //dd($request->all());
+    //店舗名のみでの検索の場合
+    if (
+      !is_null($name) && is_null($area) && is_null($genre)
+    ) {
+      $items = Shop::where('name', 'LIKE', "%{$request->name}%")->get();
+      return view('index')->with('items', $items);
+    //エリアのみでの検索の場合
+    } else if (
+      is_null($name) && !is_null($area) && is_null($genre)
+    ) {
+      $items = Shop::where('area_id', 'LIKE', "%{$request->area}%")->get();
+      return view('index')->with('items', $items);
+    //ジャンルのみでの検索の場合
+    } else if (
+      is_null($name) && is_null($area) && !is_null($genre)
+    ) {
+      $items = Shop::where('genre_id', 'LIKE', "%{$request->genre}%")->get();
+      return view('index')->with('items', $items);
+    }
+    //全て入力されていない場合＝一覧表示＝全表示
+      else if (
+      is_null($name) && is_null($area) && is_null($genre)
+    ) {
+      $items = Shop::all();
+      return view('index', ['items' => $items]);
+    }
+    //エリア+ジャンルでの検索の場合
+    else if (
+      is_null($name) && !is_null($area) && !is_null($genre)
+    ) {
+      $items = Shop::where('area_id', 'LIKE', "%{$request->area}%")->where('genre_id', 'LIKE', "%{$request->genre}%")->get();
+      return view('index')->with('items', $items);
+    }
+    //名前+ジャンルでの検索の場合
+    else if (
+      !is_null($name) && is_null($area) && !is_null($genre)
+    ) {
+      $items = Shop::where('name', 'LIKE', "%{$request->name}%")->where('genre_id', 'LIKE', "%{$request->genre}%")->get();
+      return view('index')->with('items', $items);
+    }
+    //名前+エリアでの検索の場合
+    else if (
+      !is_null($name) && !is_null($area) && is_null($genre)
+    ) {
+      $items = Shop::where('name', 'LIKE', "%{$request->name}%")->where('area_id', 'LIKE', "%{$request->area}%")->get();
+      return view('index')->with('items', $items);
+    }
   }
 
-  //一旦保存（条件分岐）
-  // }
 
 //削除機能（※一時的）
   public function delete(Request $request)
