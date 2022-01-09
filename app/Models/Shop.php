@@ -24,4 +24,9 @@ class Shop extends Model
         $txt = $this->id . $this->name . $this->area->name. $this->genre->name . $this->description . $this->image_url;
         return $txt;
     }
+
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
 }

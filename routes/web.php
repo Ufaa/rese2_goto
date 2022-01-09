@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+//↓追加するの忘れがち・・・。
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +40,18 @@ Route::post('/areadelete', [AreaController::class, 'remove']);
 Route::get('/genre', [GenreController::class, 'index'])->name('genre');
 Route::get('/genredelete', [GenreController::class, 'delete']);
 Route::post('/genredelete', [GenreController::class, 'remove']);
+
+//ユーザー登録機能
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//予約機能
+Route::get('/reservation', [ReservationController::class, 'index'])->name('reservation');
+Route::get('/add', [ReservationController::class, 'add']);
+Route::post('/add', [ReservationController::class, 'create']);
+//予約情報削除　※一時的
+Route::get('/reservationdelete', [ReservationController::class, 'delete']);
+Route::post('/reservationdelete', [ReservationController::class, 'remove']);
+//予約情報編集　※一時的
+Route::get('/reservationedit', [ReservationController::class, 'edit']);
+Route::post('/reservationedit', [ReservationController::class, 'update']);

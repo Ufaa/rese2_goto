@@ -84,7 +84,7 @@ class ShopController extends Controller
   }
 
 
-//削除機能（※一時的）
+//店舗情報削除機能（※一時的）
   public function delete(Request $request)
   {
       $param = ['id' => $request->id];
