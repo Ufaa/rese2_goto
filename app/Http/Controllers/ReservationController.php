@@ -30,9 +30,15 @@ class ReservationController extends Controller
             'start_at' => $request->start_at,
             'num_of_users' => $request->num_of_users,
         ];
-        dd($param);
-        DB::insert('insert into reservations (shop_id, user_id, start_at, num_of_users) values (:shop_id, :user_id :start_at, :num_of_users)', $param);
-        return redirect('/reservation');
+        //dd($param);
+        DB::insert('insert into reservations (shop_id, user_id, start_at, num_of_users) values (:shop_id, :user_id, :start_at, :num_of_users)', $param);
+        return redirect('/done');
+    }
+
+    //予約完了
+    function done()
+    {
+        return view('done');
     }
 
     //予約情報確認機能

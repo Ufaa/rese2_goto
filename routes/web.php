@@ -6,7 +6,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ReservationController;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +19,22 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+//ユーザー登録機能 laravel Breeze利用
+Route::get('/home', [AuthorController::class, 'index']);
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
+
 //店舗一覧ページ
-Route::get('/', [ShopController::class, 'index']);
+Route::get('/', [ShopController::class, 'index'])->middleware('auth');
 //店舗詳細ページ
 Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('detail');
 //検索機能　※できてない
@@ -42,14 +56,12 @@ Route::get('/genre', [GenreController::class, 'index'])->name('genre');
 Route::get('/genredelete', [GenreController::class, 'delete']);
 Route::post('/genredelete', [GenreController::class, 'remove']);
 
-//ユーザー登録機能
-Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 //予約機能
 Route::get('/reservation', [ReservationController::class, 'index'])->name('reservation');
 Route::get('/add', [ReservationController::class, 'add']);
 Route::post('/add', [ReservationController::class, 'create']);
+//予約完了
+Route::get('/done', [ReservationController::class, 'done']);
 //予約情報削除　※一時的
 Route::get('/reservationdelete', [ReservationController::class, 'delete']);
 Route::post('/reservationdelete', [ReservationController::class, 'remove']);

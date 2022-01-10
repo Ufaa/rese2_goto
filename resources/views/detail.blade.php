@@ -68,7 +68,9 @@
     <tr>
       <th>user</th> <!-- 一時的 -->
       <!-- <td>$item->user->id</td> -->
-      <td>{{ Auth::id() }}</td>
+      <td>
+        <input type="text" name="user_id" value="{{Auth::id()}}">{{Auth::id()}}
+      </td>
     </tr>
     <tr>
       <th>Shop</th>
