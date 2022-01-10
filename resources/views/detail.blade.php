@@ -22,6 +22,8 @@
 <table>
   <tr>
     <th>id</th>
+    <!--データの受け渡しができているかの確認のため一時的-->
+    <th>user</th>
     <th>name</th>
     <th>area</th>
     <th>genre</th>
@@ -32,6 +34,10 @@
   <tr>
     <td>
       {{optional($item)->id}}
+    </td>
+    <!--データの受け渡しができているかの確認のため一時的-->
+    <td>
+      {{ Auth::id() }}
     </td>
     <td>
       {{optional($item)->name}}
@@ -56,10 +62,25 @@
 <!-- 予約ページ -->
 <h1>予約</h1>
 
-<form action="create" method="POST">
+<form action="/add" method="POST">
   @csrf
-  <input type="datetime-local" name="start_at">
-  <!--　どちらがいいかわからないので一旦コメントアウト<input type="date" class="form-control" id="date" name="date">
+  <table>
+    <tr>
+      <th>user</th> <!-- 一時的 -->
+      <!-- <td>$item->user->id</td> -->
+      <td>{{ Auth::id() }}</td>
+    </tr>
+    <tr>
+      <th>Shop</th>
+      <td>
+        <input type="text" name="shop_id" value="{{$item->id}}">{{$item->name}}
+      </td>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <td>
+        <input type="datetime-local" name="start_at">
+        <!--　どちらがいいかわからないので一旦コメントアウト<input type="date" class="form-control" id="date" name="date">
   <input type="time" class="form-control" id="time" name="time">
   <select class="time_class" name="time" placeholder="時間">
 
@@ -70,39 +91,27 @@
     <option value="20:00">20:00</option>
     <option value="21:00">21:00</option>
   </select> -->
-  <select class="number_class" name="number" placeholder="人数">
-    <option [ngValue]=""></option>
-    <option value="1">1人</option>
-    <option value="2">2人</option>
-    <option value="3">3人</option>
-    <option value="4">4人</option>
-  </select>
+      </td>
+    </tr>
+    <!-- 日にちと時間を分けれていないので一旦隠す
+    <tr>
+      <th>Time</th>
+      <td>$item->start_at</td>
+    </tr> -->
+    <tr>
+      <th>Number</th>
+      <td>
+        <select class="number_class" name="num_of_users" placeholder="人数">
+          <option [ngValue]=""></option>
+          <option value="1">1人</option>
+          <option value="2">2人</option>
+          <option value="3">3人</option>
+          <option value="4">4人</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+
   <input type="submit" value="予約する">
   <button class="reset" type="button" onclick="location.href='/'">店舗一覧に戻る</button>
 </form>
-
-
-<table>
-  <tr>
-    <th>user_name</th> <!-- 一時的 -->
-    <!-- <td>$item->user->id</td> -->
-    <td>$item->getDetail2()</td>
-  </tr>
-  <tr>
-    <th>Shop</th>
-    <td>$item->shop->name</td>
-  </tr>
-  <tr>
-    <th>Date</th>
-    <td>$item->start_at</td>
-  </tr>
-  <tr>
-    <th>Time</th>
-    <td>$item->start_at</td>
-  </tr>
-  <tr>
-    <th>Number</th>
-    <td>$item->num_of_users</td>
-  </tr>
-
-</table>

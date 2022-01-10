@@ -13,27 +13,30 @@ class ReservationController extends Controller
     {
         //ページネーション追加（Simpleをつけるかつけないか）
         $items = Reservation::all();
-        //dd($todos);
+        //dd($items);
         return view('reservation')->with('items', $items);
     }
 
     //予約追加機能
     public function add()
     {
-        return view('/reservation');
+        return view('/detail');
     }
     public function create(Request $request)
     {
         $param = [
-            // 'shop_id' => $request->shop->id,
-            // 'user_id' => $request->user->id,
-            'date' => $request->date,
-            'time' => $request->time,
-            'number' => $request->number,
+            'shop_id' => $request->shop_id,
+            'user_id' => $request->user_id,
+            'start_at' => $request->start_at,
+            'num_of_users' => $request->num_of_users,
         ];
-        DB::insert('insert into reservations (shop_id, user_id, date, time, number) values (:shop_id, :user_id, :date, :time, :number)', $param);
+        dd($param);
+        DB::insert('insert into reservations (shop_id, user_id, start_at, num_of_users) values (:shop_id, :user_id :start_at, :num_of_users)', $param);
         return redirect('/reservation');
     }
+
+    //予約情報確認機能
+
 
     //予約情報削除　※一時的
     public function delete(Request $request)

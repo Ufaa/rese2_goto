@@ -19,9 +19,14 @@ class Shop extends Model
         return $this->belongsTo('App\Models\Genre');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
     public function getDetail()
     {
-        $txt = $this->id . $this->name . $this->area->name. $this->genre->name . $this->description . $this->image_url;
+        $txt = $this->id . $this->name  . $this->area->name. $this->genre->name . $this->description . $this->image_url;
         return $txt;
     }
 

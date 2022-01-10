@@ -6,6 +6,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
