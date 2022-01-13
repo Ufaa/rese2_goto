@@ -57,6 +57,7 @@ class ReservationController extends Controller
         DB::delete('delete from reservations where id =:id', $param);
         return redirect('/reservation');
     }
+    
 
     //予約情報編集　※一時的
     public function edit(Request $request)

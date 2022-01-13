@@ -17,13 +17,16 @@
   }
 </style>
 
+@section('title', 'thanks.blade.php')
 
+@section('content')
 
 <body>
 
-  <h1>予約完了</h1>
-  
-  <h4>ご予約ありがとうございます。</h4>
-  <button class="reset" type="button" onclick="location.href='/'">店舗一覧に戻る</button>
+  <h1>登録完了</h1>
+
+  <h4>ご登録ありがとうございます。</h4>
+  <button class="reset" type="button" onclick="location.href='/'">店舗一覧に進む</button>
 
 </body>
+@endsection

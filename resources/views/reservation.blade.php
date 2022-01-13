@@ -21,7 +21,7 @@
 @section('content')
 <!-- 一時的に設置、一覧に戻る -->
 <button class="reset" type="button" onclick="location.href='/'">店舗一覧に戻る</button>
-<form action="/reservation" method="POST">
+<form action="/reservationdelete" method="POST">
   <table>
     <tr>
       <th>getDetail2</th>

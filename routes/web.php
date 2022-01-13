@@ -65,6 +65,7 @@ Route::get('/done', [ReservationController::class, 'done']);
 //予約情報削除　※一時的
 Route::get('/reservationdelete', [ReservationController::class, 'delete']);
 Route::post('/reservationdelete', [ReservationController::class, 'remove']);
+
 //予約情報編集　※一時的
 Route::get('/reservationedit', [ReservationController::class, 'edit']);
 Route::post('/reservationedit', [ReservationController::class, 'update']);

@@ -1,19 +1,19 @@
 @extends('layouts.default')
 <style>
-  th {
-    background-color: #289ADC;
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  button {
+    background-color: blue;
     color: white;
-    padding: 5px 40px;
   }
 
-  tr:nth-child(odd) td {
-    background-color: #FFFFFF;
-  }
-
-  td {
-    padding: 25px 40px;
-    background-color: #EEEEEE;
-    text-align: center;
+  .search {
+    background-color: blue;
+    color: white;
   }
 </style>
 @section('title', 'index.blade.php')
@@ -40,89 +40,47 @@
     <option value="4">イタリアン</option>
     <option value="5">ラーメン</option>
   </select>
-  <input type="submit" value="見つける">
+  <input type="submit" name="search" value="見つける">
   <button class="reset" type="button" onclick="location.href='/'">リセット</button>
 </form>
 
 @if (@isset($item))
-<table>
-  <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>area</th>
-    <th>genre</th>
-    <th>descreption</th>
-    <th>image</th>
-    <th>詳細</th>
-  </tr>
-  <tr>
-    <!-- <td>
-      {{$item->getDetail()}}
-    </td> -->
-    <td>
-      {{$item->id}}
-    </td>
-    <td>
-      {{$item->name}}
-    </td>
-    <td>
-      {{$item->area->name}}
-    </td>
-    <td>
-      {{$item->genre->name}}
-    </td>
-    <td>
-      {{$item->description}}
-    </td>
-    <td>
+<div class="card-area">
+  <div class="card">
+    <div class="shop-image">
       <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
-    </td>
-    <td>
+      <div class="area-genre-name">
+        {{$item->name}}
+      </div>
+      <div class="area-genre-name">
+        {{$item->area->name}}
+        {{$item->genre->name}}
+      </div>
       <form action="{{route('detail',$item->id)}}" method="get">
         <button type="submit" class="btn btn-primary">詳しく見る</button>
       </form>
-    </td>
-  </tr>
-</table>
+    </div>
+  </div>
+</div>
 @endif
 
-<table>
-  <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>area</th>
-    <th>genre</th>
-    <th>descreption</th>
-    <th>image</th>
-    <th>詳細</th>
-  </tr>
-
-  @foreach ($items ?? '' as $item)
-  <tr>
-    <td>
-      {{$item->id}}
-    </td>
-    <td>
-      {{$item->name}}
-    </td>
-    <td>
-      {{$item->area->name}}
-    </td>
-    <td>
-      {{$item->genre->name}}
-    </td>
-    <td>
-      {{$item->description}}
-    </td>
-    <td>
+<div class="card-area">
+  <div class="card">
+    <div class="shop-image">
+      @foreach ($items ?? '' as $item)
       <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
-    </td>
-    <td>
-      <form action="{{route('detail',$item->id)}}" method="get">
-        <button type="submit" class="btn btn-primary">詳しく見る</button>
-      </form>
-    </td>
-  </tr>
-  @endforeach
-</table>
+    </div>
+    <div class="shop-name">
+      {{$item->name}}
+    </div>
+    <div class="area-genre-name">
+      #{{$item->area->name}}
+      #{{$item->genre->name}}
+    </div>
+    <form action="{{route('detail',$item->id)}}" method="get">
+      <button type="submit" class="btn btn-primary">詳しく見る</button>
+    </form>
+    @endforeach
+  </div>
+</div>
 @endsection
