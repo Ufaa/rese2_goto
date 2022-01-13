@@ -1,9 +1,21 @@
 @extends('layouts.default')
 <style>
-  .card {
+  body {
+    background-color: rgb(230, 230, 230);
+  }
+
+  .card-list {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+  }
+
+  .card {
+    width: 15%;
+  }
+
+  img {
+    width: 300px;
   }
 
   button {
@@ -16,7 +28,7 @@
     color: white;
   }
 </style>
-@section('title', 'index.blade.php')
+@section('title', 'rese')
 
 
 
@@ -46,9 +58,11 @@
 
 @if (@isset($item))
 <div class="card-area">
-  <div class="card">
-    <div class="shop-image">
-      <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
+  <div class="card-list">
+    <div class="card">
+      <div class="shop-image">
+        <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
+      </div>
       <div class="area-genre-name">
         {{$item->name}}
       </div>
@@ -62,13 +76,14 @@
     </div>
   </div>
 </div>
+</div>
 @endif
 
 <div class="card-area">
   <div class="card">
     <div class="shop-image">
       @foreach ($items ?? '' as $item)
-      <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
+      <img src=" {{$item->image_url}}" alt="{{$item->name}}">
     </div>
     <div class="shop-name">
       {{$item->name}}
