@@ -23,10 +23,10 @@
     color: white;
   }
 </style>
-@section('title', 'delete.blade.php')
+@section('title', 'shopdelete.blade.php')
 
 @section('content')
-<form action="/delete" method="POST">
+<form action="/shopdelete" method="POST">
   <table>
     @csrf
     <tr>

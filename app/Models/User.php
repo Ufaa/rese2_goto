@@ -41,14 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    //Reservationモデルとのリレーション　1対多　1人のユーザーが予約回数は複数ある
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
     }
-
-    public function shop()
+    //Likeモデルとのリレーション　1対多　1人のユーザーが「いいね!」できる数（店）は複数ある
+    public function likes()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Like::class);
     }
 }

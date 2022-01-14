@@ -73,6 +73,10 @@
       <form action="{{route('detail',$item->id)}}" method="get">
         <button type="submit" class="btn btn-primary">詳しく見る</button>
       </form>
+      <!-- いいね機能 -->
+      <form action=""  method=" get">
+        <button type="submit" class="btn btn-like">いいね!</button>
+      </form>
     </div>
   </div>
 </div>
@@ -94,6 +98,10 @@
     </div>
     <form action="{{route('detail',$item->id)}}" method="get">
       <button type="submit" class="btn btn-primary">詳しく見る</button>
+    </form>
+    <!-- いいね機能 -->
+    <form action="" method="post">
+      <button type="submit" class="btn btn-like">いいね!</button>
     </form>
     @endforeach
   </div>

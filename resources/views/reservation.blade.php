@@ -61,7 +61,7 @@
       {{$item->updated_at}}
     </td>
     <td>
-        <form action="{{route('/reservationdelete.remove', $item->id)}}" method="post"><tr>
+        <form action="" method="post"><tr>
         <button type="submit" class="btn btn-danger">削除</button>
       </form>
     </td>

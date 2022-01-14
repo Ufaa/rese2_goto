@@ -120,3 +120,24 @@
   <input type="submit" value="予約する">
   <button class="reset" type="button" onclick="location.href='/'">店舗一覧に戻る</button>
 </form>
+
+<!-- いいねページ -->
+<h1>いいね</h1>
+<form action="/likeadd" method="POST">
+  @csrf
+  <table>
+    <tr>
+      <th>user</th>
+      <td>
+        <input type="text" name="user_id" value="{{Auth::id()}}" style="display:none">{{Auth::id()}}
+      </td>
+    </tr>
+    <tr>
+      <th>Shop</th>
+      <td>
+        <input type="text" name="shop_id" value="{{$item->id}}" style="display:none">{{$item->name}}
+      </td>
+    </tr>
+  </table>
+  <input type="submit" value="いいねする">
+</form>
