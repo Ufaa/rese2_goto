@@ -35,36 +35,38 @@
     <th>削除</th>
   </tr>
 
-  @foreach ($items ?? '' as $item)
-    <td>
-      {{$item->getDetail2()}}
-    </td>
-    <td>
-      {{$item->id}}
-    </td>
-    <td>
-      {{$item->shop->name}}
-    </td>
-    <td>
-      {{$item->user->name}}
-    </td>
-    <td>
-      {{$item->num_of_users}}
-    </td>
-    <td>
-      {{$item->start_at}}
-    </td>
-    <td>
-      {{$item->created_at}}
-    </td>
-    <td>
-      {{$item->updated_at}}
-    </td>
-    <td>
-        <form action="" method="post"><tr>
-        <button type="submit" class="btn btn-danger">削除</button>
-      </form>
-    </td>
+  @foreach ($reservations ?? '' as $reservation)
+  <td>
+    {{$reservation->getDetail2()}}
+  </td>
+  <td>
+    {{$reservation->id}}
+  </td>
+  <td>
+    {{$reservation->shop->name}}
+  </td>
+  <td>
+    {{$reservation->user->name}}
+  </td>
+  <td>
+    {{$reservation->num_of_users}}
+  </td>
+  <td>
+    {{$reservation->start_at}}
+  </td>
+  <td>
+    {{$reservation->created_at}}
+  </td>
+  <td>
+    {{$reservation->updated_at}}
+  </td>
+  <td>
+    <form action="{{route('reservations.destroy',$reservation->id)}}" method="post">
+      {{ csrf_field() }}
+      {{ method_field('delete') }}
+      <button type="submit" class="btn btn-danger">削除</button>
+    </form>
+  </td>
   </tr>
   @endforeach
 </table>

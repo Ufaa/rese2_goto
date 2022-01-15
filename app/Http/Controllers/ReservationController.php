@@ -12,9 +12,9 @@ class ReservationController extends Controller
     public function index(Request $request)
     {
         //ページネーション追加（Simpleをつけるかつけないか）
-        $items = Reservation::all();
+        $reservation = Reservation::all();
         //dd($items);
-        return view('reservation')->with('items', $items);
+        return view('reservation')->with('reservations', $reservation);
     }
 
     //予約追加機能
@@ -45,19 +45,11 @@ class ReservationController extends Controller
 
 
     //予約情報削除　※一時的
-    public function delete(Request $request)
+    public function destroy(Reservation $reservation)
     {
-        $param = ['id' => $request->id];
-        $item = DB::select('select * from reservations where id = :id', $param);
-        return view('/reservationdelete', ['form' => $item[0]]);
-    }
-    public function remove(Request $request)
-    {
-        $param = ['id' => $request->id];
-        DB::delete('delete from reservations where id =:id', $param);
+        $reservation->delete();
         return redirect('/reservation');
     }
-    
 
     //予約情報編集　※一時的
     public function edit(Request $request)
