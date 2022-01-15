@@ -85,17 +85,19 @@ class ShopController extends Controller
 
 
 //店舗情報削除機能（※一時的）
-  public function shopdelete(Request $request)
+  public function destroy(Shop $item)
   {
-      $param = ['id' => $request->id];
-      $item = DB::select('select * from shops where id = :id', $param);
-      return view('delete', ['form' => $item[0]]);
+    $item->delete();
+    return redirect('/');
+      // $param = ['id' => $request->id];
+      // $item = DB::select('select * from shops where id = :id', $param);
+      // return view('delete', ['form' => $item[0]]);
   }
-  public function shopremove(Request $request)
-  {
-      $param = ['id' => $request->id];
-      DB::delete('delete from shops where id =:id', $param);
-      return redirect('/');
-  }
+  // public function shopremove(Request $request)
+  // {
+  //     $param = ['id' => $request->id];
+  //     DB::delete('delete from shops where id =:id', $param);
+  //     return redirect('/');
+  // }
 
   }

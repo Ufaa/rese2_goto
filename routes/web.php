@@ -44,8 +44,9 @@ Route::get('/find', [ShopController::class, 'find']);
 Route::post('/find', [ShopController::class, 'search']);
 
 //削除機能　※一時的
-Route::get('/shopdelete', [ShopController::class, 'shopdelete']);
-Route::post('/shopdelete', [ShopController::class, 'shopremove']);
+//Route::get('/shopdelete/{shop_id}', [ShopController::class, 'shopdelete'])->name('destroy');
+//Route::post('/shopdelete', [ShopController::class, 'shopremove']);
+Route::resource('shops', ShopController::class);
 
 //エリア情報修正　※一時的
 Route::get('/area', [AreaController::class, 'index'])->name('area');
@@ -74,8 +75,9 @@ Route::post('/reservationedit', [ReservationController::class, 'update']);
 //いいね機能
 Route::get('/likeadd', [LikeController::class, 'likeadd']);
 Route::post('/likeadd', [LikeController::class, 'likecreate'])->name('like');
-Route::get('/likedelete', [LikeController::class, 'likedelete']);
-Route::post('/delete', [LikeController::class, 'remove']);
+// Route::get('/likedelete', [LikeController::class, 'likedelete'])->name('likedelete');
+// Route::post('/likedelete', [LikeController::class, 'likeremove'])->name('destroy');
 //いいね、一覧 ※一時的
 Route::get('likeindex',[LikeController::class,'index']);
+Route::resource('likes', LikeController::class);
 

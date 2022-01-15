@@ -26,6 +26,7 @@
     <th>user</th>
     <th>shop</th>
     <th>created_at</th>
+    <th></th>
   </tr>
 
   @foreach ($likes ?? '' as $like)
@@ -43,10 +44,19 @@
     <td>
       {{$like->created_at}}
     </td>
+    <td>
+      <form action="{{route('likes.destroy',$like->id)}}" method="post">
+        {{ csrf_field() }}
+        {{ method_field('delete') }}
+        <button type="submit" class="btn btn-danger">削除</button>
+      </form>
+    </td>
   </tr>
   @endforeach
 </table>
 @endsection
+
+
 
 <button class="reset" type="button" onclick="location.href='/'">店舗一覧に戻る</button>
 </form>

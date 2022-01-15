@@ -141,3 +141,24 @@
   </table>
   <input type="submit" value="いいねする">
 </form>
+
+
+<!-- <form action="/likedelete" method="POST">
+  @csrf
+  @method('DELETE')
+  <table>
+    <tr>
+      <th>user</th>
+      <td>
+        <input type="text" name="user_id" value="{{Auth::id()}}" style="display:none">{{Auth::id()}}
+      </td>
+    </tr>
+    <tr>
+      <th>Shop</th>
+      <td>
+        <input type="text" name="shop_id" value="{{$item->id}}" style="display:none">{{$item->name}}
+      </td>
+    </tr>
+  </table>
+  <input type="submit" value="いいね解除する"> -->
+<!-- </form> -->

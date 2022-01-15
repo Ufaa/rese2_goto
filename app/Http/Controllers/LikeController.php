@@ -30,17 +30,9 @@ class LikeController extends Controller
         return redirect('/likeindex');
     }
     //いいね、解除（削除）機能
-    public function delete(Request $request)
+    public function destroy(Like $like)
     {
-        $param = ['id' => $request->id];
-        $item = DB::select('select * from reservations where id = :id', $param);
-        return view('/reservationdelete', ['form' => $item[0]]);
+        $like->delete();
+        return redirect('/likeindex');
     }
-    public function remove(Request $request)
-    {
-        $param = ['id' => $request->id];
-        DB::delete('delete from reservations where id =:id', $param);
-        return redirect('/reservation');
-    }
-
 }

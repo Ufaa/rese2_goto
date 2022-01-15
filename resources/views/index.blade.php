@@ -4,9 +4,10 @@
     background-color: rgb(230, 230, 230);
   }
 
+  .card-area {}
+
   .card-list {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
   }
 
@@ -60,49 +61,41 @@
 <div class="card-area">
   <div class="card-list">
     <div class="card">
-      <div class="shop-image">
-        <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
-      </div>
-      <div class="area-genre-name">
-        {{$item->name}}
-      </div>
-      <div class="area-genre-name">
-        {{$item->area->name}}
-        {{$item->genre->name}}
-      </div>
+      <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
+      <p>{{$item->name}}</p>
+      <p>#{{$item->area->name}}　#{{$item->genre->name}}</P>
       <form action="{{route('detail',$item->id)}}" method="get">
         <button type="submit" class="btn btn-primary">詳しく見る</button>
       </form>
       <!-- いいね機能 -->
-      <form action=""  method=" get">
+      <form action="" method=" get">
         <button type="submit" class="btn btn-like">いいね!</button>
       </form>
     </div>
   </div>
 </div>
-</div>
 @endif
 
 <div class="card-area">
-  <div class="card">
-    <div class="shop-image">
+  <div class="card-list">
+    <div class="card">
       @foreach ($items ?? '' as $item)
-      <img src=" {{$item->image_url}}" alt="{{$item->name}}">
+      <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
+      <p>{{$item->name}}</p>
+      <p>#{{$item->area->name}}　#{{$item->genre->name}}</P>
+      <form action="{{route('detail',$item->id)}}" method="get">
+        <button type="submit" class="btn btn-primary">詳しく見る</button>
+      </form>
+      <form action="{{route('shops.destroy',$item->id)}}" method="post">
+        {{ csrf_field() }}
+        {{ method_field('delete') }}
+        <button type="submit" class="btn btn-danger">削除</button>
+      </form>
+      <!-- いいね機能 -->
+      <form action="" method=" get">
+        <button type="submit" class="btn btn-like">いいね!</button>
+      </form>
     </div>
-    <div class="shop-name">
-      {{$item->name}}
-    </div>
-    <div class="area-genre-name">
-      #{{$item->area->name}}
-      #{{$item->genre->name}}
-    </div>
-    <form action="{{route('detail',$item->id)}}" method="get">
-      <button type="submit" class="btn btn-primary">詳しく見る</button>
-    </form>
-    <!-- いいね機能 -->
-    <form action="" method="post">
-      <button type="submit" class="btn btn-like">いいね!</button>
-    </form>
     @endforeach
   </div>
 </div>
