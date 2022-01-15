@@ -52,20 +52,27 @@ class ReservationController extends Controller
     }
 
     //予約情報編集　※一時的
-    public function edit(Request $request)
+    public function update(Request $request, Reservation $reservation)
     {
-        $param = ['id' => $request->id];
-        $item = DB::select('select * from reservations where id = :id', $param);
-        return view('/reservationedit', ['form' => $item[0]]);
+    $reservation->num_of_users = $request->num_of_users;
+    $reservation->save();
+    dd($reservation);
+    return redirect('/reservation')->with('reservation', $reservation);
     }
-    public function update(Request $request)
-    {
-        $param = [
-            'id' => $request->id,
-            'num_of_users' => $request->num_of_users,
-            'start_at' => $request->start_at,
-        ];
-        DB::update('update reservations set num_of_users =:num_of_users, start_at =:start_at where id =:id', $param);
-        return redirect('/reservation');
-    }
+    // public function edit(Request $request)
+    // {
+    //     $param = ['id' => $request->id];
+    //     $item = DB::select('select * from reservations where id = :id', $param);
+    //     return view('/reservationedit', ['form' => $item[0]]);
+    // }
+    // public function update(Request $request)
+    // {
+    //     $param = [
+    //         'id' => $request->id,
+    //         'num_of_users' => $request->num_of_users,
+    //         'start_at' => $request->start_at,
+    //     ];
+    //     DB::update('update reservations set num_of_users =:num_of_users, start_at =:start_at where id =:id', $param);
+    //     return redirect('/reservation');
+    // }
 }

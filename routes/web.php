@@ -8,6 +8,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\likeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,9 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+//マイページ
+Route::get('/mypage/{user_id}', [UserController::class, 'mypage']);
+Route::resource('mypages', UserController::class);
 
 //店舗一覧ページ
 Route::get('/', [ShopController::class, 'index'])->middleware('auth');
@@ -68,15 +72,12 @@ Route::get('/done', [ReservationController::class, 'done']);
 Route::resource('reservations', ReservationController::class);
 
 //予約情報編集　※一時的
-Route::get('/reservationedit', [ReservationController::class, 'edit']);
-Route::post('/reservationedit', [ReservationController::class, 'update']);
+// Route::get('/reservationedit', [ReservationController::class, 'edit']);
+// Route::post('/reservationedit', [ReservationController::class, 'update']);
 
 //いいね機能
 Route::get('/likeadd', [LikeController::class, 'likeadd']);
 Route::post('/likeadd', [LikeController::class, 'likecreate'])->name('like');
-// Route::get('/likedelete', [LikeController::class, 'likedelete'])->name('likedelete');
-// Route::post('/likedelete', [LikeController::class, 'likeremove'])->name('destroy');
-//いいね、一覧 ※一時的
 Route::get('likeindex',[LikeController::class,'index']);
 Route::resource('likes', LikeController::class);
 

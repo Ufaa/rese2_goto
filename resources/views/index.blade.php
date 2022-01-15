@@ -4,8 +4,6 @@
     background-color: rgb(230, 230, 230);
   }
 
-  .card-area {}
-
   .card-list {
     display: flex;
     align-items: center;
