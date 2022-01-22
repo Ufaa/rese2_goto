@@ -18,9 +18,12 @@
 </style>
 @section('title', 'マイページ')
 
-@section('content')
-<table>
+<button class="reset" type="button" onclick="location.href='/'">店舗一覧を見る</button>
 
+@section('content')
+<!-- 予約情報 -->
+<table>
+  <h1>予約状況</h1>
   <tr>
     <th>id</th>
     <th>user</th>
@@ -38,7 +41,27 @@
   </tr>
   @endforeach
 </table>
-@endsection
 
-<button class="reset" type="button" onclick="location.href='/'">店舗一覧を見る</button>
-</form>
+
+<!-- お気に入り情報 -->
+<table>
+  <h1>お気に入り店舗</h1>
+  <tr>
+    <th>id</th>
+    <th>user</th>
+    <th></th>
+  </tr>
+
+  @foreach ($users ?? '' as $user)
+  <tr>
+    <td>
+      {{$user->id}}
+    </td>
+    <td>
+      {{$user->name}}
+    </td>
+  </tr>
+  @endforeach
+</table>
+
+@endsection

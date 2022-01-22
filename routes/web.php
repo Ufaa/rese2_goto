@@ -9,7 +9,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\likeController;
 use App\Http\Controllers\UserController;
-use Auth;
+//use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,8 +36,8 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //マイページ
-Route::get('/mypage/{user_id}', [UserController::class, 'mypage']);
-Route::resource('mypages', UserController::class);
+Route::get('/mypage/{user_id}', [UserController::class, 'mypage'])->middleware(['auth']);
+// Route::resource('mypages', UserController::class)->middleware(['auth']);
 
 //店舗一覧ページ
 Route::get('/', [ShopController::class, 'index'])->middleware('auth');

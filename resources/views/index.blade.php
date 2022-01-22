@@ -26,10 +26,28 @@
     background-color: blue;
     color: white;
   }
+
+  .like-btn {
+    width: 25px;
+    height: 30px;
+    font-size: 25px;
+    color: #808080;
+    margin-left: 20px;
+  }
+
+  .unlike-btn {
+    width: 25px;
+    height: 30px;
+    font-size: 25px;
+    color: #e54747;
+    margin-left: 20px;
+  }
 </style>
 @section('title', 'rese')
 
-
+<head>
+  <script src="https://kit.fontawesome.com/eb8d65ab2e.js" crossorigin="anonymous"></script>
+</head>
 
 @section('content')
 <form action="find" method="POST">
@@ -66,9 +84,13 @@
         <button type="submit" class="btn btn-primary">詳しく見る</button>
       </form>
       <!-- いいね機能 -->
-      <form action="" method=" get">
-        <button type="submit" class="btn btn-like">いいね!</button>
-      </form>
+      <div>
+        @if($item->is_liked_by_auth_user())
+        <a href="{{ route('shop.unlike', ['id' => $item->id]) }}" class="unlike-btn"><i class="fas fa-heart"></i></a>
+        @else
+        <a href="{{ route('shop.like', ['id' => $item->id]) }}" class="like-btn"><i class="fas fa-heart"></i></a>
+        @endif
+      </div>
     </div>
   </div>
 </div>
@@ -92,9 +114,9 @@
       <!-- いいね機能 -->
       <div>
         @if($item->is_liked_by_auth_user())
-        <a href="{{ route('shop.unlike', ['id' => $item->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $item->likes->count() }}</span></a>
+        <a href="{{ route('shop.unlike', ['id' => $item->id]) }}" class="unlike-btn"><i class="fas fa-heart"></i></a>
         @else
-        <a href="{{ route('shop.like', ['id' => $item->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $item->likes->count() }}</span></a>
+        <a href="{{ route('shop.like', ['id' => $item->id]) }}" class="like-btn"><i class="fas fa-heart"></i></a>
         @endif
       </div>
     </div>
