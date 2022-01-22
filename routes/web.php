@@ -9,6 +9,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\likeController;
 use App\Http\Controllers\UserController;
+use Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,8 +77,10 @@ Route::resource('reservations', ReservationController::class);
 // Route::post('/reservationedit', [ReservationController::class, 'update']);
 
 //いいね機能
-Route::get('/likeadd', [LikeController::class, 'likeadd']);
-Route::post('/likeadd', [LikeController::class, 'likecreate'])->name('like');
-Route::get('likeindex',[LikeController::class,'index']);
-Route::resource('likes', LikeController::class);
+// Route::get('/likeadd', [LikeController::class, 'likeadd']);
+// Route::post('/likeadd', [LikeController::class, 'likecreate'])->name('like');
+// Route::get('likeindex',[LikeController::class,'index']);
+// Route::resource('likes', LikeController::class);
+Route::get('/shop/like/{id}', [ShopController::class,'like'])->name('shop.like');
+Route::get('/shop/unlike/{id}', [ShopController::class,'unlike'])->name('shop.unlike');
 

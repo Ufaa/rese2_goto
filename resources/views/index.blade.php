@@ -90,9 +90,13 @@
         <button type="submit" class="btn btn-danger">削除</button>
       </form>
       <!-- いいね機能 -->
-      <form action="" method=" get">
-        <button type="submit" class="btn btn-like">いいね!</button>
-      </form>
+      <div>
+        @if($item->is_liked_by_auth_user())
+        <a href="{{ route('shop.unlike', ['id' => $item->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $item->likes->count() }}</span></a>
+        @else
+        <a href="{{ route('shop.like', ['id' => $item->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $item->likes->count() }}</span></a>
+        @endif
+      </div>
     </div>
     @endforeach
   </div>

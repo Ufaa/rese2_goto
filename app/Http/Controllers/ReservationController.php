@@ -51,13 +51,13 @@ class ReservationController extends Controller
         return redirect('/reservation');
     }
 
-    //予約情報編集　※一時的
-    public function update(Request $request, Reservation $reservation)
+    // 予約情報編集　※一時的
+    public function update(Request $request)
     {
-    $reservation->num_of_users = $request->num_of_users;
-    $reservation->save();
-    dd($reservation);
-    return redirect('/reservation')->with('reservation', $reservation);
+    $request->num_of_users = $request->num_of_users;
+    $request->save();
+    dd($request);
+    return redirect('/reservation')->with('reservation', $request);
     }
     // public function edit(Request $request)
     // {

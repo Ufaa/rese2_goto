@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Shop;
+use App\Models\Like;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -83,21 +85,41 @@ class ShopController extends Controller
     }
   }
 
-
 //店舗情報削除機能（※一時的）
   public function destroy(Shop $item)
   {
     $item->delete();
     return redirect('/');
-      // $param = ['id' => $request->id];
-      // $item = DB::select('select * from shops where id = :id', $param);
-      // return view('delete', ['form' => $item[0]]);
   }
-  // public function shopremove(Request $request)
-  // {
-  //     $param = ['id' => $request->id];
-  //     DB::delete('delete from shops where id =:id', $param);
-  //     return redirect('/');
-  // }
+
+  //いいね機能
+  //  引数のIDに紐づく店舗にLIKEする
+  //  @param $id 店舗ID
+  //  @return \Illuminate\Http\RedirectResponse
+  public function like($id)
+  {
+    Like::create([
+      'shop_id' => $id,
+      'user_id' => Auth::id(),
+    ]);
+
+    session()->flash('success', 'You Liked the Reply.');
+
+    return redirect()->back();
+  }
+
+  //いいね解除機能
+  // 引数のIDに紐づくリプライにUNLIKEする
+  // @param $id リプライID
+  // @return \Illuminate\Http\RedirectResponse
+  public function unlike($id)
+  {
+    $like = Like::where('shop_id', $id)->where('user_id', Auth::id())->first();
+    $like->delete();
+
+    session()->flash('success', 'You Unliked the Reply.');
+
+    return redirect()->back();
+  }
 
   }

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Like extends Model
 {
     use HasFactory;
+    protected $fillable = ['shop_id', 'user_id'];
+
     //Userモデルとのリレーション　1対多　1つのいいねに対するユーザー（いいね入力者）は1人
     public function user()
     {

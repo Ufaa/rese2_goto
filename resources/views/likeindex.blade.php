@@ -38,8 +38,7 @@
       {{$like->user->name}}
     </td>
     <td>
-      <!-- userはできるのに、なぜできない？、detailページではできるのに、なぜできない？ -->
-      {{$like->shop_id}}
+      {{$like->shop->name}}
     </td>
     <td>
       {{$like->created_at}}

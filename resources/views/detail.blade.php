@@ -37,9 +37,7 @@
     </td>
     <!--データの受け渡しができているかの確認のため一時的-->
     <td>
-      @foreach($item->reservations as $reservation)
-      {{$reservation->user->name}}
-      @endforeach
+      {{Auth::user()->name}}
     </td>
     <td>
       {{optional($item)->name}}
@@ -71,7 +69,7 @@
       <th>user</th> <!-- 一時的 -->
       <!-- <td>$item->user->id</td> -->
       <td>
-        <input type="text" name="user_id" value="{{Auth::id()}}" style="display:none">{{Auth::id()}}
+        <input type="text" name="user_id" value="{{Auth::id()}}" style="display:none">{{Auth::user()->name}}
       </td>
     </tr>
     <tr>
@@ -129,7 +127,7 @@
     <tr>
       <th>user</th>
       <td>
-        <input type="text" name="user_id" value="{{Auth::id()}}" style="display:none">{{Auth::id()}}
+        <input type="text" name="user_id" value="{{Auth::id()}}" style="display:none">{{Auth::user()->name}}
       </td>
     </tr>
     <tr>
