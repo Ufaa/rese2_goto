@@ -6,11 +6,43 @@
 
   img {
     width: 300px;
+    border-radius: 3% 3% 0 0;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 20px 0 0;
+  }
+
+  .title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #0033FF;
+    margin: 0 0 0 70px;
+  }
+
+  .find {
+    margin-top: 20px;
+  }
+
+  .shop {
+    padding: 0 5%;
+    margin: 5% 0% 0% 0%;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .area-genre {
+    padding: 0 5%;
+    margin: 0% 0% 5% 0%;
+    font-size: 12px;
   }
 
   button {
-    background-color: blue;
+    background-color: #0033FF;
     color: white;
+    border-radius: 3%;
   }
 
   .card-area {
@@ -22,7 +54,13 @@
   .card-list {
     width: 300px;
     display: flex;
-    padding: 0 5px;
+    padding: 10px 10px;
+  }
+
+  .card {
+    background-color: white;
+    border-radius: 3%;
+    box-shadow: 2px 2px 4px 1px gray;
   }
 
   .search {
@@ -33,6 +71,7 @@
   .detail-like {
     display: flex;
     justify-content: space-between;
+    padding: 0 5%;
   }
 
   .like-btn {
@@ -50,44 +89,58 @@
     color: #e54747;
     margin-left: 20px;
   }
+
+  .btn-primary {
+    width: 100px;
+    background-color: #3838ff;
+    color: white;
+    border-radius: 10%;
+    border-style: none;
+    padding: 6%;
+  }
 </style>
-@section('title', 'rese')
 
 <head>
   <script src="https://kit.fontawesome.com/eb8d65ab2e.js" crossorigin="anonymous"></script>
 </head>
 
 @section('content')
-<form action="find" method="POST">
-  @csrf
-  <input type="text" name="name" value="{{$input ?? ''}}">
-  <select class="area_class" name="area" placeholder="エリア">
-    <!-- <option value="1 || 2 || 3">All Area</option> -->
-    <option [ngValue]=""></option>
-    <option value="1">東京都</option>
-    <option value="2">大阪府</option>
-    <option value="3">福岡県</option>
-  </select>
-  <select class="genre_class" name="genre" placeholder="ジャンル">
-    <!-- <option value="1 || 2 || 3 || 4 || 5 ">All Genre</option> -->
-    <option [ngValue]=""></option>
-    <option value="1">寿司</option>
-    <option value="2">焼肉</option>
-    <option value="3">居酒屋</option>
-    <option value="4">イタリアン</option>
-    <option value="5">ラーメン</option>
-  </select>
-  <input type="submit" name="search" value="見つける">
-  <button class="reset" type="button" onclick="location.href='/'">リセット</button>
-</form>
+<div class="header">
+  <div class="title">Rese
+  </div>
+  <div class="find">
+    <form action="find" method="POST">
+      @csrf
+      <select class="area_class" name="area" placeholder="エリア">
+        <!-- <option value="1 || 2 || 3">All Area</option> -->
+        <option [ngValue]=""></option>
+        <option value="1">東京都</option>
+        <option value="2">大阪府</option>
+        <option value="3">福岡県</option>
+      </select>
+      <select class="genre_class" name="genre" placeholder="ジャンル">
+        <!-- <option value="1 || 2 || 3 || 4 || 5 ">All Genre</option> -->
+        <option [ngValue]=""></option>
+        <option value="1">寿司</option>
+        <option value="2">焼肉</option>
+        <option value="3">居酒屋</option>
+        <option value="4">イタリアン</option>
+        <option value="5">ラーメン</option>
+      </select>
+      <input type="text" name="name" value="{{$input ?? ''}}">
+      <input type="submit" name="search" value="見つける">
+      <button class="reset" type="button" onclick="location.href='/'">リセット</button>
+    </form>
+  </div>
+</div>
 
 @if (@isset($item))
 <div class="card-area">
   <div class="card-list">
     <div class="card">
       <img src=" {{$item->image_url}}" alt="{{$item->name}}">
-      <p>{{$item->name}}</p>
-      <p>#{{$item->area->name}}　#{{$item->genre->name}}</P>
+      <div class="shop">{{$item->name}}</div>
+      <div class="area-genre">#{{$item->area->name}}　#{{$item->genre->name}}</div>
       <form action="{{route('detail',$item->id)}}" method="get">
         <button type="submit" class="btn btn-primary">詳しく見る</button>
       </form>
@@ -113,9 +166,11 @@
   @foreach ($items ?? '' as $item)
   <div class="card-list">
     <div class="card">
-      <img src=" {{$item->image_url}}" alt="{{$item->name}}">
-      <p>{{$item->name}}</p>
-      <p>#{{$item->area->name}}　#{{$item->genre->name}}</P>
+      <div class="image-area">
+        <img src=" {{$item->image_url}}" alt="{{$item->name}}">
+      </div>
+      <p class="shop">{{$item->name}}</p>
+      <p class="area-genre">#{{$item->area->name}} #{{$item->genre->name}}</P>
       <div class="detail-like">
         <form action="{{route('detail',$item->id)}}" method="get">
           <button type="submit" class="btn btn-primary">詳しく見る</button>
