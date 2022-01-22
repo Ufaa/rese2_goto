@@ -4,15 +4,6 @@
     background-color: rgb(230, 230, 230);
   }
 
-  .card-list {
-    display: flex;
-    align-items: center;
-  }
-
-  .card {
-    width: 15%;
-  }
-
   img {
     width: 300px;
   }
@@ -22,9 +13,26 @@
     color: white;
   }
 
+  .card-area {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .card-list {
+    width: 300px;
+    display: flex;
+    padding: 0 5px;
+  }
+
   .search {
     background-color: blue;
     color: white;
+  }
+
+  .detail-like {
+    display: flex;
+    justify-content: space-between;
   }
 
   .like-btn {
@@ -77,30 +85,7 @@
 <div class="card-area">
   <div class="card-list">
     <div class="card">
-      <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
-      <p>{{$item->name}}</p>
-      <p>#{{$item->area->name}}　#{{$item->genre->name}}</P>
-      <form action="{{route('detail',$item->id)}}" method="get">
-        <button type="submit" class="btn btn-primary">詳しく見る</button>
-      </form>
-      <!-- いいね機能 -->
-      <div>
-        @if($item->is_liked_by_auth_user())
-        <a href="{{ route('shop.unlike', ['id' => $item->id]) }}" class="unlike-btn"><i class="fas fa-heart"></i></a>
-        @else
-        <a href="{{ route('shop.like', ['id' => $item->id]) }}" class="like-btn"><i class="fas fa-heart"></i></a>
-        @endif
-      </div>
-    </div>
-  </div>
-</div>
-@endif
-
-<div class="card-area">
-  <div class="card-list">
-    <div class="card">
-      @foreach ($items ?? '' as $item)
-      <img src=" {{$item->image_url}}" alt="{{$item->name}}" width="100px">
+      <img src=" {{$item->image_url}}" alt="{{$item->name}}">
       <p>{{$item->name}}</p>
       <p>#{{$item->area->name}}　#{{$item->genre->name}}</P>
       <form action="{{route('detail',$item->id)}}" method="get">
@@ -120,7 +105,31 @@
         @endif
       </div>
     </div>
-    @endforeach
   </div>
 </div>
+@endif
+
+<div class="card-area">
+  @foreach ($items ?? '' as $item)
+  <div class="card-list">
+    <div class="card">
+      <img src=" {{$item->image_url}}" alt="{{$item->name}}">
+      <p>{{$item->name}}</p>
+      <p>#{{$item->area->name}}　#{{$item->genre->name}}</P>
+      <div class="detail-like">
+        <form action="{{route('detail',$item->id)}}" method="get">
+          <button type="submit" class="btn btn-primary">詳しく見る</button>
+        </form>
+        <!-- いいね機能 -->
+        @if($item->is_liked_by_auth_user())
+        <a href="{{ route('shop.unlike', ['id' => $item->id]) }}" class="unlike-btn"><i class="fas fa-heart"></i></a>
+        @else
+        <a href="{{ route('shop.like', ['id' => $item->id]) }}" class="like-btn"><i class="fas fa-heart"></i></a>
+        @endif
+      </div>
+    </div>
+  </div>
+  @endforeach
+</div>
+
 @endsection
