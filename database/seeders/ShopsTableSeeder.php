@@ -64,7 +64,7 @@ class ShopsTableSeeder extends Seeder
             'area_id' => '1',
             'genre_id' => '2',
             'description' => '大小さまざまなお部屋をご用意してます。デートや接待、記念日や誕生日など特別な日にご利用ください。皆様のご来店をお待ちしております。',
-            'image_url' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg'
+            'image_url' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg'
         ];
         DB::table('shops')->insert($param);
 

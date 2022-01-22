@@ -22,6 +22,11 @@
     margin: 0 0 0 70px;
   }
 
+  .title a {
+    text-decoration: none;
+    color: #0033FF;
+  }
+
   .find {
     margin-top: 20px;
   }
@@ -106,7 +111,7 @@
 
 @section('content')
 <div class="header">
-  <div class="title">Rese
+  <div class="title"><a href="/">Rese</a>
   </div>
   <div class="find">
     <form action="find" method="POST">
@@ -128,8 +133,7 @@
         <option value="5">ラーメン</option>
       </select>
       <input type="text" name="name" value="{{$input ?? ''}}">
-      <input type="submit" name="search" value="見つける">
-      <button class="reset" type="button" onclick="location.href='/'">リセット</button>
+      <input type="submit" name="search" value="見つける" style="display: none;">
     </form>
   </div>
 </div>
@@ -181,6 +185,8 @@
         @else
         <a href="{{ route('shop.like', ['id' => $item->id]) }}" class="like-btn"><i class="fas fa-heart"></i></a>
         @endif
+
+        </form>
       </div>
     </div>
   </div>
