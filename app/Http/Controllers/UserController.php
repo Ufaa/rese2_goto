@@ -18,10 +18,12 @@ class UserController extends Controller
     // $reservationを定義　useridが一致するもの？
     // $likeを定義　useridが一致するもの？
 
+    //両方定義して$paramで取得？
+
     public function userreservation($id)
     {
         $userreservation = Reservation::where('shop_id', $id)->where('user_id', Auth::id())->get();
-
+        dd($userreservation);
         return view('mypage')->with('userreservatiom',$userreservation);
     }
     public function userlike($id)

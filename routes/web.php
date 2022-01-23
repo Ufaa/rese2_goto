@@ -36,17 +36,14 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //マイページ
-// Route::get('/mypage/{user_id}', [UserController::class, 'mypage'])->middleware(['auth']);
-// Route::resource('mypages', UserController::class)->middleware(['auth']);
-Route::get('mypage/{user_id}',[UserController::class, 'usereservation'])->name('usereservation');
-Route::get('mypage/{user_id}', [UserController::class, 'userlike'])->name('userlike');
+Route::get('mypage/{user_id}',[UserController::class, 'userreservation'])->name('userreservation');
+//Route::get('mypage/{user_id}', [UserController::class, 'userlike'])->name('userlike');
 
 //店舗一覧ページ
 Route::get('/', [ShopController::class, 'index'])->middleware('auth');
 //店舗詳細ページ
 Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('detail');
-//検索機能　※できてない
-//Route::post('/search', [ShopController::class, 'search'])->name('search');
+//検索機能　
 Route::get('/find', [ShopController::class, 'find']);
 Route::post('/find', [ShopController::class, 'search']);
 
@@ -79,10 +76,6 @@ Route::resource('reservations', ReservationController::class);
 // Route::post('/reservationedit', [ReservationController::class, 'update']);
 
 //いいね機能
-// Route::get('/likeadd', [LikeController::class, 'likeadd']);
-// Route::post('/likeadd', [LikeController::class, 'likecreate'])->name('like');
-// Route::get('likeindex',[LikeController::class,'index']);
-// Route::resource('likes', LikeController::class);
 Route::get('/shop/like/{id}', [ShopController::class,'like'])->name('shop.like');
 Route::get('/shop/unlike/{id}', [ShopController::class,'unlike'])->name('shop.unlike');
 
