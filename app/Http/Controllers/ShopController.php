@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Shop;
 use App\Models\Like;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 

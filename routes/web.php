@@ -36,8 +36,10 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //マイページ
-Route::get('/mypage/{user_id}', [UserController::class, 'mypage'])->middleware(['auth']);
+// Route::get('/mypage/{user_id}', [UserController::class, 'mypage'])->middleware(['auth']);
 // Route::resource('mypages', UserController::class)->middleware(['auth']);
+Route::get('mypage/{user_id}',[UserController::class, 'usereservation'])->name('usereservation');
+Route::get('mypage/{user_id}', [UserController::class, 'userlike'])->name('userlike');
 
 //店舗一覧ページ
 Route::get('/', [ShopController::class, 'index'])->middleware('auth');
