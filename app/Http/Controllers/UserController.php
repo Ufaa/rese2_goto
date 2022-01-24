@@ -5,31 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Models\like;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     //マイページ表示
-    // １、予約情報
-    // findでUserモデルからuser_idを取得し、showでReservationテーブルから取得したuser_idと合致するデータを取得し、予約情報（detailと同じ）を表示
-    // ２、いいね、情報
-    // findでUserモデルからuser idを取得し、showでLikeテーブルから取得したuser idに合致するデータを取得し、カード（indexと同じ）を表示
-    // $reservationを定義　useridが一致するもの？
-    // $likeを定義　useridが一致するもの？
-
-    //両方定義して$paramで取得？
-
-    public function userreservation($id)
+    public function mypage()
+    // ２つの要素を１つのメソッドで遂行する。
     {
-        $userreservation = Reservation::where('shop_id', $id)->where('user_id', Auth::id())->get();
-        dd($userreservation);
-        return view('mypage')->with('userreservatiom',$userreservation);
+        // Reservationテーブルの中でuser_idとログインidが一致するものを複数取得する
+        $userreservation = Reservation::where('user_id', Auth::id())->get();
+        // Likeテーブルの中でuser_idとログインidが一致するものを複数取得する
+        $userlike = Like::where('user_id', Auth::id())->get();
+
+        //dd($userreservation, $userlike);
+
+        return view('mypage')->with('userreservation', $userreservation,'userlike',  $userlike, );
     }
-    public function userlike($id)
-    {
-        $userlike = Like::where('shop_id', $id)->where('user_id', Auth::id())->get();
-        dd($userlike);
-        return view('mypage')->with('userlike',$userlike);
-    }
+
 }

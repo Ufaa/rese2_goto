@@ -35,9 +35,11 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+//ログアウト
+// Route::get('/logout', [UserController::class, 'loggedOut']);
+
 //マイページ
-Route::get('mypage/{user_id}',[UserController::class, 'userreservation'])->name('userreservation');
-//Route::get('mypage/{user_id}', [UserController::class, 'userlike'])->name('userlike');
+Route::get('mypage', [UserController::class, 'mypage'])->name('mypage');
 
 //店舗一覧ページ
 Route::get('/', [ShopController::class, 'index'])->middleware('auth');
