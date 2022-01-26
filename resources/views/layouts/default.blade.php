@@ -13,9 +13,12 @@
     <div class="menu__item"><a href="/">Home</a>
     </div>
     <div class="menu__item">
-      <a href="/login">logout</a>
+      <form action="{{route('logout')}}" method="post">
+        @csrf
+        <button type="submit" class="logout-button"><a href="">logout</a></button>
+      </form>
     </div>
-    <div class="menu__item">Mypage</div>
+    <div class="menu__item"><a href="/mypage">Mypage</a></div>
   </div>
 
   <style>
