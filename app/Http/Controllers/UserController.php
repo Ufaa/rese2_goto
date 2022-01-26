@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use App\Models\like;
+use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Http\Request;
@@ -20,9 +21,14 @@ class UserController extends Controller
         // Likeテーブルの中でuser_idとログインidが一致するものを複数取得する
         $userlike = Like::where('user_id', Auth::id())->get();
 
-        //dd($userreservation, $userlike);
+        //　Shopテーブルの中でidとuserlikeのshop_idが一致する情報を複数取得する
+        $userlikeshop = Shop::where('id', $userlike)->get();
 
-        return view('mypage')->with('userreservation', $userreservation,'userlike',  $userlike, );
+        $likeshop = Shop::where('id',Like::where('shop_id'));
+
+        //dd($userreservation, $userlike,$userlikeshop, $likeshop);
+
+        return view('mypage')->with('userreservation', $userreservation,'userlikeshop',  $userlikeshop, );
     }
 
 }
