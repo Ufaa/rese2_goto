@@ -130,7 +130,7 @@
         <option value="4">イタリアン</option>
         <option value="5">ラーメン</option>
       </select>
-      <input type="text" name="name" value="{{$input ?? ''}}">
+      <input type="text" name="name" value="{{$input ?? ''}}" placeholder=""><i class="fas fa-search">search...</i>
       <input type="submit" name="search" value="見つける" style="display: none;">
     </form>
   </div>
