@@ -13,12 +13,12 @@
     <div class="menu__item"><a href="/">Home</a>
     </div>
     <div class="menu__item">
-      <!-- <form action="{{route('logout')}}" method="post">
+      <form action="{{route('logout')}}" method="post">
         @csrf
         <button type="submit" class="logout-button"><a href="">logout</a></button>
-      </form> -->
-      <a href="{{route('logout')}}" method="post">logout</a>
-@csrf
+      </form>
+      <!-- <a href="{{route('logout')}}" method="get">logout</a>
+@csrf -->
     </div>
         <div class="menu__item"><a href="/mypage">Mypage</a></div>
     </div>

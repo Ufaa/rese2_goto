@@ -19,16 +19,11 @@ class UserController extends Controller
         // Reservationテーブルの中でuser_idとログインidが一致するものを複数取得する
         $userreservation = Reservation::where('user_id', Auth::id())->get();
         // Likeテーブルの中でuser_idとログインidが一致するものを複数取得する
-        $userlike = Like::where('user_id', Auth::id())->get();
+        $userlikes = Like::where('user_id', Auth::id())->get();
 
-        //　Shopテーブルの中でidとuserlikeのshop_idが一致する情報を複数取得する
-        $userlikeshop = Shop::where('id', $userlike)->get();
+        // dd($userreservation, $userlike);
 
-        $likeshop = Shop::where('id',Like::where('shop_id'));
-
-        //dd($userreservation, $userlike,$userlikeshop, $likeshop);
-
-        return view('mypage')->with('userreservation', $userreservation,'userlikeshop',  $userlikeshop, );
+        return view('mypage',compact('userreservation','userlikes'));
     }
 
 }
