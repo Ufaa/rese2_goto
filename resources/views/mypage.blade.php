@@ -169,6 +169,7 @@
     <p class="user-reservation-title">予約状況</p>
     @foreach ($userreservation ?? '' as $reservation)
     <div class="reservation-card">
+      <i class="far fa-clock"></i>
       <p class="reservation-number">予約{{$reservation->id}}</p>
       <table>
         <tr>
