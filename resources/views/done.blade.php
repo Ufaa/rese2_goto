@@ -26,7 +26,7 @@
   }
 
   .done-area p {
-    font-weight: bold;
+    font-size: 30px;
   }
 
   .back {

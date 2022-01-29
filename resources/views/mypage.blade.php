@@ -88,6 +88,14 @@
     box-shadow: 2px 2px 4px 1px gray;
   }
 
+  .reservation-card-header {
+    display: flex;
+  }
+
+  .clock-icon {
+    padding: 20px;
+  }
+  
   .shop {
     padding: 0 5%;
     margin: 5% 0% 0% 0%;
@@ -169,8 +177,13 @@
     <p class="user-reservation-title">予約状況</p>
     @foreach ($userreservation ?? '' as $reservation)
     <div class="reservation-card">
-      <i class="far fa-clock"></i>
-      <p class="reservation-number">予約{{$reservation->id}}</p>
+      <div class="reservation-card-header">
+        <div class="clock-icon">
+          <i class="far fa-clock"></i>
+        </div>
+        <p class="reservation-number">予約{{$reservation->id}}</p>
+      </div>
+
       <table>
         <tr>
           <th>shop</th>
