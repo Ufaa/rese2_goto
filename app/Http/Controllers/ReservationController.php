@@ -48,7 +48,7 @@ class ReservationController extends Controller
     public function destroy(Reservation $reservation)
     {
         $reservation->delete();
-        return redirect('/reservation');
+        return redirect('/mypage');
     }
 
     // 予約情報編集　※一時的

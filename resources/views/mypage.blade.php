@@ -11,6 +11,32 @@
     margin: 10px 0 0 70px;
   }
 
+  .header {
+    position: relative;
+    padding: 40px;
+  }
+
+  .header-left {
+    position: absolute;
+    left: 0px;
+    width: 40%;
+    margin: 0 5%;
+  }
+
+  .header-right {
+    position: absolute;
+    height: 800px;
+    right: 0px;
+    width: 40%;
+    margin: 0 5%;
+    border-radius: 5px;
+  }
+
+  .login-name {
+    font-size: 32px;
+    font-weight: bold;
+  }
+
   th,
   td {
     text-align: left;
@@ -39,7 +65,6 @@
   }
 
   .user-reservation-title {
-    margin-left: 5%;
     font-size: 30px;
     font-weight: bold;
   }
@@ -64,7 +89,6 @@
   }
 
   .user-like-title {
-    margin-left: 5%;
     font-size: 30px;
     font-weight: bold;
   }
@@ -90,12 +114,23 @@
 
   .reservation-card-header {
     display: flex;
+    position: relative;
   }
 
   .clock-icon {
     padding: 20px;
   }
-  
+
+  .reservation-delete-icon {
+    position: absolute;
+    padding-top: 20px;
+    right: 20px;
+  }
+
+  .fa-times-circle {
+    color: white;
+  }
+
   .shop {
     padding: 0 5%;
     margin: 5% 0% 0% 0%;
@@ -163,14 +198,21 @@
 </div>
 
 <!-- ログイン情報は一時的に設置 -->
-@auth
-ログイン名：{{Auth::user()->name}}さん
-<form action="{{route('logout')}}" method="post">
-  @csrf
-  <button type="submit" class="logout-button">ログアウト</button>
-</form>
-@endauth
-
+<div class="header">
+  <div class="header-left">
+  </div>
+  <div class="header-right">
+    <div class="login-name">
+      @auth
+      {{Auth::user()->name}}さん
+      <form action="{{route('logout')}}" method="post">
+        @csrf
+        <button type="submit" class="logout-button">ログアウト</button>
+      </form>
+      @endauth
+    </div>
+  </div>
+</div>
 <!-- 予約情報 -->
 <div class="contents">
   <div class="user-reservation-area">
@@ -182,8 +224,17 @@
           <i class="far fa-clock"></i>
         </div>
         <p class="reservation-number">予約{{$reservation->id}}</p>
-      </div>
+        <div class="reservation-delete-icon">
+          <form action="{{route('reservations.destroy',$reservation->id)}}" method="post">
+            {{ csrf_field() }}
+            {{ method_field('delete') }}
+            <button type="submit" style="background-color: #005FFF; border:none">
+              <i class="far fa-times-circle fa-lg"></i>
+            </button>
+          </form>
 
+        </div>
+      </div>
       <table>
         <tr>
           <th>shop</th>
