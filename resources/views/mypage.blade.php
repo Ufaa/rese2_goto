@@ -205,10 +205,10 @@
     <div class="login-name">
       @auth
       {{Auth::user()->name}}さん
-      <form action="{{route('logout')}}" method="post">
+      <!-- <form action="{{route('logout')}}" method="post">
         @csrf
         <button type="submit" class="logout-button">ログアウト</button>
-      </form>
+      </form> -->
       @endauth
     </div>
   </div>
@@ -223,7 +223,9 @@
         <div class="clock-icon">
           <i class="far fa-clock"></i>
         </div>
-        <p class="reservation-number">予約{{$reservation->id}}</p>
+        <p class="reservation-number">
+          予約{{$reservation->id}}
+        </p>
         <div class="reservation-delete-icon">
           <form action="{{route('reservations.destroy',$reservation->id)}}" method="post">
             {{ csrf_field() }}

@@ -31,6 +31,16 @@
     margin-top: 20px;
   }
 
+  .user-icon {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   .shop {
     padding: 0 5%;
     margin: 5% 0% 0% 0%;
@@ -130,7 +140,7 @@
         <option value="4">イタリアン</option>
         <option value="5">ラーメン</option>
       </select>
-      <input type="text" name="name" value="{{$input ?? ''}}" placeholder=""><i class="fas fa-search">search...</i>
+      <input type="text" class="user-icon" name="name" value="{{$input ?? ''}}" placeholder="&#xf002; search...">
       <input type="submit" name="search" value="見つける" style="display: none;">
     </form>
   </div>

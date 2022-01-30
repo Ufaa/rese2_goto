@@ -16,9 +16,10 @@
         color: #0033FF;
     }
 
-    .min-h-screen {
+    .min-h-screen.flex {
         background-color: rgb(230, 230, 230);
     }
+
 
     .w-full {
         position: relative;
@@ -64,7 +65,6 @@
 <body>
     <div class="title"><a href="/">Rese</a>
     </div>
-
     <x-guest-layout>
         <x-auth-card class="auth-card">
             <x-slot name="logo">

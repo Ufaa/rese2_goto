@@ -16,7 +16,7 @@
         color: #0033FF;
     }
 
-    .min-h-screen {
+    .min-h-screen.flex {
         background-color: rgb(230, 230, 230);
     }
 
