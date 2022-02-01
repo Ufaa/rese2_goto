@@ -9,17 +9,31 @@
   <button type="button" class="menu-btn">
     <i class="fa fa-bars" aria-hidden="true"></i>
   </button>
+
+  @auth
   <div class="menu">
     <div class="menu__item"><a href="/">Home</a>
     </div>
     <div class="menu__item">
       <a href="javascript:document.logout.submit()">Logout</a>
     </div>
-        <form name="logout" action="{{route('logout')}}" method="post" style="display: none">
-          @csrf
-        </form>
+    <form name="logout" action="{{route('logout')}}" method="post" style="display: none">
+      @csrf
+    </form>
     <div class="menu__item"><a href="/mypage">Mypage</a></div>
   </div>
+  @endauth
+
+  @guest
+  <div class="menu">
+    <div class="menu__item"><a href="/">Home</a>
+    </div>
+    <div class="menu__item"><a href="/register">Resistration</a>
+    </div>
+    <div class="menu__item"><a href="/login">Login</a>
+    </div>
+  </div>
+  @endguest
 
   <style>
     body {

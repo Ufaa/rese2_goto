@@ -41,9 +41,6 @@ class ReservationController extends Controller
         return view('done');
     }
 
-    //予約情報確認機能
-
-
     //予約情報削除　※一時的
     public function destroy(Reservation $reservation)
     {
