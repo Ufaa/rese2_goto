@@ -19,7 +19,7 @@
     font-size: 40px;
     font-weight: bold;
     color: #0033FF;
-    margin: 0 0 0 70px;
+    margin: -5px 0 0 70px;
   }
 
   .title a {

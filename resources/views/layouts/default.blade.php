@@ -6,32 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>@yield('title')</title>
 
-  <button type="button" class="menu-btn">
-    <i class="fa fa-bars" aria-hidden="true"></i>
-  </button>
-
   @auth
-  <div class="menu">
-    <div class="menu__item"><a href="/">Home</a>
+  <div class="hamburger-menu">
+    <input type="checkbox" id="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn"><span></span></label>
+    <!--ここからメニュー-->
+    <div class="menu-content">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="javascript:document.logout.submit()">Logout</a>
+          <form name="logout" action="{{route('logout')}}" method="post" style="display: none">
+            @csrf
+          </form>
+        </li>
+        <li>
+          <a href="/mypage">Mypage</a>
+        </li>
+      </ul>
     </div>
-    <div class="menu__item">
-      <a href="javascript:document.logout.submit()">Logout</a>
-    </div>
-    <form name="logout" action="{{route('logout')}}" method="post" style="display: none">
-      @csrf
-    </form>
-    <div class="menu__item"><a href="/mypage">Mypage</a></div>
+    <!--ここまでメニュー-->
   </div>
   @endauth
 
   @guest
-  <div class="menu">
-    <div class="menu__item"><a href="/">Home</a>
+  <div class="hamburger-menu">
+    <input type="checkbox" id="menu-btn-check">
+    <label for="menu-btn-check" class="menu-btn"><span></span></label>
+    <!--ここからメニュー-->
+    <div class="menu-content">
+      <ul>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="/register">Resistration</a>
+        </li>
+        <li>
+          <a href="/login">Login</a>
+        </li>
+      </ul>
     </div>
-    <div class="menu__item"><a href="/register">Resistration</a>
-    </div>
-    <div class="menu__item"><a href="/login">Login</a>
-    </div>
+    <!--ここまでメニュー-->
   </div>
   @endguest
 
@@ -59,67 +77,119 @@
     }
 
     /* ここからハンバーガーメニュー */
-    /*----------------------------
-* メニュー開閉ボタン
-*----------------------------*/
     .menu-btn {
       position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 2;
-      width: 40px;
-      height: 40px;
+      top: 10px;
+      left: 15px;
       display: flex;
+      height: 50px;
+      width: 50px;
+      border-radius: 5px;
       justify-content: center;
       align-items: center;
-      background: #333;
-      color: #fff;
-      background-color: #3838ff;
-      border-style: none;
-      border-radius: 5px;
+      z-index: 90;
+      color: white;
+      /*ボタンの背景色*/
+      background-color: #005FFF;
     }
 
-    /*----------------------------
-* メニュー本体
-*----------------------------*/
-    .menu {
+    .menu-btn span,
+    .menu-btn span:before,
+    .menu-btn span:after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 25px;
+      border-radius: 3px;
+      /*ボタンの線の色*/
+      background-color: white;
+      position: absolute;
+      transition: all 300ms 0s ease;
+    }
+
+    .menu-btn span:before {
+      bottom: 8px;
+      width: 15px;
+    }
+
+    .menu-btn span:after {
+      top: 8px;
+      width: 7px;
+    }
+
+    #menu-btn-check {
+      display: none;
+    }
+
+    #menu-btn-check:checked~.menu-btn span {
+      background-color: rgba(255, 255, 255, 0);
+      /*メニューオープン時は真ん中の線を透明にする*/
+      transition: all 300ms 0s ease;
+    }
+
+    #menu-btn-check:checked~.menu-btn span::before {
+      bottom: 0;
+      width: 25px;
+      transform: rotate(45deg);
+      background-color: white;
+      transition: all 300ms 0s ease;
+    }
+
+    #menu-btn-check:checked~.menu-btn span::after {
+      top: 0;
+      width: 25px;
+      transform: rotate(-45deg);
+      background-color: white;
+      transition: all 300ms 0s ease;
+    }
+
+    .menu-content {
+      width: 100%;
+      height: 100%;
       position: fixed;
       top: 0;
-      right: 0;
-      z-index: 1;
-      width: 100vw;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: white;
+      top: -100%;
+      z-index: 80;
+      background-color: white;
+      color: #222;
+      transition: all 500ms 0s ease;
     }
 
-    .menu__item {
-      width: 100%;
-      height: auto;
-      padding: .5em 1em;
+    #menu-btn-check:checked~.menu-content {
+      top: 0;
+      /*メニューを画面内へ*/
+    }
+
+    .menu-content ul {
+      padding: 250px 10px 0;
+      list-style: none
+    }
+
+    .menu-content ul li {
       text-align: center;
-      color: #3838ff;
+      top: 200px;
+
+    }
+
+    .menu-content ul li a {
+      display: block;
+      width: 100%;
+      font-size: 35px;
       box-sizing: border-box;
-      font-weight: bold;
-      font-size: 25px;
+      text-decoration: none;
+      padding: 9px 15px 10px 0;
+      position: relative;
     }
 
-    /*----------------------------
-* アニメーション部分
-*----------------------------*/
-
-    /* アニメーション前のメニューの状態 */
-    .menu {
-      transform: translateX(-100vw);
-      transition: all .3s linear;
-    }
-
-    /* アニメーション後のメニューの状態 */
-    .menu.is-active {
-      transform: translateX(0);
+    .menu-content ul li a::before {
+      width: 7px;
+      height: 7px;
+      border-top: solid 2px #ccc;
+      border-right: solid 2px #ccc;
+      transform: rotate(45deg);
+      position: absolute;
+      right: 11px;
+      top: 16px;
     }
   </style>
 </head>
@@ -132,9 +202,7 @@
 </body>
 
 <script>
-  document.querySelector('.menu-btn').addEventListener('click', function() {
-    document.querySelector('.menu').classList.toggle('is-active');
-  });
+
 </script>
 
 </html>

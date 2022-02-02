@@ -9,7 +9,7 @@
     font-size: 40px;
     font-weight: bold;
     color: #0033FF;
-    margin: 10px 0 0 70px;
+    margin: -5px 0 0 70px;
   }
 
   .done-area {

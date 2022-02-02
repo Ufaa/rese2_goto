@@ -8,7 +8,7 @@
     font-size: 40px;
     font-weight: bold;
     color: #0033FF;
-    margin: 10px 0 0 70px;
+    margin: 0 0 0 80px;
   }
 
   th {
