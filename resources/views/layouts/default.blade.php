@@ -91,6 +91,7 @@
       color: white;
       /*ボタンの背景色*/
       background-color: #005FFF;
+      box-shadow: 2px 2px 4px 1px gray;
     }
 
     .menu-btn span,
