@@ -62,7 +62,7 @@
   </div>
   <div class="done-area">
     <p class="reservation-thanks">会員登録ありがとうございます。</p>
-    <button class="back" type="button" onclick="location.href='/'">ホームへ進む</button>
+    <button class="back" type="button" onclick="location.href='/login'">ログイン</button>
   </div>
 </body>
 @endsection
