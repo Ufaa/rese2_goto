@@ -224,7 +224,7 @@
           <i class="far fa-clock"></i>
         </div>
         <p class="reservation-number">
-          予約{{$reservation->id}}
+          予約{{$loop->iteration}}
         </p>
         <div class="reservation-delete-icon">
           <form action="{{route('reservations.destroy',$reservation->id)}}" method="post">
@@ -244,11 +244,11 @@
         </tr>
         <tr>
           <th>Date</th>
-          <td>{{$reservation->start_at}}</td>
+          <td>{{$reservation->start_at->format('Y-m-d')}}</td>
         </tr>
         <tr>
           <th>Time</th>
-          <td>{{$reservation->start_at}}</td>
+          <td>{{$reservation->start_at->format('H:i')}}</td>
         </tr>
         <tr>
           <th>Number</th>

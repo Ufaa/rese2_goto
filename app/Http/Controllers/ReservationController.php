@@ -24,13 +24,16 @@ class ReservationController extends Controller
     }
     public function create(Request $request)
     {
+        //dd($request);
+        $start_at = $request->start_date.' '.$request->start_time;
+
         $param = [
             'shop_id' => $request->shop_id,
             'user_id' => $request->user_id,
-            'start_at' => $request->start_at,
+            'start_at' => $start_at,
             'num_of_users' => $request->num_of_users,
         ];
-        //dd($param);
+
         DB::insert('insert into reservations (shop_id, user_id, start_at, num_of_users) values (:shop_id, :user_id, :start_at, :num_of_users)', $param);
         return redirect('/done');
     }

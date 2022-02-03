@@ -162,13 +162,12 @@
 
     .menu-content ul {
       padding: 250px 10px 0;
-      list-style: none
+      list-style: none;
     }
 
     .menu-content ul li {
       text-align: center;
       top: 200px;
-
     }
 
     .menu-content ul li a {

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Reservation extends Model
 {
     use HasFactory;
+    protected $dates = ['start_at'];
     //Userモデルとのリレーション　1対多　1人の予約に対するユーザー（予約者）は1人
     public function user()
     {

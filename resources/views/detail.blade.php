@@ -33,6 +33,10 @@
     top: 20px;
     margin-top: 35px;
     margin-right: 10px;
+    background-color: white;
+    border-style: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px 1px gray;
   }
 
   .contents {
@@ -82,7 +86,7 @@
   .datetime-local {
     width: 90%;
     height: 40px;
-    margin: 20px 5% 10px 5%;
+    margin: 0px 5% 10px 5%;
   }
 
   .number_class {
@@ -145,18 +149,10 @@
         <input type="text" name="user_id" value="{{Auth::id()}}" style="display:none">
         <input type="text" name="shop_id" value="{{$item->id}}" style="display:none">
         <div class="reservation-date">
-          <input type="datetime-local" class="datetime-local" name=" start_at">
-          <!--　どちらがいいかわからないので一旦コメントアウト<input type="date" class="form-control" id="date" name="date">
-  <input type="time" class="form-control" id="time" name="time">
-  <select class="time_class" name="time" placeholder="時間">
-
-  <option [ngValue]=""></option>
-    <option value="17:00">17:00</option>
-    <option value="18:00">18:00</option>
-    <option value="19:00">19:00</option>
-    <option value="20:00">20:00</option>
-    <option value="21:00">21:00</option>
-  </select> -->
+          <input type="date" class="datetime-local" name="start_date">
+        </div>
+        <div class="reservation-time">
+          <input type="time" class="datetime-local" name="start_time">
         </div>
         <div class="reservation-number">
           <select class="number_class" name="num_of_users" placeholder="人数">

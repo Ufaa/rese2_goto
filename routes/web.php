@@ -9,6 +9,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\likeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 //use Auth;
 
 /*
@@ -35,16 +36,19 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+//会員登録完了ページ
+Route::get('thanks', [RegisteredUserController::class, 'thanks'])->name('thanks');
+
 //ログアウト
 // Route::get('/logout', [UserController::class, 'loggedOut']);
 
 //マイページ
-Route::get('mypage', [UserController::class, 'mypage'])->name('mypage');
+Route::get('mypage', [UserController::class, 'mypage'])->name('mypage')->middleware('auth');
 
 //店舗一覧ページ
 Route::get('/', [ShopController::class, 'index'])->middleware('auth');
 //店舗詳細ページ
-Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('detail');
+Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('detail')->middleware('auth');
 //検索機能　
 Route::get('/find', [ShopController::class, 'find']);
 Route::post('/find', [ShopController::class, 'search']);
@@ -68,9 +72,9 @@ Route::post('/genredelete', [GenreController::class, 'remove']);
 Route::get('/reservation', [ReservationController::class, 'index'])->name('reservation');
 Route::get('/add', [ReservationController::class, 'add']);
 Route::post('/add', [ReservationController::class, 'create']);
-//予約完了
-Route::get('/done', [ReservationController::class, 'done']);
-//予約情報削除　※一時的　ただ、追加機能で使う？
+//予約完了ページ
+Route::get('/done', [ReservationController::class, 'done'])->middleware('auth');
+//予約削除機能　
 Route::resource('reservations', ReservationController::class);
 
 //予約情報編集　※一時的
