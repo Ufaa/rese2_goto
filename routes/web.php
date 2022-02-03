@@ -37,7 +37,7 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //会員登録完了ページ
-Route::get('thanks', [RegisteredUserController::class, 'thanks'])->name('thanks');
+Route::get('thanks', [RegisteredUserController::class, 'thanks'])->name('thanks')->middleware('auth');
 
 //ログアウト
 // Route::get('/logout', [UserController::class, 'loggedOut']);
