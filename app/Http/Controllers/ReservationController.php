@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use Database\Seeders\ReservationsTableSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -44,35 +45,25 @@ class ReservationController extends Controller
         return view('done');
     }
 
-    //予約情報削除　※一時的
+    //予約削除
     public function destroy(Reservation $reservation)
     {
         $reservation->delete();
         return redirect('/mypage');
     }
 
-    // 予約情報編集　※一時的
-    public function update(Request $request)
+    // 予約変更
+    public function update(Request $request, Reservation $reservation)
     {
-    $request->num_of_users = $request->num_of_users;
-    $request->save();
-    dd($request);
-    return redirect('/reservation')->with('reservation', $request);
+        $start_at = $request->start_date . ' ' . $request->start_time;
+        $num_of_users = $request->num_of_users;
+
+        Reservation::where('id', $reservation->id)
+            ->update([
+                'start_at' => $start_at,
+                'num_of_users' =>$num_of_users,
+            ]);
+        return redirect('/mypage');
     }
-    // public function edit(Request $request)
-    // {
-    //     $param = ['id' => $request->id];
-    //     $item = DB::select('select * from reservations where id = :id', $param);
-    //     return view('/reservationedit', ['form' => $item[0]]);
-    // }
-    // public function update(Request $request)
-    // {
-    //     $param = [
-    //         'id' => $request->id,
-    //         'num_of_users' => $request->num_of_users,
-    //         'start_at' => $request->start_at,
-    //     ];
-    //     DB::update('update reservations set num_of_users =:num_of_users, start_at =:start_at where id =:id', $param);
-    //     return redirect('/reservation');
-    // }
+
 }

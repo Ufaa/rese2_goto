@@ -76,8 +76,7 @@ Route::post('/add', [ReservationController::class, 'create']);
 Route::get('/done', [ReservationController::class, 'done'])->middleware('auth');
 //予約削除機能　
 Route::resource('reservations', ReservationController::class);
-
-//予約情報編集　※一時的
+//予約情報編集
 // Route::get('/reservationedit', [ReservationController::class, 'edit']);
 // Route::post('/reservationedit', [ReservationController::class, 'update']);
 

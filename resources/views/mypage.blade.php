@@ -238,22 +238,46 @@
         </div>
       </div>
       <table>
-        <tr>
-          <th>shop</th>
-          <td>{{$reservation->shop->name}}</td>
-        </tr>
-        <tr>
-          <th>Date</th>
-          <td>{{$reservation->start_at->format('Y-m-d')}}</td>
-        </tr>
-        <tr>
-          <th>Time</th>
-          <td>{{$reservation->start_at->format('H:i')}}</td>
-        </tr>
-        <tr>
-          <th>Number</th>
-          <td>{{$reservation->num_of_users}}人</td>
-        </tr>
+        <form action="{{route('reservations.update',$reservation->id)}}" method="post">
+          {{ csrf_field() }}
+          {{ method_field('PUT') }}
+          <tr>
+            <th>shop</th>
+            <td>{{$reservation->shop->name}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Date</th>
+            <td>{{$reservation->start_at->format('Y-m-d')}}</td>
+            <td><input type="date" class="datetime-local" name="start_date"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Time</th>
+            <td>{{$reservation->start_at->format('H:i')}}</td>
+            <td><input type="time" class="datetime-local" name="start_time"></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>Number</th>
+            <td>{{$reservation->num_of_users}}人</td>
+            <td>
+              <select class="number_class" name="num_of_users" placeholder="人数">
+                <option [ngValue]=""></option>
+                <option value="1">1人</option>
+                <option value="2">2人</option>
+                <option value="3">3人</option>
+                <option value="4">4人</option>
+              </select>
+            </td>
+            <td>
+              <button type="submit">
+                予約を変更する
+              </button>
+            </td>
+          </tr>
+        </form>
       </table>
     </div>
     @endforeach
