@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class);
     }
+    //Reviewモデルとのリレーション　1対多　1人のユーザーが評価できる店は複数ある
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

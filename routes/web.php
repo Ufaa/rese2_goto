@@ -10,6 +10,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\likeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\ReviewController;
 //use Auth;
 
 //ユーザー登録機能 laravel Breeze利用
@@ -63,4 +64,8 @@ Route::resource('reservations', ReservationController::class);
 //いいね機能
 Route::get('/shop/like/{id}', [ShopController::class,'like'])->name('shop.like');
 Route::get('/shop/unlike/{id}', [ShopController::class,'unlike'])->name('shop.unlike');
+
+//評価機能
+Route::get('/reviewadd', [ReviewController::class, 'add'])->name('review.add');
+Route::post('/reviewadd', [ReviewController::class, 'create']);
 

@@ -19,6 +19,11 @@ class Reservation extends Model
     {
         return $this->belongsTo('App\Models\Shop');
     }
+    //Reviewモデルとのリレーション　1対1　1対1　1つの予約に対する評価は1つ
+    public function review()
+    {
+        return $this->hasOne(Review::class);
+    }
 
     public function getDetail2()
     {

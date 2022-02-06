@@ -117,7 +117,7 @@
 <div class="contents">
   <div class="title"><a href="/">Rese</a>
   </div>
-  <!-- 店舗詳細ページ -->
+
   <div class="detail">
     @section('content')
     <div class="detail-area">
@@ -139,13 +139,11 @@
   </div>
 
 
-  <!-- 予約ページ -->
   <div class="reservation">
     <p class="reservation-title">予約</p>
     <div class="reservation-input">
       <form action="/add" method="POST">
         @csrf
-        <!-- ユーザーIDを送る※非表示 -->
         <input type="text" name="user_id" value="{{Auth::id()}}" style="display:none">
         <input type="text" name="shop_id" value="{{$item->id}}" style="display:none">
         <div class="reservation-date">

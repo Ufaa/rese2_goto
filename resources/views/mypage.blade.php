@@ -180,9 +180,22 @@
     width: 100px;
     background-color: #3838ff;
     color: white;
-    border-radius: 10%;
+    border-radius: 5px;
     border-style: none;
     padding: 6%;
+  }
+
+  .btn-edit {
+    background-color: white;
+    border-radius: 5px;
+    border-style: none;
+  }
+
+  .user-reservation-review-area {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    margin: 0 5%;
   }
 </style>
 
@@ -190,14 +203,11 @@
   <script src="https://kit.fontawesome.com/eb8d65ab2e.js" crossorigin="anonymous"></script>
 </head>
 
-
-
 @section('content')
 
 <div class="title"><a href="/">Rese</a>
 </div>
 
-<!-- ログイン情報は一時的に設置 -->
 <div class="header">
   <div class="header-left">
   </div>
@@ -205,15 +215,11 @@
     <div class="login-name">
       @auth
       {{Auth::user()->name}}さん
-      <!-- <form action="{{route('logout')}}" method="post">
-        @csrf
-        <button type="submit" class="logout-button">ログアウト</button>
-      </form> -->
       @endauth
     </div>
   </div>
 </div>
-<!-- 予約情報 -->
+
 <div class="contents">
   <div class="user-reservation-area">
     <p class="user-reservation-title">予約状況</p>
@@ -272,7 +278,7 @@
               </select>
             </td>
             <td>
-              <button type="submit">
+              <button type="submit" class="btn-edit">
                 予約を変更する
               </button>
             </td>
@@ -283,7 +289,6 @@
     @endforeach
   </div>
 
-  <!-- お気に入り情報 -->
   <div class="user-like-area">
     <p class="user-like-title">お気に入り店舗</p>
 
@@ -300,7 +305,7 @@
             <form action="{{route('detail',$userlike->shop->id)}}" method="get">
               <button type="submit" class="btn btn-primary">詳しく見る</button>
             </form>
-            <!-- いいね機能 -->
+
             @if($userlike->shop->is_liked_by_auth_user())
             <a href="{{ route('shop.unlike', ['id' => $userlike->shop->id]) }}" class="unlike-btn"><i class="fas fa-heart"></i></a>
             @else
@@ -314,4 +319,53 @@
       @endforeach
     </div>
 
-    @endsection
+      <div class="user-reservation-review-area">
+        <p class="user-reservation-title">レビュー</p>
+        @foreach ($userreservation ?? '' as $reservation)
+        <div class="reservation-card">
+          <div class="reservation-card-header">
+          </div>
+          <form action="/reviewadd" method="POST">
+            @csrf
+            <table>
+              <tr>
+                <th>shop</th>
+                <td>{{$reservation->shop->name}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th>訪問した日</th>
+                <td>{{$reservation->start_at->format('Y-m-d')}}</td>
+              </tr>
+              <tr>
+                <th>評価</th>
+                <td>
+                  <select class="review-rate" name="rate" placeholder="">
+                    <option value=""></option>
+                    <option value="1">とても悪い</option>
+                    <option value="2">悪い</option>
+                    <option value="3">普通</option>
+                    <option value="4">良い</option>
+                    <option value="5">とても良い</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <th>コメント</th>
+                <td><input type="text" class="review-comment" name="comment" value="" placeholder="コメントしてください"></td>
+              </tr>
+              <tr>
+                <th></th>
+                <td>
+                  <button type="submit" class="btn-review">評価する</button>
+                </td>
+              </tr>
+            </table>
+            <input type="text" name="reservation_id" value="{{$reservation->id}}" style="display:none;">
+          </form>
+        </div>
+        @endforeach
+      </div>
+
+      @endsection

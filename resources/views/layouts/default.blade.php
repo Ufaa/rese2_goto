@@ -10,7 +10,7 @@
   <div class="hamburger-menu">
     <input type="checkbox" id="menu-btn-check">
     <label for="menu-btn-check" class="menu-btn"><span></span></label>
-    <!--ここからメニュー-->
+
     <div class="menu-content">
       <ul>
         <li>
@@ -27,7 +27,7 @@
         </li>
       </ul>
     </div>
-    <!--ここまでメニュー-->
+
   </div>
   @endauth
 
@@ -35,7 +35,7 @@
   <div class="hamburger-menu">
     <input type="checkbox" id="menu-btn-check">
     <label for="menu-btn-check" class="menu-btn"><span></span></label>
-    <!--ここからメニュー-->
+
     <div class="menu-content">
       <ul>
         <li>
@@ -49,7 +49,7 @@
         </li>
       </ul>
     </div>
-    <!--ここまでメニュー-->
+
   </div>
   @endguest
 

@@ -109,7 +109,7 @@
     width: 100px;
     background-color: #3838ff;
     color: white;
-    border-radius: 10%;
+    border-radius: 5px;
     border-style: none;
     padding: 6%;
   }
