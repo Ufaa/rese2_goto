@@ -12,9 +12,7 @@ class ReservationController extends Controller
     //予約一覧表示
     public function index(Request $request)
     {
-        //ページネーション追加（Simpleをつけるかつけないか）
         $reservation = Reservation::all();
-        //dd($items);
         return view('reservation')->with('reservations', $reservation);
     }
 
@@ -25,7 +23,6 @@ class ReservationController extends Controller
     }
     public function create(Request $request)
     {
-        //dd($request);
         $start_at = $request->start_date.' '.$request->start_time;
 
         $param = [
@@ -52,7 +49,7 @@ class ReservationController extends Controller
         return redirect('/mypage');
     }
 
-    // 予約変更
+    //予約変更
     public function update(Request $request, Reservation $reservation)
     {
         $start_at = $request->start_date . ' ' . $request->start_time;
