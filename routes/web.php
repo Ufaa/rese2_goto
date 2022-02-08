@@ -1,17 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-//↓追加するの忘れがち・・・。
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\AreaController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\AuthorController;
-use App\Http\Controllers\likeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ReviewController;
-//use Auth;
 
 //ユーザー登録機能 laravel Breeze利用
 Route::get('/home', [AuthorController::class, 'index']);

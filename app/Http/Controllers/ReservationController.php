@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
-use Database\Seeders\ReservationsTableSeeder;
 use Illuminate\Http\Request;
+use App\Http\Requests\ClientRequest;
 use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
@@ -21,7 +21,7 @@ class ReservationController extends Controller
     {
         return view('/detail');
     }
-    public function create(Request $request)
+    public function create(ClientRequest $request)
     {
         $start_at = $request->start_date.' '.$request->start_time;
 
@@ -50,7 +50,7 @@ class ReservationController extends Controller
     }
 
     //予約変更
-    public function update(Request $request, Reservation $reservation)
+    public function update(ClientRequest $request, Reservation $reservation)
     {
         $start_at = $request->start_date . ' ' . $request->start_time;
         $num_of_users = $request->num_of_users;

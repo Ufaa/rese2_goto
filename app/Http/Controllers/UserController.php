@@ -4,11 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use App\Models\like;
-use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {

@@ -161,7 +161,7 @@
         {{ method_field('delete') }}
         <button type="submit" class="btn btn-danger">削除</button>
       </form>
-      <!-- いいね機能 -->
+
       <div>
         @if($item->is_liked_by_auth_user())
         <a href="{{ route('shop.unlike', ['id' => $item->id]) }}" class="unlike-btn"><i class="fas fa-heart"></i></a>
@@ -187,7 +187,7 @@
         <form action="{{route('detail',$item->id)}}" method="get">
           <button type="submit" class="btn btn-primary">詳しく見る</button>
         </form>
-        <!-- いいね機能 -->
+
         @if($item->is_liked_by_auth_user())
         <a href="{{ route('shop.unlike', ['id' => $item->id]) }}" class="unlike-btn"><i class="fas fa-heart"></i></a>
         @else

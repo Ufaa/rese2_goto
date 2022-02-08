@@ -77,8 +77,6 @@
     border-radius: 5px;
   }
 
-  .reservation-number {}
-
   .user-like-area {
     position: absolute;
     height: 800px;
@@ -197,6 +195,12 @@
     left: 0px;
     margin: 0 5%;
   }
+
+  .error {
+    color: red;
+    font-weight: bold;
+    margin: 0 0 0 15px;
+  }
 </style>
 
 <head>
@@ -240,9 +244,9 @@
               <i class="far fa-times-circle fa-lg"></i>
             </button>
           </form>
-
         </div>
       </div>
+
       <table>
         <form action="{{route('reservations.update',$reservation->id)}}" method="post">
           {{ csrf_field() }}
@@ -253,18 +257,45 @@
             <td></td>
             <td></td>
           </tr>
+          @error('start_date')
+          <p class="error">{{$message}}</p>
+          @enderror
           <tr>
             <th>Date</th>
             <td>{{$reservation->start_at->format('Y-m-d')}}</td>
-            <td><input type="date" class="datetime-local" name="start_date"></td>
-            <td></td>
+            <td>
+              <input type="date" class="datetime-local" name="start_date" value="">
+            </td>
+            <td>
+            </td>
           </tr>
+          @error('start_time')
+          <p class="error">{{$message}}</p>
+          @enderror
           <tr>
             <th>Time</th>
             <td>{{$reservation->start_at->format('H:i')}}</td>
-            <td><input type="time" class="datetime-local" name="start_time"></td>
+            <td>
+              <input type="time" class="datetime-local" name="start_time" list="time-list">
+              <datalist id="time-list">
+                <option value="17:00"></option>
+                <option value="17:30"></option>
+                <option value="18:00"></option>
+                <option value="18:30"></option>
+                <option value="19:00"></option>
+                <option value="19:30"></option>
+                <option value="20:00"></option>
+                <option value="20:30"></option>
+                <option value="21:00"></option>
+                <option value="21:30"></option>
+                <option value="22:00"></option>
+              </datalist>
+            </td>
             <td></td>
           </tr>
+          @error('num_of_users')
+          <p class="error">{{$message}}</p>
+          @enderror
           <tr>
             <th>Number</th>
             <td>{{$reservation->num_of_users}}人</td>
@@ -291,7 +322,6 @@
 
   <div class="user-like-area">
     <p class="user-like-title">お気に入り店舗</p>
-
     <div class="card-area">
       @foreach ($userlikes as $userlike)
       <div class="card-list">
@@ -305,13 +335,11 @@
             <form action="{{route('detail',$userlike->shop->id)}}" method="get">
               <button type="submit" class="btn btn-primary">詳しく見る</button>
             </form>
-
             @if($userlike->shop->is_liked_by_auth_user())
             <a href="{{ route('shop.unlike', ['id' => $userlike->shop->id]) }}" class="unlike-btn"><i class="fas fa-heart"></i></a>
             @else
             <a href="{{ route('shop.like', ['id' => $userlike->shop->id]) }}" class="like-btn"><i class="fas fa-heart"></i></a>
             @endif
-
             </form>
           </div>
         </div>
@@ -319,53 +347,52 @@
       @endforeach
     </div>
 
-      <div class="user-reservation-review-area">
-        <p class="user-reservation-title">レビュー</p>
-        @foreach ($userreservation ?? '' as $reservation)
-        <div class="reservation-card">
-          <div class="reservation-card-header">
-          </div>
-          <form action="/reviewadd" method="POST">
-            @csrf
-            <table>
-              <tr>
-                <th>shop</th>
-                <td>{{$reservation->shop->name}}</td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th>訪問した日</th>
-                <td>{{$reservation->start_at->format('Y-m-d')}}</td>
-              </tr>
-              <tr>
-                <th>評価</th>
-                <td>
-                  <select class="review-rate" name="rate" placeholder="">
-                    <option value=""></option>
-                    <option value="1">とても悪い</option>
-                    <option value="2">悪い</option>
-                    <option value="3">普通</option>
-                    <option value="4">良い</option>
-                    <option value="5">とても良い</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <th>コメント</th>
-                <td><input type="text" class="review-comment" name="comment" value="" placeholder="コメントしてください"></td>
-              </tr>
-              <tr>
-                <th></th>
-                <td>
-                  <button type="submit" class="btn-review">評価する</button>
-                </td>
-              </tr>
-            </table>
-            <input type="text" name="reservation_id" value="{{$reservation->id}}" style="display:none;">
-          </form>
+    <div class="user-reservation-review-area">
+      <p class="user-reservation-title">レビュー</p>
+      @foreach ($userreservation ?? '' as $reservation)
+      <div class="reservation-card">
+        <div class="reservation-card-header">
         </div>
-        @endforeach
+        <form action="/reviewadd" method="POST">
+          @csrf
+          <table>
+            <tr>
+              <th>shop</th>
+              <td>{{$reservation->shop->name}}</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>訪問した日</th>
+              <td>{{$reservation->start_at->format('Y-m-d')}}</td>
+            </tr>
+            <tr>
+              <th>評価</th>
+              <td>
+                <select class="review-rate" name="rate" placeholder="">
+                  <option value=""></option>
+                  <option value="1">とても悪い</option>
+                  <option value="2">悪い</option>
+                  <option value="3">普通</option>
+                  <option value="4">良い</option>
+                  <option value="5">とても良い</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>コメント</th>
+              <td><input type="text" class="review-comment" name="comment" value="" placeholder="コメントしてください"></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td>
+                <button type="submit" class="btn-review">評価する</button>
+              </td>
+            </tr>
+          </table>
+          <input type="text" name="reservation_id" value="{{$reservation->id}}" style="display:none;">
+        </form>
       </div>
-
-      @endsection
+      @endforeach
+    </div>
+    @endsection

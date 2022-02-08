@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reservation;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +23,7 @@ class ReviewController extends Controller
             'rate' => $request->rate,
             'comment' => $request->comment,
         ];
-        //dd($param);
+
         DB::insert('insert into reviews (reservation_id, user_id, rate, comment) values (:reservation_id, :user_id, :rate, :comment)', $param);
         return redirect('/mypage');
     }

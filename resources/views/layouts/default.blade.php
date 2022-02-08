@@ -89,7 +89,6 @@
       align-items: center;
       z-index: 90;
       color: white;
-      /*ボタンの背景色*/
       background-color: #005FFF;
       box-shadow: 2px 2px 4px 1px gray;
     }
@@ -102,7 +101,6 @@
       height: 3px;
       width: 25px;
       border-radius: 3px;
-      /*ボタンの線の色*/
       background-color: white;
       position: absolute;
       transition: all 300ms 0s ease;
@@ -124,7 +122,6 @@
 
     #menu-btn-check:checked~.menu-btn span {
       background-color: rgba(255, 255, 255, 0);
-      /*メニューオープン時は真ん中の線を透明にする*/
       transition: all 300ms 0s ease;
     }
 
@@ -158,7 +155,6 @@
 
     #menu-btn-check:checked~.menu-content {
       top: 0;
-      /*メニューを画面内へ*/
     }
 
     .menu-content ul {

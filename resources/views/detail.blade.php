@@ -106,6 +106,12 @@
     bottom: 0;
     border-radius: 0 0 5px 5px;
   }
+
+  .error {
+    color: red;
+    font-weight: bold;
+    margin: 0 0 0 30px;
+  }
 </style>
 
 <head>
@@ -147,13 +153,35 @@
         <input type="text" name="user_id" value="{{Auth::id()}}" style="display:none">
         <input type="text" name="shop_id" value="{{$item->id}}" style="display:none">
         <div class="reservation-date">
-          <input type="date" class="datetime-local" name="start_date">
+          @error('start_date')
+          <p class="error">{{$message}}</p>
+          @enderror
+          <input type="date" class="datetime-local" name="start_date" value="{{ old('start_date') }}">
         </div>
         <div class="reservation-time">
-          <input type="time" class="datetime-local" name="start_time">
+          @error('start_time')
+          <p class="error">{{$message}}</p>
+          @enderror
+          <input type="time" class="datetime-local" name="start_time" list="time-list">
+          <datalist id="time-list">
+            <option value="17:00"></option>
+            <option value="17:30"></option>
+            <option value="18:00"></option>
+            <option value="18:30"></option>
+            <option value="19:00"></option>
+            <option value="19:30"></option>
+            <option value="20:00"></option>
+            <option value="20:30"></option>
+            <option value="21:00"></option>
+            <option value="21:30"></option>
+            <option value="22:00"></option>
+          </datalist>
         </div>
         <div class="reservation-number">
-          <select class="number_class" name="num_of_users" placeholder="人数">
+          @error('num_of_users')
+          <p class="error">{{$message}}</p>
+          @enderror
+          <select class="number_class" name="num_of_users" placeholder="人数" value="{{ old('num_of_users') }}">
             <option [ngValue]=""></option>
             <option value="1">1人</option>
             <option value="2">2人</option>
