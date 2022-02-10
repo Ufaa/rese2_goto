@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClientRequest;
+use App\Models\Review;
 use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
@@ -45,6 +46,11 @@ class ReservationController extends Controller
     //予約削除
     public function destroy(Reservation $reservation)
     {
+        //dd($reservation);
+        $review = Review::where('reservation_id', $reservation->id)->first();
+        if(!is_null($review)){
+            $review->delete();
+        }
         $reservation->delete();
         return redirect('/mypage');
     }

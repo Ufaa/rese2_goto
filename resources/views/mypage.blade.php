@@ -313,8 +313,13 @@
                 予約を変更する
               </button>
             </td>
+          </form>
+        <!-- 要変更 -->
+            <form action="{{route('review',$reservation->shop->id)}}" method="get">
+              <button type="submit" class="btn btn-primary">評価する</button>
+            </form>
           </tr>
-        </form>
+
       </table>
     </div>
     @endforeach

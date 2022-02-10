@@ -63,6 +63,7 @@ Route::get('/shop/like/{id}', [ShopController::class,'like'])->name('shop.like')
 Route::get('/shop/unlike/{id}', [ShopController::class,'unlike'])->name('shop.unlike');
 
 //評価機能
+Route::get('/review/{shop_id}', [ReviewController::class, 'show'])->name('review')->middleware('auth');
 Route::get('/reviewadd', [ReviewController::class, 'add'])->name('review.add');
 Route::post('/reviewadd', [ReviewController::class, 'create']);
 

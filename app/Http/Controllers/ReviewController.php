@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -10,6 +11,12 @@ use Illuminate\Support\Facades\DB;
 class ReviewController extends Controller
 {
     //評価、追加機能
+    public function show(int $id)
+    {
+        $item = Shop::find($id);
+        return view('review', ['item' => $item]);
+    }
+
     public function add()
     {
         return view('/mypage');
