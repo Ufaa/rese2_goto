@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 class ReviewController extends Controller
 {
     //評価、追加機能
-    public function show(int $id)
+    public function review(int $id)
     {
         $item = Shop::find($id);
         return view('review', ['item' => $item]);

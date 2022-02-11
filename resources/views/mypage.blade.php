@@ -254,7 +254,7 @@
           <tr>
             <th>shop</th>
             <td>{{$reservation->shop->name}}</td>
-            <td></td>
+            <td> {!! QrCode::size(100)->generate(('{{Auth::user()->name}}')) !!}</td>
             <td></td>
           </tr>
           @error('start_date')
@@ -313,12 +313,12 @@
                 予約を変更する
               </button>
             </td>
-          </form>
+        </form>
         <!-- 要変更 -->
-            <form action="{{route('review',$reservation->shop->id)}}" method="get">
-              <button type="submit" class="btn btn-primary">評価する</button>
-            </form>
-          </tr>
+        <form action="{{route('review',$reservation->shop->id)}}" method="get">
+          <button type="submit" class="btn btn-primary">評価する</button>
+        </form>
+        </tr>
 
       </table>
     </div>
@@ -354,7 +354,7 @@
 
     <div class="user-reservation-review-area">
       <p class="user-reservation-title">レビュー</p>
-      @foreach ($userreservation ?? '' as $reservation)
+      @foreach ($reviews as $review)
       <div class="reservation-card">
         <div class="reservation-card-header">
         </div>
@@ -363,13 +363,13 @@
           <table>
             <tr>
               <th>shop</th>
-              <td>{{$reservation->shop->name}}</td>
+              <td>{{$review->shop->name}}</td>
               <td></td>
               <td></td>
             </tr>
             <tr>
               <th>訪問した日</th>
-              <td>{{$reservation->start_at->format('Y-m-d')}}</td>
+              <td>{{$review->start_at->format('Y-m-d')}}</td>
             </tr>
             <tr>
               <th>評価</th>
@@ -395,7 +395,7 @@
               </td>
             </tr>
           </table>
-          <input type="text" name="reservation_id" value="{{$reservation->id}}" style="display:none;">
+          <input type="text" name="reservation_id" value="{{$review->id}}" style="display:none;">
         </form>
       </div>
       @endforeach

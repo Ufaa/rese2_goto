@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -232,6 +233,8 @@ return [
 
         'providers' => 
           Spatie\Permission\PermissionServiceProvider::class,
+
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
     ],
 
 ];

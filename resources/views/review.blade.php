@@ -11,20 +11,11 @@
     margin: 0 0 0 80px;
   }
 
-  th {
-    background-color: #289ADC;
-    color: white;
-    padding: 5px 40px;
-  }
-
-  tr:nth-child(odd) td {
-    background-color: #FFFFFF;
-  }
-
+  th,
   td {
-    padding: 25px 40px;
-    background-color: #EEEEEE;
-    text-align: center;
+    text-align: left;
+    color: white;
+    padding: 10px 15px 10px 15px;
   }
 
   .back {
@@ -66,9 +57,10 @@
     margin: 20px 0;
   }
 
-  .reservation {
+  .review {
     position: absolute;
-    height: 800px;
+    top: 100px;
+    height: 600px;
     right: 0px;
     width: 40%;
     background-color: #005FFF;
@@ -76,11 +68,33 @@
     border-radius: 5px;
   }
 
-  .reservation-title {
+  .user-reservation-review-area {
+    position: absolute;
+    left: 0px;
+    margin: 0 5%;
+  }
+
+  .review-title {
     margin-left: 5%;
     color: white;
     font-size: 30px;
     font-weight: bold;
+  }
+
+  .review-card {
+    background-color: #005FFF;
+    color: white;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+  }
+
+  .review-comment {
+      display: inline-block;
+      width: 100%;
+      border: 1px solid #999;
+      box-sizing: border-box;
+      margin: 0.5em 0;
   }
 
   .datetime-local {
@@ -140,60 +154,49 @@
       <div class="description">
         {{optional($item)->description}}
       </div>
-
     </div>
   </div>
+</div>
 
-
-  <div class="reservation">
-    <p class="reservation-title">予約</p>
-    <div class="user-reservation-review-area">
-      <p class="user-reservation-title">レビュー</p>
-      @foreach ($userreservation ?? '' as $reservation)
-      <div class="reservation-card">
-        <div class="reservation-card-header">
-        </div>
-        <form action="/reviewadd" method="POST">
-          @csrf
-          <table>
-            <tr>
-              <th>shop</th>
-              <td>{{$reservation->shop->name}}</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th>訪問した日</th>
-              <td>{{$reservation->start_at->format('Y-m-d')}}</td>
-            </tr>
-            <tr>
-              <th>評価</th>
-              <td>
-                <select class="review-rate" name="rate" placeholder="">
-                  <option value=""></option>
-                  <option value="1">とても悪い</option>
-                  <option value="2">悪い</option>
-                  <option value="3">普通</option>
-                  <option value="4">良い</option>
-                  <option value="5">とても良い</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <th>コメント</th>
-              <td><input type="text" class="review-comment" name="comment" value="" placeholder="コメントしてください"></td>
-            </tr>
-            <tr>
-              <th></th>
-              <td>
-                <button type="submit" class="btn-review">評価する</button>
-              </td>
-            </tr>
-          </table>
-          <input type="text" name="reservation_id" value="{{$reservation->id}}" style="display:none;">
-        </form>
+<div class="review">
+  <div class="user-reservation-review-area">
+    <p class="review-title">レビュー</p>
+    <div class="review-card">
+      <div class="review-card-header">
       </div>
-      @endforeach
+      <form action="/reviewadd" method="POST">
+        @csrf
+        <table>
+          <tr>
+            <th>訪問した日</th>
+            <td></td>
+          </tr>
+          <tr>
+            <th>評価</th>
+            <td>
+              <select class="review-rate" name="rate" placeholder="">
+                <option value=""></option>
+                <option value="1">とても悪い</option>
+                <option value="2">悪い</option>
+                <option value="3">普通</option>
+                <option value="4">良い</option>
+                <option value="5">とても良い</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>コメント</th>
+            <td><input type="text"  class="review-comment" name="comment" value="" placeholder="コメントしてください"></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <button type="submit" class="btn-review">評価する</button>
+            </td>
+          </tr>
+        </table>
+        <input type="text" name="reservation_id" value="" style="display:none;">
+      </form>
     </div>
   </div>
 </div>

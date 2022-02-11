@@ -14,12 +14,12 @@ class UserController extends Controller
     public function mypage()
     // ２つの要素を１つのメソッドで遂行する。
     {
-        // Reservationテーブルの中でuser_idとログインidが一致するものを複数取得する
+        // Reservationテーブルの中でuser_idとログインidが一致し、今日より後のものを複数取得する
         $userreservation = Reservation::where('user_id', Auth::id())->where('start_at', '>' ,Carbon::now())->get();
         // Likeテーブルの中でuser_idとログインidが一致するものを複数取得する
         $userlikes = Like::where('user_id', Auth::id())->get();
-
-        $reviews = Review::where('user_id', Auth::id())->get();
+        // Reviewテーブルの中でuser_idとログインidが一致し、今日より後のものを複数取得する
+        $reviews = Reservation::where('user_id', Auth::id())->where('start_at', '<', Carbon::now())->get();
 
         // dd($userreservation, $userlike);
 
