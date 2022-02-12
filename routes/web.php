@@ -34,10 +34,11 @@ Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('detail')
 Route::get('/find', [ShopController::class, 'find']);
 Route::post('/find', [ShopController::class, 'search']);
 
-//削除機能　※一時的　管理画面に必要？
-//Route::get('/shopdelete/{shop_id}', [ShopController::class, 'shopdelete'])->name('destroy');
-//Route::post('/shopdelete', [ShopController::class, 'shopremove']);
+//店舗追加機能　※店舗代表者権限
+//添付削除機能　※管理者権限
 Route::resource('shops', ShopController::class);
+Route::get('/shopmanage', [ShopController::class, 'shopmanage'])->name('shopmanage');
+Route::post('/create', [ShopController::class, 'create'])->name('create');
 
 //エリア情報修正　※一時的　管理画面に必要？
 Route::get('/area', [AreaController::class, 'index'])->name('area');

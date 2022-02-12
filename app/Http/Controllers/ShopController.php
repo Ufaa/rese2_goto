@@ -35,7 +35,6 @@ class ShopController extends Controller
     $name = $request->name;
     $area = $request->area;
     $genre = $request->genre;
-    //dd($request->all());
     //店舗名のみでの検索の場合
     if (
       !is_null($name) && is_null($area) && is_null($genre)
@@ -83,6 +82,27 @@ class ShopController extends Controller
       $items = Shop::where('name', 'LIKE', "%{$request->name}%")->where('area_id', 'LIKE', "%{$request->area}%")->get();
       return view('index')->with('items', $items);
     }
+  }
+
+  //店舗作成機能　※店舗代表者権限
+  public function shopmanage()
+  {
+    return view('/shopmanage');
+  }
+
+  public function create(Request $request)
+  {
+    $param = [
+      'name' => $request->name,
+      'area_id' => $request->area_id,
+      'genre_id' => $request->genre_id,
+      'description' => $request->description,
+      'image_url' => $request->image_url,
+    ];
+    //dd($param);
+
+    DB::insert('insert into shops (name, area_id, genre_id, description, image_url) values (:name, :area_id, :genre_id, :description, :image_url)', $param);
+    return redirect('/');
   }
 
 //店舗情報削除機能（※一時的）

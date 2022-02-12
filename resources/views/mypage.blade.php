@@ -316,7 +316,7 @@
         </form>
         <!-- 要変更 -->
         <form action="{{route('review',$reservation->shop->id)}}" method="get">
-          <button type="submit" class="btn btn-primary">評価する</button>
+          <button type="submit" class="btn-review">評価する</button>
         </form>
         </tr>
 
@@ -395,7 +395,7 @@
               </td>
             </tr>
           </table>
-          <input type="text" name="reservation_id" value="{{$review->id}}" style="display:none;">
+          <input type="text" name="reservation_id" value="{{$reservation->id}}" style="display:none;">
         </form>
       </div>
       @endforeach

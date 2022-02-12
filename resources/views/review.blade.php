@@ -195,7 +195,7 @@
             </td>
           </tr>
         </table>
-        <input type="text" name="reservation_id" value="" style="display:none;">
+        <input type="text" name="reservation_id" value="{{$review->id}}" style="display:none;">
       </form>
     </div>
   </div>
