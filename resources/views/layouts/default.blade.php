@@ -25,6 +25,12 @@
         <li>
           <a href="/mypage">Mypage</a>
         </li>
+        <li>
+          <a href="/shopmanage/shop">Myshop</a>
+        </li>
+        <li>
+          <a href="/shopmanagers">Shopmanagers</a>
+        </li>
       </ul>
     </div>
 

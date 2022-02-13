@@ -216,7 +216,7 @@
         <tr>
           <th>店舗の説明</th>
           <td>
-            <textarea rows="10" cols="60" class="description" name="description" value="">
+            <textarea rows="10" cols="40" class="description" name="description" value="">
           </textarea>
           </td>
         </tr>
@@ -255,7 +255,13 @@
       {{ csrf_field() }}
       {{ method_field('PUT') }}
       <table>
-
+        <tr>
+          <th></th>
+          <td>現在の店舗情報</td>
+          <td>変更後の店舗情報</td>
+          <td>
+        </tr>
+        <tr>
         <tr>
           <th>店舗名</th>
           <td>{{$shopmanager_shop->name}}</td>
@@ -296,7 +302,7 @@
           <th>店舗の説明</th>
           <td>{{$shopmanager_shop->description}}</td>
           <td>
-            <textarea rows="10" cols="60" class="description" name="description" value="">
+            <textarea rows="10" cols="40" class="description" name="description" value="">
           </textarea>
           </td>
         </tr>

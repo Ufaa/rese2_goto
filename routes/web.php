@@ -41,9 +41,11 @@ Route::resource('shops', ShopController::class);
 Route::get('/shopmanage', [ShopController::class, 'shopmanage'])->name('shopmanage');
 Route::post('/create', [ShopController::class, 'create'])->name('create');
 
-Route::resource('shopmanagers', ShopmanagerController::class);
-Route::get('/shopmanage/shops', [ShopmanagerController::class,'shopmanager_reservation'])->name('shopmanager_reservation');
-Route::put('/shopmanage/shops/{shop_id}', [ShopmanagerController::class, 'shopmanager_shop_update'])->name('shopmanager_shop_update');
+
+Route::get('/shopmanage/shop', [ShopmanagerController::class,'shopmanager_reservation'])->name('shopmanager_reservation');
+Route::put('/shopmanage/shop/{shop_id}', [ShopmanagerController::class, 'shopmanager_shop_update'])->name('shopmanager_shop_update');
+Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index'])->name('shopmanagers_index');
+Route::post('/shopmanager_create', [ShopmanagerController::class, 'shopmanager_create'])->name('shopmanager_create');
 
 
 //エリア情報修正　※一時的　管理画面に必要？

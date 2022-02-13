@@ -7,6 +7,7 @@ use App\Models\Shopmanager;
 use App\Models\Reservation;
 use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ShopmanagerController extends Controller
 {
@@ -37,7 +38,41 @@ class ShopmanagerController extends Controller
                 'description' => $description,
                 'image_url' => $image_url
             ]);
-        return redirect('shopmanage/shops');
+        return redirect('shopmanage/shop');
+    }
+
+    public function shopmanager_index(Request $request)
+    {
+        $param = [
+            'reservation_id' => $request->reservation_id,
+            'user_id' => Auth::id(),
+            'rate' => $request->rate,
+            'comment' => $request->comment,
+        ];
+        //dd($param);
+
+        DB::insert('insert into reviews (reservation_id, user_id, rate, comment) values (:reservation_id, :user_id, :rate, :comment)', $param);
+        return redirect('/mypage');
+    }
+
+    //店舗代表者一覧表示
+    public function shopmanagers_index(Request $request)
+    {
+    $shopmanagers = Shopmanager::all();
+    return view('shopmanagers', ['shopmanagers' => $shopmanagers]);
+    }
+
+    //店舗代表者登録機能
+    public function shopmanager_create(Request $request)
+    {
+        $param = [
+            'name' => $request->name,
+            'shop_id' =>
+            $request->shop_id,
+        ];
+
+        DB::insert('insert into shopmanagers (name, shop_id) values (:name, :shop_id)', $param);
+        return redirect('/');
     }
 
 }
