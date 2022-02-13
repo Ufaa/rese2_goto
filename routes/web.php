@@ -36,7 +36,7 @@ Route::get('/find', [ShopController::class, 'find']);
 Route::post('/find', [ShopController::class, 'search']);
 
 //店舗追加機能　※店舗代表者権限
-//店舗削除機能　※管理者権限
+//店舗削除機能　※管理者権限?
 Route::resource('shops', ShopController::class);
 Route::get('/shopmanage', [ShopController::class, 'shopmanage'])->name('shopmanage');
 Route::post('/create', [ShopController::class, 'create'])->name('create');
@@ -46,7 +46,6 @@ Route::get('/shopmanage/shop', [ShopmanagerController::class,'shopmanager_reserv
 Route::put('/shopmanage/shop/{shop_id}', [ShopmanagerController::class, 'shopmanager_shop_update'])->name('shopmanager_shop_update');
 Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index'])->name('shopmanagers_index');
 Route::post('/shopmanager_create', [ShopmanagerController::class, 'shopmanager_create'])->name('shopmanager_create');
-
 
 //エリア情報修正　※一時的　管理画面に必要？
 Route::get('/area', [AreaController::class, 'index'])->name('area');
