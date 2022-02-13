@@ -9,6 +9,7 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ShopmanagerController;
 
 //ユーザー登録機能 laravel Breeze利用
 Route::get('/home', [AuthorController::class, 'index']);
@@ -39,6 +40,8 @@ Route::post('/find', [ShopController::class, 'search']);
 Route::resource('shops', ShopController::class);
 Route::get('/shopmanage', [ShopController::class, 'shopmanage'])->name('shopmanage');
 Route::post('/create', [ShopController::class, 'create'])->name('create');
+Route::resource('shopmanagers', ShopmanagerController::class);
+Route::get('/shopmanage/shops', [ShopmanagerController::class,'shopmanager_reservation'])->name('shopmanager_reservation');
 
 //エリア情報修正　※一時的　管理画面に必要？
 Route::get('/area', [AreaController::class, 'index'])->name('area');

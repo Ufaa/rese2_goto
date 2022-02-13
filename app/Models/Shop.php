@@ -51,4 +51,9 @@ class Shop extends Model
             return false;
         }
     }
+    //Shopmanagerモデルとのリレーション　多対1　1つのショップに店舗代表者は1人
+    public function shopmanager()
+    {
+        return $this->belongsTo('App\Models\Shopmanager');
+    }
 }

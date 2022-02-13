@@ -18,6 +18,7 @@
 
   .header-left {
     position: absolute;
+    top: 56px;
     left: 0px;
     width: 40%;
     margin: 0 5%;
@@ -59,6 +60,7 @@
 
   .shop-create-area {
     position: absolute;
+    top: 100px;
     left: 0px;
     width: 40%;
     margin: 0 5%;
@@ -69,51 +71,31 @@
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-    color: white;
   }
 
-  .reservation-card {
-    background-color: #005FFF;
-    color: white;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-radius: 5px;
+  .shopmanager-reservation-title {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 90px;
   }
 
-  .user-like-area {
+  .shopmanager-reservation-area {
     position: absolute;
-    height: 800px;
+    top: 100px;
     right: 0px;
     width: 40%;
     margin: 0 5%;
+  }
+
+  .shopmanager-reservation-card {
+    background-color: #005FFF;
+    color: white;
     border-radius: 5px;
+    margin-bottom: 20px;
   }
 
-  .user-like-title {
-    font-size: 30px;
-    font-weight: bold;
-  }
-
-
-  .card-area {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .card-list {
-    width: 300px;
-    display: flex;
-    padding: 10px 10px;
-  }
-
-  .card {
-    background-color: white;
-    border-radius: 3%;
-    box-shadow: 2px 2px 4px 1px gray;
-  }
-
-  .reservation-card-header {
+  .shopmanager-reservation-card-header {
     display: flex;
     position: relative;
   }
@@ -122,59 +104,8 @@
     padding: 20px;
   }
 
-  .reservation-delete-icon {
-    position: absolute;
-    padding-top: 20px;
-    right: 20px;
-  }
-
   .fa-times-circle {
     color: white;
-  }
-
-  .shop {
-    padding: 0 5%;
-    margin: 5% 0% 0% 0%;
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  .area-genre {
-    padding: 0 5%;
-    margin: 0% 0% 5% 0%;
-    font-size: 12px;
-  }
-
-  img {
-    width: 300px;
-    border-radius: 3% 3% 0 0;
-  }
-
-  .search {
-    background-color: blue;
-    color: white;
-  }
-
-  .detail-like {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 5%;
-  }
-
-  .like-btn {
-    width: 25px;
-    height: 30px;
-    font-size: 25px;
-    color: #808080;
-    margin-left: 20px;
-  }
-
-  .unlike-btn {
-    width: 25px;
-    height: 30px;
-    font-size: 25px;
-    color: #e54747;
-    margin-left: 20px;
   }
 
   .btn-primary {
@@ -188,19 +119,6 @@
     background-color: white;
     border-radius: 5px;
     border-style: none;
-  }
-
-  .user-reservation-review-area {
-    position: absolute;
-    width: 100%;
-    left: 0px;
-    margin: 0 5%;
-  }
-
-  .error {
-    color: red;
-    font-weight: bold;
-    margin: 0 0 0 15px;
   }
 
   .name {
@@ -219,22 +137,24 @@
 
 <div class="header">
   <div class="header-left">
-  </div>
-  <div class="header-right">
     <div class="login-name">
       @auth
       {{Auth::user()->name}}さん
       @endauth
     </div>
+    <p class="shop-create-title">新規店舗登録</p>
+  </div>
+  <div class="header-right">
+    <p class="shopmanager-reservation-title">あなたの店舗の予約状況</p>
   </div>
 </div>
 
 <div class="contents">
   <div class="shop-create-area">
-    <p class="shop-create-title">新規店舗登録</p>
     <form action="/create" method="post">
       @csrf
       <table>
+        <input type="int" name="shopmanager_id" value="{{Auth::user()->id}}" style="display:none;">
         <tr>
           <th>店舗名</th>
           <td>
@@ -300,6 +220,38 @@
       </table>
     </form>
   </div>
-</div>
 
-@endsection
+  <div class="shopmanager-reservation-area">
+    @foreach($shopmanager_reservations as $shopmanager_reservation)
+    <div class="shopmanager-reservation-card">
+      <div class="shopmanager-reservation-card-header">
+        <div class="clock-icon">
+          <i class="far fa-clock"></i>
+        </div>
+        <p class="reservation-number">
+          予約番号{{$loop->iteration}}
+        </p>
+      </div>
+      <table>
+        <tr>
+          <th>予約者名</th>
+          <td>{{$shopmanager_reservation->user->name}}</td>
+        </tr>
+        <tr>
+          <th>来店人数</th>
+          <td>{{$shopmanager_reservation->num_of_users}}名</td>
+        </tr>
+        <tr>
+          <th>来店日</th>
+          <td>{{$shopmanager_reservation->start_at->format('Y-m-d')}}</td>
+        </tr>
+        <tr>
+          <th>来店時間</th>
+          <td>{{$shopmanager_reservation->start_at->format('h:m')}}</td>
+        </tr>
+      </table>
+    </div>
+    @endforeach
+
+  </div>
+  @endsection

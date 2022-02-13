@@ -30,5 +30,10 @@ class Reservation extends Model
         $txt = $this->id . $this->shop->id . $this->user->id . $this->num_of_users . $this->start_at;
         return $txt;
     }
+    //Shopmanagerモデルとのリレーション　多対1　1つの予約に店舗代表者は1人
+    public function shopmanager()
+    {
+        return $this->belongsTo('App\Models\Shopmanager');
+    }
 
 }

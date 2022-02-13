@@ -93,15 +93,15 @@ class ShopController extends Controller
   public function create(Request $request)
   {
     $param = [
+      'shopmanager_id' => $request->shopmanager_id,
       'name' => $request->name,
       'area_id' => $request->area_id,
       'genre_id' => $request->genre_id,
       'description' => $request->description,
       'image_url' => $request->image_url,
     ];
-    //dd($param);
 
-    DB::insert('insert into shops (name, area_id, genre_id, description, image_url) values (:name, :area_id, :genre_id, :description, :image_url)', $param);
+    DB::insert('insert into shops (shopmanager_id, name, area_id, genre_id, description, image_url) values (:shopmanager_id, :name, :area_id, :genre_id, :description, :image_url)', $param);
     return redirect('/');
   }
 
