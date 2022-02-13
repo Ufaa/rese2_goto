@@ -251,7 +251,7 @@
   </div>
 
   <div class="shop-edit-area">
-    <form action="{{route('shopmanagers.update',$shopmanager_shop->id)}}" method="post">
+    <form action="{{route('shopmanager_shop_update',$shopmanager_shop->id)}}" method="post">
       {{ csrf_field() }}
       {{ method_field('PUT') }}
       <table>

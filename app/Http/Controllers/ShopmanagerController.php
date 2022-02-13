@@ -22,7 +22,7 @@ class ShopmanagerController extends Controller
     return view('shopmanage',compact('shopmanager_reservations','shopmanager_shop'));
     }
 
-    public function update(Request $request)
+    public function shopmanager_shop_update(Request $request)
     {
         $name = $request->name;
         $area_id = $request->area_id; $genre_id = $request->genre_id;
