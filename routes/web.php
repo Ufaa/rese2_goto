@@ -40,8 +40,10 @@ Route::post('/find', [ShopController::class, 'search']);
 Route::resource('shops', ShopController::class);
 Route::get('/shopmanage', [ShopController::class, 'shopmanage'])->name('shopmanage');
 Route::post('/create', [ShopController::class, 'create'])->name('create');
+
 Route::resource('shopmanagers', ShopmanagerController::class);
 Route::get('/shopmanage/shops', [ShopmanagerController::class,'shopmanager_reservation'])->name('shopmanager_reservation');
+
 
 //エリア情報修正　※一時的　管理画面に必要？
 Route::get('/area', [AreaController::class, 'index'])->name('area');

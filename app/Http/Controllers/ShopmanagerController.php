@@ -19,7 +19,26 @@ class ShopmanagerController extends Controller
     //取得したshop_idとReservationテーブルにあるshop_idが一致するものを予約日時が直近なもの順に並べて取得する
         $shopmanager_reservations = Reservation::where('shop_id', $shopmanager_shop->id)->orderBy('start_at', 'asc')->get();
 
-    return view('shopmanage',['shopmanager_reservations' => $shopmanager_reservations]);
+    return view('shopmanage',compact('shopmanager_reservations','shopmanager_shop'));
+    }
+
+    public function update(Request $request)
+    {
+        $name = $request->name;
+        $area_id = $request->area_id; $genre_id = $request->genre_id;
+        $description = $request->description;
+        $image_url = $request->image_url;
+
+        Shop::where('shopmanager_id', Auth::id())
+            ->update([
+                'name' => $name,
+                'area_id' => $area_id,
+                'genre_id' => $genre_id,
+                'description' => $description,
+                'image_url' => $image_url
+            ]);
+        return redirect('shopmanage/shops');
     }
 
 }
+

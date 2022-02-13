@@ -67,7 +67,25 @@
     background-color: #005FFF;
   }
 
-  .shop-create-title {
+  .shop-edit-title-area {
+    position: absolute;
+    top: 720px;
+    left: 0px;
+    width: 40%;
+    margin: 0 5%;
+  }
+
+  .shop-edit-area {
+    position: absolute;
+    top: 800px;
+    left: 0px;
+    width: 40%;
+    margin: 0 5%;
+    background-color: #005FFF;
+  }
+
+  .shop-create-title,
+  .shop-edit-title {
     font-size: 30px;
     font-weight: bold;
     text-align: center;
@@ -123,6 +141,13 @@
 
   .name {
     width: 200px;
+  }
+
+  .btn-primary-edit {
+    background-color: pink;
+    border-radius: 5px;
+    border-style: none;
+    padding: 5%;
   }
 </style>
 
@@ -214,6 +239,88 @@
           <td>
             <button type="submit" class="btn-primary">
               店舗情報を登録する
+            </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+
+  <div class="shop-edit-title-area">
+    <p class="shop-edit-title">店舗情報変更</p>
+  </div>
+
+  <div class="shop-edit-area">
+    <form action="{{route('shopmanagers.update',$shopmanager_shop->id)}}" method="post">
+      {{ csrf_field() }}
+      {{ method_field('PUT') }}
+      <table>
+
+        <tr>
+          <th>店舗名</th>
+          <td>{{$shopmanager_shop->name}}</td>
+          <td>
+            <input type="text" class="name" name="name" value="" placeholder="店舗名を入力してください">
+          </td>
+          <td>
+        </tr>
+        <tr>
+          <th>エリア</th>
+          <td>{{$shopmanager_shop->area->name}}</td>
+          <td>
+            <select class="area_class" name="area_id" placeholder="エリア">
+              <option value=""></option>
+              <option value="1">東京都</option>
+              <option value="2">大阪府</option>
+              <option value="3">福岡県</option>
+            </select>
+          </td>
+          <td>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <td>{{$shopmanager_shop->genre->name}}</td>
+          <td>
+            <select class="genre_class" name="genre_id" placeholder="ジャンル">
+              <option value=""></option>
+              <option value="1">寿司</option>
+              <option value="2">焼肉</option>
+              <option value="3">居酒屋</option>
+              <option value="4">イタリアン</option>
+              <option value="5">ラーメン</option>
+            </select>
+          </td>
+          <td>
+        </tr>
+        <tr>
+          <th>店舗の説明</th>
+          <td>{{$shopmanager_shop->description}}</td>
+          <td>
+            <textarea rows="10" cols="60" class="description" name="description" value="">
+          </textarea>
+          </td>
+        </tr>
+        <tr>
+          <th>店舗画像ジャンル</th>
+          <td>{{$shopmanager_shop->genre->name}}<img src="{{$shopmanager_shop->image_url}}" alt="" width="100%"></td>
+          <td>
+            <select class="genre_class" name="image_url" placeholder="ジャンル">
+              <option value=""></option>
+              <option value="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg">寿司</option>
+              <option value="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg">焼肉</option>
+              <option value="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/izakaya.jpg">居酒屋</option>
+              <option value="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/italian.jpg">イタリアン</option>
+              <option value="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/ramen.jpg">ラーメン</option>
+            </select>
+          </td>
+          <td>
+        </tr>
+        <tr>
+          <th></th>
+          <td></td>
+          <td>
+            <button type="submit" class="btn-primary-edit">
+              店舗情報を変更する
             </button>
           </td>
         </tr>
