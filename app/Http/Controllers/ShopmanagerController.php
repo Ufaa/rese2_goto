@@ -38,7 +38,7 @@ class ShopmanagerController extends Controller
                 'description' => $description,
                 'image_url' => $image_url
             ]);
-        return redirect('shopmanage/shop');
+        return redirect ('shopmanage/shop');
     }
 
     public function shopmanager_index(Request $request)
@@ -73,6 +73,20 @@ class ShopmanagerController extends Controller
 
         DB::insert('insert into shopmanagers (name, shop_id) values (:name, :shop_id)', $param);
         return redirect('/');
+    }
+
+    //店舗代表者登録機能2
+    public function shopmanager_create2(Request $request)
+    {
+        $param = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'role' => $request->role,
+        ];
+
+        DB::insert('insert into users (name, email, password, role) values (:name, :email, :password, :role)', $param);
+        return redirect('/shopmanagers');
     }
 
 }

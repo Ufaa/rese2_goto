@@ -85,6 +85,10 @@ class ShopController extends Controller
   }
 
   //店舗作成機能　※店舗代表者権限
+  public function shopcreate_view()
+  {
+    return view('/shopcreate');
+  }
   public function shopmanage()
   {
     return view('/shopmanage');

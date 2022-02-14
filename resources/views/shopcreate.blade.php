@@ -45,20 +45,11 @@
     padding: 10px 15px 10px 15px;
   }
 
-
-  .back {
-    height: 30px;
-    width: 30px;
-    top: 20px;
-    margin-top: 35px;
-    margin-right: 10px;
-  }
-
   .contents {
     position: relative;
   }
 
-  .shop-edit-area {
+  .shop-create-area {
     position: absolute;
     top: 100px;
     left: 0px;
@@ -67,53 +58,10 @@
     background-color: #005FFF;
   }
 
-  .shop-edit-title-area {
-    position: absolute;
-    top: 720px;
-    left: 0px;
-    width: 40%;
-    margin: 0 5%;
-  }
-
-  .shop-edit-title {
+  .shop-create-title {
     font-size: 30px;
     font-weight: bold;
     text-align: center;
-  }
-
-  .shopmanager-reservation-title {
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-    margin-top: 90px;
-  }
-
-  .shopmanager-reservation-area {
-    position: absolute;
-    top: 100px;
-    right: 0px;
-    width: 40%;
-    margin: 0 5%;
-  }
-
-  .shopmanager-reservation-card {
-    background-color: #005FFF;
-    color: white;
-    border-radius: 5px;
-    margin-bottom: 20px;
-  }
-
-  .shopmanager-reservation-card-header {
-    display: flex;
-    position: relative;
-  }
-
-  .clock-icon {
-    padding: 20px;
-  }
-
-  .fa-times-circle {
-    color: white;
   }
 
   .btn-primary {
@@ -123,22 +71,10 @@
     padding: 5%;
   }
 
-  .btn-edit {
-    background-color: white;
-    border-radius: 5px;
-    border-style: none;
-  }
-
   .name {
     width: 200px;
   }
 
-  .btn-primary-edit {
-    background-color: pink;
-    border-radius: 5px;
-    border-style: none;
-    padding: 5%;
-  }
 </style>
 
 <head>
@@ -157,30 +93,20 @@
       {{Auth::user()->name}}さん
       @endauth
     </div>
-    <p class="shop-edit-title">店舗情報変更</p>
+    <p class="shop-create-title">新規店舗登録</p>
   </div>
   <div class="header-right">
-    <p class="shopmanager-reservation-title">あなたの店舗の予約状況</p>
   </div>
 </div>
 
 <div class="contents">
-
-  <div class="shop-edit-area">
-    <form action="{{route('shopmanager_shop_update',$shopmanager_shop->id)}}" method="post">
-      {{ csrf_field() }}
-      {{ method_field('PUT') }}
+  <div class="shop-create-area">
+    <form action="/create" method="post">
+      @csrf
       <table>
-        <tr>
-          <th></th>
-          <td>現在の店舗情報</td>
-          <td>変更後の店舗情報</td>
-          <td>
-        </tr>
-        <tr>
+        <input type="int" name="shopmanager_id" value="{{Auth::user()->id}}" style="display:none;">
         <tr>
           <th>店舗名</th>
-          <td>{{optional($shopmanager_shop)->name}}</td>
           <td>
             <input type="text" class="name" name="name" value="" placeholder="店舗名を入力してください">
           </td>
@@ -188,7 +114,6 @@
         </tr>
         <tr>
           <th>エリア</th>
-          <td>{{optional($shopmanager_shop)->area->name}}</td>
           <td>
             <select class="area_class" name="area_id" placeholder="エリア">
               <option value=""></option>
@@ -201,7 +126,6 @@
         </tr>
         <tr>
           <th>ジャンル</th>
-          <td>{{optional($shopmanager_shop)->genre->name}}</td>
           <td>
             <select class="genre_class" name="genre_id" placeholder="ジャンル">
               <option value=""></option>
@@ -216,7 +140,6 @@
         </tr>
         <tr>
           <th>店舗の説明</th>
-          <td>{{optional($shopmanager_shop)->description}}</td>
           <td>
             <textarea rows="10" cols="40" class="description" name="description" value="">
           </textarea>
@@ -224,7 +147,6 @@
         </tr>
         <tr>
           <th>店舗画像ジャンル</th>
-          <td>{{optional($shopmanager_shop)->genre->name}}<img src="{{$shopmanager_shop->image_url}}" alt="" width="100%"></td>
           <td>
             <select class="genre_class" name="image_url" placeholder="ジャンル">
               <option value=""></option>
@@ -239,48 +161,14 @@
         </tr>
         <tr>
           <th></th>
-          <td></td>
           <td>
-            <button type="submit" class="btn-primary-edit">
-              店舗情報を変更する
+            <button type="submit" class="btn-primary">
+              店舗情報を登録する
             </button>
           </td>
         </tr>
       </table>
     </form>
   </div>
-
-  <div class="shopmanager-reservation-area">
-    @foreach($shopmanager_reservations as $shopmanager_reservation)
-    <div class="shopmanager-reservation-card">
-      <div class="shopmanager-reservation-card-header">
-        <div class="clock-icon">
-          <i class="far fa-clock"></i>
-        </div>
-        <p class="reservation-number">
-          予約番号{{$loop->iteration}}
-        </p>
-      </div>
-      <table>
-        <tr>
-          <th>予約者名</th>
-          <td>{{optional($shopmanager_reservation)->user->name}}</td>
-        </tr>
-        <tr>
-          <th>来店人数</th>
-          <td>{{optional($shopmanager_reservation)->num_of_users}}名</td>
-        </tr>
-        <tr>
-          <th>来店日</th>
-          <td>{{optional($shopmanager_reservation)->start_at->format('Y-m-d')}}</td>
-        </tr>
-        <tr>
-          <th>来店時間</th>
-          <td>{{optional($shopmanager_reservation)->start_at->format('h:m')}}</td>
-        </tr>
-      </table>
-    </div>
-    @endforeach
-
   </div>
   @endsection

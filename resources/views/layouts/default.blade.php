@@ -25,12 +25,19 @@
         <li>
           <a href="/mypage">Mypage</a>
         </li>
+        @can('admin-higher')
         <li>
-          <a href="/shopmanage/shop">Myshop</a>
+          <a href="/shopcreate">Shop Register</a>
         </li>
         <li>
-          <a href="/shopmanagers">Shopmanagers</a>
+          <a href="/shopmanage/shop">Shop Manage</a>
         </li>
+        @endcan
+        @can('system-only')
+        <li>
+          <a href="/shopmanagers">Shop Managers</a>
+        </li>
+        @endcan
       </ul>
     </div>
 

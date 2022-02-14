@@ -175,7 +175,7 @@
 </div>
 
 <div class="contents">
-  <div class="shopmanager-create-area">
+  <!-- <div class="shopmanager-create-area">
     <form action="/shopmanager_create" method="post">
       @csrf
       <table>
@@ -183,6 +183,50 @@
           <th>代表者名</th>
           <td>
             <input type="text" class="name" name="name" value="" placeholder="店舗代表者名を入力してください">
+          </td>
+          <td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <button type="submit" class="btn-primary">
+              登録する
+            </button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div> -->
+
+  <div class="shopmanager-create-area">
+    <form action="/shopmanager_create2" method="post">
+      @csrf
+      <table>
+        <tr>
+          <th>代表者名</th>
+          <td>
+            <input type="text" class="name" name="name" value="" placeholder="店舗代表者名を入力してください">
+          </td>
+          <td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td>
+            <input type="text" class="email" name="email" value="" placeholder="店舗代表者名を入力してください">
+          </td>
+          <td>
+        </tr>
+        <tr>
+          <th>パスワード</th>
+          <td>
+            <input type="text" class="password" name="password" value="" placeholder="店舗代表者名を入力してください">
+          </td>
+          <td>
+        </tr>
+        <tr>
+          <th>権限</th>
+          <td>
+            <input type="number" class="role" name="role" value="5" placeholder="5">
           </td>
           <td>
         </tr>
