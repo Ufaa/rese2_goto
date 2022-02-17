@@ -218,8 +218,7 @@
           <th>店舗の説明</th>
           <td>{{optional($shopmanager_shop)->description}}</td>
           <td>
-            <textarea rows="10" cols="40" class="description" name="description" value="">
-          </textarea>
+            <textarea rows="10" cols="40" class="description" name="description" value=""></textarea>
           </td>
         </tr>
         <tr>

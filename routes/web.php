@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ShopmanagerController;
+use App\Http\Controllers\Auth\RegisterController;
 
 //ユーザー登録機能 laravel Breeze利用
 Route::get('/home', [AuthorController::class, 'index']);
@@ -62,5 +63,8 @@ Route::put('/shopmanage/shop/{shop_id}', [ShopmanagerController::class, 'shopman
 //店舗代表者追加　※システム管理者権限
 Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index'])->name('shopmanagers_index')->middleware('auth', 'can:system-only');
 Route::post('/shopmanager_create', [ShopmanagerController::class, 'shopmanager_create'])->name('shopmanager_create')->middleware('auth', 'can:system-only');
+//※迷走中・・・・・。
 Route::post('/shopmanager_create2', [ShopmanagerController::class, 'shopmanager_create2'])->name('shopmanager_create2')->middleware('auth', 'can:system-only');
+Route::get('/shopmanager-register', [RegisterController::class, 'shopmanager_register'])->name('shopmanager_register');
+Route::post('/shopmanager_create3', [RegisterController::class, 'shopmanager_create3'])->name('shopmanager_create3');
 

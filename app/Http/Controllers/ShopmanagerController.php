@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Shopmanager;
 use App\Models\Reservation;
 use App\Models\Shop;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ShopmanagerController extends Controller
 {
@@ -18,6 +20,7 @@ class ShopmanagerController extends Controller
      {
         $shopmanager_shop = Shop::where('shopmanager_id', Auth::id())->first();
     //取得したshop_idとReservationテーブルにあるshop_idが一致するものを予約日時が直近なもの順に並べて取得する
+    
         $shopmanager_reservations = Reservation::where('shop_id', $shopmanager_shop->id)->orderBy('start_at', 'asc')->get();
 
     return view('shopmanage',compact('shopmanager_reservations','shopmanager_shop'));
@@ -58,7 +61,7 @@ class ShopmanagerController extends Controller
     //店舗代表者一覧表示
     public function shopmanagers_index(Request $request)
     {
-    $shopmanagers = Shopmanager::all();
+    $shopmanagers = User::where('role','5')->get();
     return view('shopmanagers', ['shopmanagers' => $shopmanagers]);
     }
 
@@ -75,14 +78,13 @@ class ShopmanagerController extends Controller
         return redirect('/');
     }
 
-    //店舗代表者登録機能2
+    //迷走中・・・・・。店舗代表者登録機能2
     public function shopmanager_create2(Request $request)
     {
         $param = [
             'name' => $request->name,
             'email' => $request->email,
-            'password' => $request->password,
-            'role' => $request->role,
+            'password' => Hash::make($request['password']),             'role' => $request->role,
         ];
 
         DB::insert('insert into users (name, email, password, role) values (:name, :email, :password, :role)', $param);

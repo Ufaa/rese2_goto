@@ -70,4 +70,21 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    protected function shopmanager_register()
+    {
+        return view('/auth/shopmanager-register');
+    }
+    protected function shopmanager_create3(array $data)
+    {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => $data['role'],
+        ]);
+                dd($data);
+    
+    }
+
 }
