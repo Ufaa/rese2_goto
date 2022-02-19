@@ -65,7 +65,19 @@ OS：MacOS
 バージョン管理ツール：Git  
 
 ## インストール方法：Install
-（作成中）
+#### 1.GithubからClone 
+$ cd /Applications/MAMP/htdocs/  
+$ git clone LaravelプロジェクトURL
+#### 2.composer install  
+$ cd Laravelプロジェクトディレクトリ  
+$ composer install  
+#### 3.envの作成  
+$ cp .env.example .env  
+$ php artisan key:generate  
+$ php artisan config:clear  
+#### 4.データベース設定  
+$ php artisan migrate  
+$ php artisan db:seed  ※seedingのデータは必要に応じて準備すること
 
 ## 注意事項：Note
 （作成中）
