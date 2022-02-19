@@ -139,7 +139,9 @@
     border-style: none;
   }
 
-  .name {
+  .name,
+  .email,
+  .password {
     width: 300px;
   }
 
@@ -148,6 +150,12 @@
     border-radius: 5px;
     border-style: none;
     padding: 5%;
+  }
+
+  .error {
+    color: red;
+    font-weight: bold;
+    margin: 0 0 0 30px;
   }
 </style>
 
@@ -205,6 +213,9 @@
         <tr>
           <th>代表者名</th>
           <td>
+            @error('name')
+            <p class="error">{{$message}}</p>
+            @enderror
             <input type="text" class="name" name="name" value="" placeholder="店舗代表者名を入力してください">
           </td>
           <td>
@@ -212,21 +223,27 @@
         <tr>
           <th>メールアドレス</th>
           <td>
-            <input type="text" class="email" name="email" value="" placeholder="店舗代表者名を入力してください">
+            @error('email')
+            <p class="error">{{$message}}</p>
+            @enderror
+            <input type="text" class="email" name="email" value="" placeholder="メールアドレスを入力してください">
           </td>
           <td>
         </tr>
         <tr>
           <th>パスワード</th>
           <td>
-            <input type="text" class="password" name="password" value="" placeholder="店舗代表者名を入力してください">
+            @error('password')
+            <p class="error">{{$message}}</p>
+            @enderror
+            <input type="text" class="password" name="password" value="" placeholder="パスワードを入力してください">
           </td>
           <td>
         </tr>
         <tr>
-          <th>権限</th>
+          <th></th>
           <td>
-            <input type="number" class="role" name="role" value="5" placeholder="5">
+            <input type="number" class="role" name="role" value="5" placeholder="5" style="display: none;">
           </td>
           <td>
         </tr>

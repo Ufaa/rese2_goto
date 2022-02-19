@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\RegisterRequest;
 
 class ShopmanagerController extends Controller
 {
@@ -26,7 +27,7 @@ class ShopmanagerController extends Controller
     return view('shopmanage',compact('shopmanager_reservations','shopmanager_shop'));
     }
 
-    public function shopmanager_shop_update(Request $request)
+    public function shopmanager_shop_update(RegisterRequest $request)
     {
         $name = $request->name;
         $area_id = $request->area_id; $genre_id = $request->genre_id;
@@ -66,7 +67,7 @@ class ShopmanagerController extends Controller
     }
 
     //店舗代表者登録機能
-    public function shopmanager_create(Request $request)
+    public function shopmanager_create(RegisterRequest $request)
     {
         $param = [
             'name' => $request->name,
@@ -79,12 +80,13 @@ class ShopmanagerController extends Controller
     }
 
     //迷走中・・・・・。店舗代表者登録機能2
-    public function shopmanager_create2(Request $request)
+    public function shopmanager_create2(RegisterRequest $request)
     {
         $param = [
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request['password']),             'role' => $request->role,
+            'password' => Hash::make($request['password']),
+            'role' => $request->role,
         ];
 
         DB::insert('insert into users (name, email, password, role) values (:name, :email, :password, :role)', $param);

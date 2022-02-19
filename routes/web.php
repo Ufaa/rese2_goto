@@ -9,6 +9,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ShopmanagerController;
 use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MailTest;
 
 //ユーザー登録機能 laravel Breeze利用
 Route::get('/home', [AuthorController::class, 'index']);
@@ -68,3 +70,8 @@ Route::post('/shopmanager_create2', [ShopmanagerController::class, 'shopmanager_
 Route::get('/shopmanager-register', [RegisterController::class, 'shopmanager_register'])->name('shopmanager_register');
 Route::post('/shopmanager_create3', [RegisterController::class, 'shopmanager_create3'])->name('shopmanager_create3');
 
+//メール送信機能
+Route::get('/mail', function () {
+    $mail_text = "メールテストで使いたい文章";
+    Mail::to('to_address@example.com')->send(new MailTest($mail_text));
+});

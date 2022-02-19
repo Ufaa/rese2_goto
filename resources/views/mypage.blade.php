@@ -257,9 +257,6 @@
             <td> {!! QrCode::size(100)->generate(('{{Auth::user()->name}}')) !!}</td>
             <td></td>
           </tr>
-          @error('start_date')
-          <p class="error">{{$message}}</p>
-          @enderror
           <tr>
             <th>Date</th>
             <td>{{$reservation->start_at->format('Y-m-d')}}</td>
@@ -269,9 +266,6 @@
             <td>
             </td>
           </tr>
-          @error('start_time')
-          <p class="error">{{$message}}</p>
-          @enderror
           <tr>
             <th>Time</th>
             <td>{{$reservation->start_at->format('H:i')}}</td>
@@ -293,9 +287,6 @@
             </td>
             <td></td>
           </tr>
-          @error('num_of_users')
-          <p class="error">{{$message}}</p>
-          @enderror
           <tr>
             <th>Number</th>
             <td>{{$reservation->num_of_users}}人</td>
