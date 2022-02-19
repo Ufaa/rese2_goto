@@ -1,66 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# リポジトリ（プロダクト）の名前：Name
+Rese
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 概要：Overview
+飲食店予約サービス  
+  
+主な機能  
+・会員登録  
+・ログイン  
+・ログアウト  
+・ユーザー情報取得  
+・ユーザー飲食店お気に入り一覧取得  
+・ユーザー飲食店予約情報取得  
+・飲食店一覧取得  
+・飲食店詳細取得  
+・飲食店お気に入り追加  
+・飲食店お気に入り削除  
+・飲食店予約情報追加  
+・飲食店予約情報削除  
+・飲食店検索（エリア/ジャンル/店名）  
+  
+・飲食店評価機能  
+・予約情報変更機能実装  
+・管理者権限（新規飲食店代表者登録）  
+・店舗代表者権限（新規飲食店登録、自店舗予約確認）  
+  
+（実装中）  
+メール認証  
+管理画面からのメール送信  
+シンボリックリンクを使用した画像保存  
+タスクスケジューラを使用したリマインド機能  
+QRコードの作成  
+Stripeの決済機能  
+Dockerの環境構築  
+AWS(EC2,S3,RDS)の環境構築  
+開発環境と本番環境の切り分け  
 
-## About Laravel
+## デモ：Demo
+（作成中）
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 使い方：Usage
+ユーザー：以下の通り  
+・登録画面からユーザー登録（http://127.0.0.1:8000/register）    
+・ログインページからログイン（http://127.0.0.1:8000/login）  
+・ハンバーガーメニューからログアウト  
+・飲食店一覧ページで飲食店の検索、飲食店のお気に入り登録/解除、飲食店の詳細情報ページへ遷移 （http://127.0.0.1:8000/）  
+・飲食店詳細ページから来店予約（http://127.0.0.1:8000/detail/{shop_id?}）  
+・マイページで予約の確認・変更、お気に入り飲食店の表示とお気に入り解除（'Mypage' http://127.0.0.1:8000/mypage）  
+・評価ページで予約した飲食店の評価（http://127.0.0.1:8000/review/{shop_id?}）  
+・登録画面からユーザー登録（http://127.0.0.1:8000/register）  
+・登録画面からユーザー登録（http://127.0.0.1:8000/register）  
+  
+店舗代表者：ユーザーの使い方に加え以下の通り  
+・新規店舗登録ページから店舗情報を登録（http://127.0.0.1:8000/shopcreate）  
+・店舗管理ページで店舗情報の変更、自店舗の予約情報の確認（http://127.0.0.1:8000/shopmanage/shop）
+  
+管理者：ユーザー、店舗代表者の使い方に加え以下の通り  
+・店舗代表者登録ページから店舗代表者の登録、店舗代表者一覧の確認（http://127.0.0.1:8000/shopmanagers）  
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 環境：Requirement
+OS：MacOS  
+開発言語：PHP  
+フレームワーク：Laravel  
+データベース：MySQL  
+バージョン管理ツール：Git  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## インストール方法：Install
+#### 1.GithubからClone 
+$ cd /Applications/MAMP/htdocs/  
+$ git clone LaravelプロジェクトURL
+#### 2.composer install  
+$ cd Laravelプロジェクトディレクトリ  
+$ composer install  
+#### 3.envの作成  
+$ cp .env.example .env  
+$ php artisan key:generate  
+$ php artisan config:clear  
+#### 4.データベース設定  
+$ php artisan migrate  
+$ php artisan db:seed  ※seedingのデータは必要に応じて準備すること
 
-## Learning Laravel
+## 注意事項：Note
+（作成中）
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 文責：Author
+Ufaa
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## ライセンス：License
