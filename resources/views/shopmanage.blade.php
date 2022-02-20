@@ -277,6 +277,10 @@
           <th>来店時間</th>
           <td>{{optional($shopmanager_reservation)->start_at->format('h:m')}}</td>
         </tr>
+        <tr>
+          <th>メールを送信する</th>
+          <td><button><a href='/email'>送信画面へ</a></button></td>
+        </tr>
       </table>
     </div>
     @endforeach

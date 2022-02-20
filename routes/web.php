@@ -71,7 +71,9 @@ Route::get('/shopmanager-register', [RegisterController::class, 'shopmanager_reg
 Route::post('/shopmanager_create3', [RegisterController::class, 'shopmanager_create3'])->name('shopmanager_create3');
 
 //メール送信機能
-Route::get('/mail', function () {
-    $mail_text = "メールテストで使いたい文章";
-    Mail::to('to_address@example.com')->send(new MailTest($mail_text));
-});
+// Route::get('/mail', function () {
+//     $mail_text = "メールテストで使いたい文章";
+//     Mail::to('to_address@example.com')->send(new MailTest($mail_text));
+// });
+Route::get('/email',[ShopmanagerController::class,'email'])->name('email');
+Route::post('/send_email', [ShopmanagerController::class,'send_email'])->name('send_email');

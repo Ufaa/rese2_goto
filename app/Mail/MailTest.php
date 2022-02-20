@@ -31,7 +31,7 @@ class MailTest extends Mailable
     public function build()
     {
         return $this->from('from_address@example.com')
-        ->view('emails.test')
-        ->subject('メールテストタイトル');
+                    ->view('emails.email')
+                    ->subject('メールテストタイトル');
     }
 }

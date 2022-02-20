@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\RegisterRequest;
+use App\Mail\MailTest;
+use Illuminate\Support\Facades\Mail;
 
 class ShopmanagerController extends Controller
 {
@@ -91,6 +93,20 @@ class ShopmanagerController extends Controller
 
         DB::insert('insert into users (name, email, password, role) values (:name, :email, :password, :role)', $param);
         return redirect('/shopmanagers');
+    }
+
+    //メール送信機能
+    function email()
+    {
+        return view('/emails/email');
+    }
+
+    function send_email(Request $request)
+    {
+    $mail_text = [
+        'mailbody' => $request->mailbody,
+    ];
+        Mail::to('to_address@example.com')->send(new MailTest($mail_text));
     }
 
 }
