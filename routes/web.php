@@ -60,6 +60,7 @@ Route::get('/shopcreate', [ShopController::class, 'shopcreate_view'])->name('sho
 Route::post('/create', [ShopController::class, 'create'])->name('create')->middleware('auth', 'can:admin-higher');
 Route::get('/shopmanage/shop', [ShopmanagerController::class,'shopmanager_reservation'])->name('shopmanager_reservation')->middleware('auth', 'can:admin-higher');
 Route::put('/shopmanage/shop/{shop_id}', [ShopmanagerController::class, 'shopmanager_shop_update'])->name('shopmanager_shop_update')->middleware('auth', 'can:admin-higher');
+Route::get('/shopcreate_request', [ShopmanagerController::class, 'shopcreate_request'])->name('shopcreate_request')->middleware('auth', 'can:admin-higher');
 
 
 //店舗代表者追加　※システム管理者権限

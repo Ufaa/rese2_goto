@@ -10,26 +10,35 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\RegisterRequest;
+//use App\Http\Requests\RegisterRequest;
 use App\Mail\MailTest;
 use Illuminate\Support\Facades\Mail;
 
 class ShopmanagerController extends Controller
 {
     public function shopmanager_reservation()
-    //店舗代表者のidとShopテーブルにあるShopmanager_idが一致するデータを取得
-    //※役割を割り当てられたら要変更、今はAuthが代表者役を負っているため
-    //単数にしなければいけなかった・・・。
-     {
-        $shopmanager_shop = Shop::where('shopmanager_id', Auth::id())->first();
-    //取得したshop_idとReservationテーブルにあるshop_idが一致するものを予約日時が直近なもの順に並べて取得する
-    
-        $shopmanager_reservations = Reservation::where('shop_id', $shopmanager_shop->id)->orderBy('start_at', 'asc')->get();
 
-    return view('shopmanage',compact('shopmanager_reservations','shopmanager_shop'));
+    {
+        $shopmanager_shop = Shop::where('shopmanager_id', Auth::id())->first();
+        if (!is_null($shopmanager_shop)
+        ){
+            $shopmanager_reservations = Reservation::where('shop_id', $shopmanager_shop->id)->orderBy('start_at', 'asc')->get();
+            return view('shopmanage', compact('shopmanager_reservations', 'shopmanager_shop'));
+        }
+        else
+            {
+            return view('/shopcreate_request');
+            }
     }
 
-    public function shopmanager_shop_update(RegisterRequest $request)
+    //店舗を未作成の場合に飛ぶページ表示
+    public function shopcreate_request()
+    {
+        return view('/shopcreate_request');
+    }
+
+    //店舗情報変更機能
+    public function shopmanager_shop_update(Request $request)
     {
         $name = $request->name;
         $area_id = $request->area_id; $genre_id = $request->genre_id;
@@ -69,7 +78,7 @@ class ShopmanagerController extends Controller
     }
 
     //店舗代表者登録機能
-    public function shopmanager_create(RegisterRequest $request)
+    public function shopmanager_create(Request $request)
     {
         $param = [
             'name' => $request->name,
@@ -82,7 +91,7 @@ class ShopmanagerController extends Controller
     }
 
     //迷走中・・・・・。店舗代表者登録機能2
-    public function shopmanager_create2(RegisterRequest $request)
+    public function shopmanager_create2(Request $request)
     {
         $param = [
             'name' => $request->name,

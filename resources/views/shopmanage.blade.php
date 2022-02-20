@@ -180,7 +180,7 @@
         <tr>
         <tr>
           <th>店舗名</th>
-          <td>{{optional($shopmanager_shop)->name}}</td>
+          <td>{{$shopmanager_shop->name}}</td>
           <td>
             <input type="text" class="name" name="name" value="" placeholder="店舗名を入力してください">
           </td>
@@ -188,7 +188,7 @@
         </tr>
         <tr>
           <th>エリア</th>
-          <td>{{optional($shopmanager_shop)->area->name}}</td>
+          <td>{{$shopmanager_shop->area->name}}</td>
           <td>
             <select class="area_class" name="area_id" placeholder="エリア">
               <option value=""></option>
@@ -201,7 +201,7 @@
         </tr>
         <tr>
           <th>ジャンル</th>
-          <td>{{optional($shopmanager_shop)->genre->name}}</td>
+          <td>{{$shopmanager_shop->genre->name}}</td>
           <td>
             <select class="genre_class" name="genre_id" placeholder="ジャンル">
               <option value=""></option>
@@ -216,14 +216,14 @@
         </tr>
         <tr>
           <th>店舗の説明</th>
-          <td>{{optional($shopmanager_shop)->description}}</td>
+          <td>{{$shopmanager_shop->description}}</td>
           <td>
             <textarea rows="10" cols="40" class="description" name="description" value=""></textarea>
           </td>
         </tr>
         <tr>
           <th>店舗画像ジャンル</th>
-          <td>{{optional($shopmanager_shop)->genre->name}}<img src="{{$shopmanager_shop->image_url}}" alt="" width="100%"></td>
+          <td>{{$shopmanager_shop->genre->name}}<img src="{{$shopmanager_shop->image_url}}" alt="" width="100%"></td>
           <td>
             <select class="genre_class" name="image_url" placeholder="ジャンル">
               <option value=""></option>
