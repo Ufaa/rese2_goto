@@ -64,12 +64,11 @@ Route::get('/shopcreate_request', [ShopmanagerController::class, 'shopcreate_req
 
 
 //店舗代表者追加　※システム管理者権限
-Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index'])->name('shopmanagers_index')->middleware('auth', 'can:system-only');
 Route::post('/shopmanager_create', [ShopmanagerController::class, 'shopmanager_create'])->name('shopmanager_create')->middleware('auth', 'can:system-only');
-//※迷走中・・・・・。
-Route::post('/shopmanager_create2', [ShopmanagerController::class, 'shopmanager_create2'])->name('shopmanager_create2')->middleware('auth', 'can:system-only');
-Route::get('/shopmanager-register', [RegisterController::class, 'shopmanager_register'])->name('shopmanager_register');
-Route::post('/shopmanager_create3', [RegisterController::class, 'shopmanager_create3'])->name('shopmanager_create3');
+//店舗代表者一覧表示
+Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index'])->name('shopmanagers_index')->middleware('auth', 'can:system-only');
+
+
 
 //メール送信機能
 // Route::get('/mail', function () {

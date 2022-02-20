@@ -82,19 +82,6 @@ class ShopmanagerController extends Controller
     {
         $param = [
             'name' => $request->name,
-            'shop_id' =>
-            $request->shop_id,
-        ];
-
-        DB::insert('insert into shopmanagers (name, shop_id) values (:name, :shop_id)', $param);
-        return redirect('/');
-    }
-
-    //迷走中・・・・・。店舗代表者登録機能2
-    public function shopmanager_create2(Request $request)
-    {
-        $param = [
-            'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request['password']),
             'role' => $request->role,
