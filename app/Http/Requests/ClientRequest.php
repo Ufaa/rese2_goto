@@ -29,6 +29,7 @@ class ClientRequest extends FormRequest
             'num_of_users' => 'required',
         ];
     }
+    
     public function messages()
     {
         return [

@@ -10,7 +10,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-//use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\ShopcreateRequest;
 use App\Mail\MailTest;
 use Illuminate\Support\Facades\Mail;
 
@@ -38,7 +39,7 @@ class ShopmanagerController extends Controller
     }
 
     //店舗情報変更機能
-    public function shopmanager_shop_update(Request $request)
+    public function shopmanager_shop_update(ShopcreateRequest $request)
     {
         $name = $request->name;
         $area_id = $request->area_id; $genre_id = $request->genre_id;
@@ -78,7 +79,7 @@ class ShopmanagerController extends Controller
     }
 
     //店舗代表者登録機能
-    public function shopmanager_create(Request $request)
+    public function shopmanager_create(RegisterRequest $request)
     {
         $param = [
             'name' => $request->name,

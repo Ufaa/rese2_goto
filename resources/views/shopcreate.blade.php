@@ -75,6 +75,11 @@
     width: 200px;
   }
 
+  .error {
+    color: red;
+    font-weight: bold;
+    margin: 0 0 0 30px;
+  }
 </style>
 
 <head>
@@ -108,14 +113,20 @@
         <tr>
           <th>店舗名</th>
           <td>
-            <input type="text" class="name" name="name" value="" placeholder="店舗名を入力してください">
+            @error('name')
+            <p class="error">{{$message}}</p>
+            @enderror
+            <input type="text" class="name" name="name" value="{{ old('name') }}" placeholder="店舗名を入力してください">
           </td>
           <td>
         </tr>
         <tr>
           <th>エリア</th>
           <td>
-            <select class="area_class" name="area_id" placeholder="エリア">
+            @error('area_id')
+            <p class="error">{{$message}}</p>
+            @enderror
+            <select class="area_class" name="area_id" placeholder="エリア" value="{{ old('area_id') }}">
               <option value=""></option>
               <option value="1">東京都</option>
               <option value="2">大阪府</option>
@@ -127,9 +138,12 @@
         <tr>
           <th>ジャンル</th>
           <td>
-            <select class="genre_class" name="genre_id" placeholder="ジャンル">
+            @error('genre_id')
+            <p class="error">{{$message}}</p>
+            @enderror
+            <select class="genre_class" name="genre_id" placeholder="ジャンル" value="{{ old('genre_id') }}">
               <option value=""></option>
-              <option value="1">寿司</option>
+              <option value=" 1">寿司</option>
               <option value="2">焼肉</option>
               <option value="3">居酒屋</option>
               <option value="4">イタリアン</option>
@@ -141,13 +155,19 @@
         <tr>
           <th>店舗の説明</th>
           <td>
-            <textarea rows="10" cols="40" class="description" name="description" value=""></textarea>
+            @error('description')
+            <p class="error">{{$message}}</p>
+            @enderror
+            <textarea rows="10" cols="40" class="description" name="description" value="{{ old('description') }}"></textarea>
           </td>
         </tr>
         <tr>
           <th>店舗画像ジャンル</th>
           <td>
-            <select class="genre_class" name="image_url" placeholder="ジャンル">
+            @error('image_url')
+            <p class="error">{{$message}}</p>
+            @enderror
+            <select class="genre_class" name="image_url" placeholder="ジャンル" value="{{ old('image_url') }}">
               <option value=""></option>
               <option value="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg">寿司</option>
               <option value="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/yakiniku.jpg">焼肉</option>
@@ -169,5 +189,5 @@
       </table>
     </form>
   </div>
-  </div>
-  @endsection
+</div>
+@endsection

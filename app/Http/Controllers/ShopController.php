@@ -6,6 +6,7 @@ use App\Models\Shop;
 use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\ShopcreateRequest;
 use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
@@ -94,7 +95,7 @@ class ShopController extends Controller
     return view('/shopmanage');
   }
 
-  public function create(Request $request)
+  public function create(ShopcreateRequest $request)
   {
     $param = [
       'shopmanager_id' => $request->shopmanager_id,
