@@ -65,7 +65,7 @@ Route::get('/shopcreate_request', [ShopmanagerController::class, 'shopcreate_req
 
 //店舗代表者追加　※システム管理者権限
 Route::post('/shopmanager_create', [ShopmanagerController::class, 'shopmanager_create'])->name('shopmanager_create')->middleware('auth', 'can:system-only');
-//店舗代表者一覧表示
+//店舗代表者一覧表示　※システム管理者権限
 Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index'])->name('shopmanagers_index')->middleware('auth', 'can:system-only');
 
 

@@ -18,18 +18,14 @@ use Illuminate\Support\Facades\Mail;
 class ShopmanagerController extends Controller
 {
     public function shopmanager_reservation()
-
     {
         $shopmanager_shop = Shop::where('shopmanager_id', Auth::id())->first();
-        if (!is_null($shopmanager_shop)
-        ){
+        if (!is_null($shopmanager_shop)){
             $shopmanager_reservations = Reservation::where('shop_id', $shopmanager_shop->id)->orderBy('start_at', 'asc')->get();
             return view('shopmanage', compact('shopmanager_reservations', 'shopmanager_shop'));
-        }
-        else
-            {
+        } else {
             return view('/shopcreate_request');
-            }
+        }
     }
 
     //店舗を未作成の場合に飛ぶページ表示
@@ -100,10 +96,12 @@ class ShopmanagerController extends Controller
 
     function send_email(Request $request)
     {
-    $mail_text = [
-        'mailbody' => $request->mailbody,
-    ];
-        Mail::to('to_address@example.com')->send(new MailTest($mail_text));
+    $mail_text = new MailTest();
+    $mail_text->to('to_address@example.com');
+    $mail_text->subject('メールテストタイトル');
+    $mail_text->text('emails.body', ['body' => $request->mailbody]);
+
+        Mail::to('to_address@example.com')->send($mail_text);
     }
 
 }
