@@ -63,9 +63,15 @@
   <form action="/send_email" method="POST">
     @csrf
     <div class="done-area">
-      <textarea rows="10" cols="40" class="mailbody" name="mailbody" value="{old('mail_body)}"></textarea>
+      <div class="to-area">
+        <p>予約番号:{{$user_data->id}}</p>
+        <p>予約者名:{{$user_data->user->name}}</p>
+        <p>メールアドレス:{{$user_data->user->email}}</p>
+      </div>
+      <input type="text" name="reservation_email" value="{{$user_data->user->email}}" style="display:none;">
+      <textarea rows="10" cols="40" class="mailbody" name="mailbody" value="{old('mail_body)}"></textarea><br>
       <button type="submit" class="btn-primary">
-      メールを送信する
+        メールを送信する
       </button>
       <button class="back" type="button" onclick="location.href='/shopmanage/shop'">戻る</button>
     </div>

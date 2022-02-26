@@ -89,15 +89,16 @@ class ShopmanagerController extends Controller
     }
 
     //メール送信機能
-    function email()
+    public function email(int $id)
     {
-        return view('/emails/email');
+        $user_data = Reservation::find($id);
+        return view('/emails/email')->with('user_data', $user_data);
     }
 
-    function send_email(Request $request)
+    public function send_email(Request $request)
     {
     $mail_text = new MailTest();
-    $mail_text->to('to_address@example.com');
+    $mail_text->to($request->reservation_email);
     $mail_text->subject('メールテストタイトル');
     $mail_text->text('emails.body', ['body' => $request->mailbody]);
 

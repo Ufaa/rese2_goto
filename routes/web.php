@@ -75,5 +75,5 @@ Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index']
 //     $mail_text = "メールテストで使いたい文章";
 //     Mail::to('to_address@example.com')->send(new MailTest($mail_text));
 // });
-Route::get('/email',[ShopmanagerController::class,'email'])->name('email');
+Route::get('/email/{reservation_id}',[ShopmanagerController::class,'email'])->name('email');
 Route::post('/send_email', [ShopmanagerController::class,'send_email'])->name('send_email');

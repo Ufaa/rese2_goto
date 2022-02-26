@@ -281,28 +281,31 @@
           予約番号{{$loop->iteration}}
         </p>
       </div>
-      <table>
-        <tr>
-          <th>予約者名</th>
-          <td>{{optional($shopmanager_reservation)->user->name}}</td>
-        </tr>
-        <tr>
-          <th>来店人数</th>
-          <td>{{optional($shopmanager_reservation)->num_of_users}}名</td>
-        </tr>
-        <tr>
-          <th>来店日</th>
-          <td>{{optional($shopmanager_reservation)->start_at->format('Y-m-d')}}</td>
-        </tr>
-        <tr>
-          <th>来店時間</th>
-          <td>{{optional($shopmanager_reservation)->start_at->format('h:m')}}</td>
-        </tr>
-        <tr>
-          <th>メールを送信する</th>
-          <td><button><a href='/email'>送信画面へ</a></button></td>
-        </tr>
+      <form action="{{route('email',$shopmanager_reservation->id)}}" method="get">
+        <table>
+          <tr>
+            <th>予約者名</th>
+            <td>{{optional($shopmanager_reservation)->user->name}}</td>
+          </tr>
+          <tr>
+            <th>来店人数</th>
+            <td>{{optional($shopmanager_reservation)->num_of_users}}名</td>
+          </tr>
+          <tr>
+            <th>来店日</th>
+            <td>{{optional($shopmanager_reservation)->start_at->format('Y-m-d')}}</td>
+          </tr>
+          <tr>
+            <th>来店時間</th>
+            <td>{{optional($shopmanager_reservation)->start_at->format('h:m')}}</td>
+          </tr>
+          <tr>
+            <th>メールを送信する</th>
+            <td> <button type="submit" class="btn-send-mail">送信画面へ</button>
+      </td>
+      </tr>
       </table>
+      </form>
     </div>
     @endforeach
 
