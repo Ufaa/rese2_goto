@@ -21,6 +21,7 @@ class UserController extends Controller
         // Reviewテーブルの中でuser_idとログインidが一致し、今日より後のものを複数取得する
         $reviews = Reservation::where('user_id', Auth::id())->where('start_at', '<', Carbon::now())->get();
 
+
         return view('mypage',compact('userreservation','userlikes','reviews'));
     }
 }

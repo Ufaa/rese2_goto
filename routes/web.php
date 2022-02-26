@@ -47,7 +47,7 @@ Route::resource('reservations', ReservationController::class)->middleware('auth'
 Route::get('/shop/like/{id}', [ShopController::class, 'like'])->name('shop.like')->middleware('auth');
 Route::get('/shop/unlike/{id}', [ShopController::class, 'unlike'])->name('shop.unlike')->middleware('auth');
 //評価機能
-Route::get('/review/{shop_id}', [ReviewController::class, 'review'])->name('review')->middleware('auth')->middleware('auth');
+Route::get('/review/{reservation_id}', [ReviewController::class, 'review'])->name('review')->middleware('auth')->middleware('auth');
 Route::get('/reviewadd', [ReviewController::class, 'add'])->name('review.add')->middleware('auth');
 Route::post('/reviewadd', [ReviewController::class, 'create'])->middleware('auth');
 
@@ -68,12 +68,6 @@ Route::post('/shopmanager_create', [ShopmanagerController::class, 'shopmanager_c
 //店舗代表者一覧表示　※システム管理者権限
 Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index'])->name('shopmanagers_index')->middleware('auth', 'can:system-only');
 
-
-
 //メール送信機能
-// Route::get('/mail', function () {
-//     $mail_text = "メールテストで使いたい文章";
-//     Mail::to('to_address@example.com')->send(new MailTest($mail_text));
-// });
 Route::get('/email/{reservation_id}',[ShopmanagerController::class,'email'])->name('email');
 Route::post('/send_email', [ShopmanagerController::class,'send_email'])->name('send_email');

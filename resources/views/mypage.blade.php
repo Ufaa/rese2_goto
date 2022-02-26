@@ -33,7 +33,7 @@
   }
 
   .login-name {
-    font-size: 32px;
+    font-size: 40px;
     font-weight: bold;
   }
 
@@ -59,8 +59,9 @@
 
   .user-reservation-area {
     position: absolute;
+    top: 50px;
     left: 0px;
-    width: 40%;
+    width: 35%;
     margin: 0 5%;
   }
 
@@ -80,8 +81,9 @@
   .user-like-area {
     position: absolute;
     height: 800px;
+    top: 50px;
     right: 0px;
-    width: 40%;
+    width: 25%;
     margin: 0 5%;
     border-radius: 5px;
   }
@@ -101,7 +103,7 @@
   .card-list {
     width: 300px;
     display: flex;
-    padding: 10px 10px;
+    padding: 0px 10px 10px 10px;
   }
 
   .card {
@@ -191,8 +193,9 @@
 
   .user-reservation-review-area {
     position: absolute;
-    width: 100%;
-    left: 0px;
+    width: 25%;
+    top: 50px;
+    left: 37%;
     margin: 0 5%;
   }
 
@@ -214,13 +217,13 @@
 
 <div class="header">
   <div class="header-left">
-  </div>
-  <div class="header-right">
     <div class="login-name">
       @auth
-      {{Auth::user()->name}}さん
+      {{Auth::user()->name}}さんのマイページ
       @endauth
     </div>
+  </div>
+  <div class="header-right">
   </div>
 </div>
 
@@ -255,15 +258,12 @@
             <th>shop</th>
             <td>{{$reservation->shop->name}}</td>
             <td> {!! QrCode::size(100)->generate(('{{Auth::user()->name}}')) !!}</td>
-            <td></td>
           </tr>
           <tr>
             <th>Date</th>
             <td>{{$reservation->start_at->format('Y-m-d')}}</td>
             <td>
               <input type="date" class="datetime-local" name="start_date" value="">
-            </td>
-            <td>
             </td>
           </tr>
           <tr>
@@ -285,7 +285,6 @@
                 <option value="22:00"></option>
               </datalist>
             </td>
-            <td></td>
           </tr>
           <tr>
             <th>Number</th>
@@ -299,6 +298,10 @@
                 <option value="4">4人</option>
               </select>
             </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td></td>
             <td>
               <button type="submit" class="btn-edit">
                 予約を変更する
@@ -342,53 +345,54 @@
       </div>
       @endforeach
     </div>
+  </div>
 
-    <div class="user-reservation-review-area">
-      <p class="user-reservation-title">レビュー</p>
-      @foreach ($reviews as $review)
-      <div class="reservation-card">
-        <div class="reservation-card-header">
-        </div>
-        <form action="/reviewadd" method="POST">
-          @csrf
-          <table>
-            <tr>
-              <th>shop</th>
-              <td>{{$review->shop->name}}</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <th>訪問した日</th>
-              <td>{{$review->start_at->format('Y-m-d')}}</td>
-            </tr>
-            <tr>
-              <th>評価</th>
-              <td>
-                <select class="review-rate" name="rate" placeholder="">
-                  <option value=""></option>
-                  <option value="1">とても悪い</option>
-                  <option value="2">悪い</option>
-                  <option value="3">普通</option>
-                  <option value="4">良い</option>
-                  <option value="5">とても良い</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <th>コメント</th>
-              <td><input type="text" class="review-comment" name="comment" value="" placeholder="コメントしてください"></td>
-            </tr>
-            <tr>
-              <th></th>
-              <td>
-                <button type="submit" class="btn-review">評価する</button>
-              </td>
-            </tr>
-          </table>
-          <input type="text" name="reservation_id" value="{{$reservation->id}}" style="display:none;">
-        </form>
+  <div class="user-reservation-review-area">
+    <p class="user-reservation-title">レビュー</p>
+    @foreach ($reviews as $review)
+    <div class="reservation-card">
+      <div class="reservation-card-header">
       </div>
-      @endforeach
+      <form action="/reviewadd" method="POST">
+        @csrf
+        <table>
+          <tr>
+            <th>shop</th>
+            <td>{{$review->shop->name}}</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>訪問日</th>
+            <td>{{$review->start_at->format('Y-m-d')}}</td>
+          </tr>
+          <tr>
+            <th>評価</th>
+            <td>
+              <select class="review-rate" name="rate" placeholder="">
+                <option value=""></option>
+                <option value="1">とても悪い</option>
+                <option value="2">悪い</option>
+                <option value="3">普通</option>
+                <option value="4">良い</option>
+                <option value="5">とても良い</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>コメント</th>
+            <td><input type="text" class="review-comment" name="comment" value="" placeholder="コメントしてください"></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td>
+              <button type="submit" class="btn-review">評価する</button>
+            </td>
+          </tr>
+        </table>
+        <input type="text" name="reservation_id" value="{{$reservation->id}}" style="display:none;">
+      </form>
     </div>
-    @endsection
+    @endforeach
+  </div>
+  @endsection
