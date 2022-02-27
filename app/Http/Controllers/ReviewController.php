@@ -16,7 +16,8 @@ class ReviewController extends Controller
     {
         $item = Shop::find($id);
 
-        $review = Reservation::where('user_id', Auth::id())->first();
+        $review = Reservation::
+        where('user_id', Auth::id())->first();
         // if (!is_null($review)) {
         //     return view('/mypage');}
         
@@ -38,6 +39,7 @@ class ReviewController extends Controller
             'rate' => $request->rate,
             'comment' => $request->comment,
         ];
+        dd($param);
 
         DB::insert('insert into reviews (reservation_id, user_id, rate, comment) values (:reservation_id, :user_id, :rate, :comment)', $param);
         return redirect('/mypage');
