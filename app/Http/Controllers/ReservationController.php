@@ -46,7 +46,6 @@ class ReservationController extends Controller
     //予約削除
     public function destroy(Reservation $reservation)
     {
-        //dd($reservation);
         $review = Review::where('reservation_id', $reservation->id)->first();
         if(!is_null($review)){
             $review->delete();

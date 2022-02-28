@@ -45,15 +45,6 @@
     padding: 10px 15px 10px 15px;
   }
 
-
-  .back {
-    height: 30px;
-    width: 30px;
-    top: 20px;
-    margin-top: 35px;
-    margin-right: 10px;
-  }
-
   .contents {
     position: relative;
   }
@@ -61,23 +52,6 @@
   .shopmanager-create-area {
     position: absolute;
     top: 100px;
-    left: 0px;
-    width: 40%;
-    margin: 0 5%;
-    background-color: #005FFF;
-  }
-
-  .shop-edit-title-area {
-    position: absolute;
-    top: 720px;
-    left: 0px;
-    width: 40%;
-    margin: 0 5%;
-  }
-
-  .shop-edit-area {
-    position: absolute;
-    top: 800px;
     left: 0px;
     width: 40%;
     margin: 0 5%;
@@ -113,30 +87,11 @@
     margin-bottom: 20px;
   }
 
-  .shopmanager-reservation-card-header {
-    display: flex;
-    position: relative;
-  }
-
-  .clock-icon {
-    padding: 20px;
-  }
-
-  .fa-times-circle {
-    color: white;
-  }
-
   .btn-primary {
     background-color: yellowgreen;
     border-radius: 5px;
     border-style: none;
     padding: 5%;
-  }
-
-  .btn-edit {
-    background-color: white;
-    border-radius: 5px;
-    border-style: none;
   }
 
   .name,
@@ -145,11 +100,8 @@
     width: 300px;
   }
 
-  .btn-primary-edit {
-    background-color: pink;
-    border-radius: 5px;
-    border-style: none;
-    padding: 5%;
+  .role {
+    display: none;
   }
 
   .error {
@@ -220,7 +172,7 @@
         <tr>
           <th></th>
           <td>
-            <input type="number" class="role" name="role" value="5" placeholder="5" style="display: none;">
+            <input type="number" class="role" name="role" value="5" placeholder="5">
           </td>
           <td>
         </tr>

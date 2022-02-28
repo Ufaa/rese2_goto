@@ -90,11 +90,11 @@
   }
 
   .review-comment {
-      display: inline-block;
-      width: 100%;
-      border: 1px solid #999;
-      box-sizing: border-box;
-      margin: 0.5em 0;
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #999;
+    box-sizing: border-box;
+    margin: 0.5em 0;
   }
 
   .datetime-local {
@@ -109,16 +109,8 @@
     margin: 0px 5% 10px 5%;
   }
 
-  .reservation-submit {
-    position: absolute;
-    border: none;
-    background-color: #0033FF;
-    color: white;
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    bottom: 0;
-    border-radius: 0 0 5px 5px;
+  .reservation_id_input {
+    display: none;
   }
 
   .error {
@@ -174,7 +166,7 @@
           <tr>
             <th>評価</th>
             <td>
-              <select class="review-rate" name="rate" placeholder="">
+              <select class="review-rate" name="rate">
                 <option value=""></option>
                 <option value="1">とても悪い</option>
                 <option value="2">悪い</option>
@@ -186,7 +178,7 @@
           </tr>
           <tr>
             <th>コメント</th>
-            <td><input type="text"  class="review-comment" name="comment" value="" placeholder="コメントしてください"></td>
+            <td><input type="text" class="review-comment" name="comment" value="" placeholder="コメントしてください"></td>
           </tr>
           <tr>
             <th></th>
@@ -195,7 +187,7 @@
             </td>
           </tr>
         </table>
-        <input type="text" name="reservation_id" value="{{$review->id}}" style="display:none;">
+        <input type="text" class="reservation_id_input" name="reservation_id" value="{{$review->id}}">
       </form>
     </div>
   </div>

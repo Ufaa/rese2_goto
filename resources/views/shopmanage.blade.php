@@ -45,15 +45,6 @@
     padding: 10px 15px 10px 15px;
   }
 
-
-  .back {
-    height: 30px;
-    width: 30px;
-    top: 20px;
-    margin-top: 35px;
-    margin-right: 10px;
-  }
-
   .contents {
     position: relative;
   }
@@ -138,6 +129,10 @@
     border-radius: 5px;
     border-style: none;
     padding: 5%;
+  }
+
+  .genre_image {
+    width: 100%;
   }
 
   .error {
@@ -241,7 +236,7 @@
         </tr>
         <tr>
           <th>店舗画像ジャンル</th>
-          <td>{{$shopmanager_shop->genre->name}}<img src="{{$shopmanager_shop->image_url}}" alt="" width="100%"></td>
+          <td>{{$shopmanager_shop->genre->name}}<img src="{{$shopmanager_shop->image_url}}" class="genre_image"></td>
           <td>
             @error('image_url')
             <p class="error">{{$message}}</p>
@@ -302,9 +297,9 @@
           <tr>
             <th>メールを送信する</th>
             <td> <button type="submit" class="btn-send-mail">送信画面へ</button>
-      </td>
-      </tr>
-      </table>
+            </td>
+          </tr>
+        </table>
       </form>
     </div>
     @endforeach

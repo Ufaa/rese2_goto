@@ -12,21 +12,22 @@
     margin: -5px 0 0 70px;
   }
 
-  .done-area {
+  .send-email-area {
     background-color: white;
-    padding: 80px 100px;
+    padding: 40px 50px;
     border-radius: 3px;
     box-shadow: 2px 2px 4px 1px gray;
     position: absolute;
-    top: 30%;
+    top: 400px;
     left: 50%;
     transform: translateY(-50%) translateX(-50%);
     -webkit-transform: translateY(-50%) translateX(-50%);
     text-align: center;
   }
 
-  .done-area p {
-    font-size: 30px;
+  .send-email-area p {
+    font-size: 20px;
+    margin: 5px;
   }
 
   .back {
@@ -38,20 +39,8 @@
     padding: 5px 15px;
   }
 
-  th {
-    background-color: #289ADC;
-    color: white;
-    padding: 5px 40px;
-  }
-
-  tr:nth-child(odd) td {
-    background-color: #FFFFFF;
-  }
-
-  td {
-    padding: 25px 40px;
-    background-color: #EEEEEE;
-    text-align: center;
+  .reservation_email-input {
+    display: none;
   }
 </style>
 
@@ -62,13 +51,13 @@
   </div>
   <form action="/send_email" method="POST">
     @csrf
-    <div class="done-area">
+    <div class="send-email-area">
       <div class="to-area">
         <p>予約番号:{{$user_data->id}}</p>
         <p>予約者名:{{$user_data->user->name}}</p>
         <p>メールアドレス:{{$user_data->user->email}}</p>
       </div>
-      <input type="text" name="reservation_email" value="{{$user_data->user->email}}" style="display:none;">
+      <input type="text" class="reservation_email-input" name="reservation_email" value="{{$user_data->user->email}}">
       <textarea rows="10" cols="40" class="mailbody" name="mailbody" value="{old('mail_body)}"></textarea><br>
       <button type="submit" class="btn-primary">
         メールを送信する

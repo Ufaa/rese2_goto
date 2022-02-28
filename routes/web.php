@@ -9,8 +9,6 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ShopmanagerController;
 use App\Http\Controllers\Auth\RegisterController;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\MailTest;
 
 //ユーザー登録機能 laravel Breeze利用
 Route::get('/home', [AuthorController::class, 'index']);
@@ -35,6 +33,7 @@ Route::get('/detail/{shop_id}', [ShopController::class, 'show'])->name('detail')
 //検索機能　
 Route::get('/find', [ShopController::class, 'find'])->middleware('auth');
 Route::post('/find', [ShopController::class, 'search'])->middleware('auth');
+
 //予約追加機能
 Route::get('/reservation', [ReservationController::class, 'index'])->name('reservation')->middleware('auth');
 Route::get('/add', [ReservationController::class, 'add'])->middleware('auth');
@@ -43,15 +42,15 @@ Route::post('/add', [ReservationController::class, 'create'])->middleware('auth'
 Route::get('/done', [ReservationController::class, 'done'])->middleware('auth')->middleware('auth');
 //予約削除・変更機能　
 Route::resource('reservations', ReservationController::class)->middleware('auth');
+
 //いいね機能
 Route::get('/shop/like/{id}', [ShopController::class, 'like'])->name('shop.like')->middleware('auth');
 Route::get('/shop/unlike/{id}', [ShopController::class, 'unlike'])->name('shop.unlike')->middleware('auth');
+
 //評価機能
 Route::get('/review/{reservation_id}', [ReviewController::class, 'review'])->name('review')->middleware('auth')->middleware('auth');
 Route::get('/reviewadd', [ReviewController::class, 'add'])->name('review.add')->middleware('auth');
 Route::post('/reviewadd', [ReviewController::class, 'create'])->middleware('auth');
-
-
 
 //店舗追加、編集、予約確認機能　※店舗代表者権限
 Route::resource('shops', ShopController::class);
@@ -61,7 +60,6 @@ Route::post('/create', [ShopController::class, 'create'])->name('create')->middl
 Route::get('/shopmanage/shop', [ShopmanagerController::class,'shopmanager_reservation'])->name('shopmanager_reservation')->middleware('auth', 'can:admin-higher');
 Route::put('/shopmanage/shop/{shop_id}', [ShopmanagerController::class, 'shopmanager_shop_update'])->name('shopmanager_shop_update')->middleware('auth', 'can:admin-higher');
 Route::get('/shopcreate_request', [ShopmanagerController::class, 'shopcreate_request'])->name('shopcreate_request')->middleware('auth', 'can:admin-higher');
-
 
 //店舗代表者追加　※システム管理者権限
 Route::post('/shopmanager_create', [ShopmanagerController::class, 'shopmanager_create'])->name('shopmanager_create')->middleware('auth', 'can:system-only');

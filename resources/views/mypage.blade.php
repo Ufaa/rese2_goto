@@ -44,15 +44,6 @@
     padding: 10px 15px 10px 15px;
   }
 
-
-  .back {
-    height: 30px;
-    width: 30px;
-    top: 20px;
-    margin-top: 35px;
-    margin-right: 10px;
-  }
-
   .contents {
     position: relative;
   }
@@ -92,7 +83,6 @@
     font-size: 30px;
     font-weight: bold;
   }
-
 
   .card-area {
     display: flex;
@@ -199,6 +189,15 @@
     margin: 0 5%;
   }
 
+  .reservation_id-input {
+    display: none;
+  }
+
+  .reservation-delete-icon-button {
+    background-color: #005FFF;
+    border:none;
+  }
+
   .error {
     color: red;
     font-weight: bold;
@@ -243,7 +242,7 @@
           <form action="{{route('reservations.destroy',$reservation->id)}}" method="post">
             {{ csrf_field() }}
             {{ method_field('delete') }}
-            <button type="submit" style="background-color: #005FFF; border:none">
+            <button type="submit" class="reservation-delete-icon-button">
               <i class="far fa-times-circle fa-lg"></i>
             </button>
           </form>
@@ -390,7 +389,7 @@
             </td>
           </tr>
         </table>
-        <input type="text" name="reservation_id" value="{{$reservation->id}}" style="display:none;">
+        <input type="text" class="reservation_id-input" name="reservation_id" value="{{$reservation->id}}">
       </form>
     </div>
     @endforeach

@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ShopcreateRequest;
 use App\Mail\MailTest;
@@ -21,7 +22,7 @@ class ShopmanagerController extends Controller
     {
         $shopmanager_shop = Shop::where('shopmanager_id', Auth::id())->first();
         if (!is_null($shopmanager_shop)){
-            $shopmanager_reservations = Reservation::where('shop_id', $shopmanager_shop->id)->orderBy('start_at', 'asc')->get();
+            $shopmanager_reservations = Reservation::where('shop_id', $shopmanager_shop->id)->where('start_at', '>', Carbon::now())->orderBy('start_at', 'asc')->get();
             return view('shopmanage', compact('shopmanager_reservations', 'shopmanager_shop'));
         } else {
             return view('/shopcreate_request');

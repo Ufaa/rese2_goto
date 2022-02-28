@@ -113,6 +113,10 @@
     border-style: none;
     padding: 6%;
   }
+
+  .search_input {
+    display: none;
+  }
 </style>
 
 <head>
@@ -141,7 +145,7 @@
         <option value="5">ラーメン</option>
       </select>
       <input type="text" class="user-icon" name="name" value="{{$input ?? ''}}" placeholder="&#xf002; search...">
-      <input type="submit" name="search" value="見つける" style="display: none;">
+      <input type="submit" class="search_input" name="search" value="見つける">
     </form>
   </div>
 </div>
@@ -187,13 +191,11 @@
         <form action="{{route('detail',$item->id)}}" method="get">
           <button type="submit" class="btn btn-primary">詳しく見る</button>
         </form>
-
         @if($item->is_liked_by_auth_user())
         <a href="{{ route('shop.unlike', ['id' => $item->id]) }}" class="unlike-btn"><i class="fas fa-heart"></i></a>
         @else
         <a href="{{ route('shop.like', ['id' => $item->id]) }}" class="like-btn"><i class="fas fa-heart"></i></a>
         @endif
-
         </form>
       </div>
     </div>

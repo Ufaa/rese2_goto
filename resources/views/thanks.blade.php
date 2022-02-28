@@ -12,7 +12,7 @@
     margin: 0 0 0 70px;
   }
 
-  .done-area {
+  .thanks-area {
     background-color: white;
     padding: 80px 100px;
     border-radius: 3px;
@@ -25,7 +25,7 @@
     text-align: center;
   }
 
-  .done-area p {
+  .thanks-area p {
     font-size: 30px;
   }
 
@@ -38,21 +38,6 @@
     padding: 5px 15px;
   }
 
-  th {
-    background-color: #289ADC;
-    color: white;
-    padding: 5px 40px;
-  }
-
-  tr:nth-child(odd) td {
-    background-color: #FFFFFF;
-  }
-
-  td {
-    padding: 25px 40px;
-    background-color: #EEEEEE;
-    text-align: center;
-  }
 </style>
 
 @section('content')
@@ -60,7 +45,7 @@
 <body>
   <div class="title"><a href="/">Rese</a>
   </div>
-  <div class="done-area">
+  <div class="thanks-area">
     <p class="reservation-thanks">会員登録ありがとうございます。</p>
     <button class="back" type="button" onclick="location.href='/login'">ログイン</button>
   </div>

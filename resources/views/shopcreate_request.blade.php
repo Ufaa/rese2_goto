@@ -12,7 +12,7 @@
     margin: -5px 0 0 70px;
   }
 
-  .done-area {
+  .shopcreate_request-area {
     background-color: white;
     padding: 80px 100px;
     border-radius: 3px;
@@ -25,7 +25,7 @@
     text-align: center;
   }
 
-  .done-area p {
+  .shopcreate_request-area p {
     font-size: 30px;
   }
 
@@ -37,22 +37,6 @@
     border-radius: 5px;
     padding: 5px 15px;
   }
-
-  th {
-    background-color: #289ADC;
-    color: white;
-    padding: 5px 40px;
-  }
-
-  tr:nth-child(odd) td {
-    background-color: #FFFFFF;
-  }
-
-  td {
-    padding: 25px 40px;
-    background-color: #EEEEEE;
-    text-align: center;
-  }
 </style>
 
 @section('content')
@@ -60,8 +44,8 @@
 <body>
   <div class="title"><a href="/">Rese</a>
   </div>
-  <div class="done-area">
-    <p class="reservation-thanks">店舗が登録されていません</p>
+  <div class="shopcreate_request-area">
+    <p class="shopcreate_request-thanks">店舗が登録されていません</p>
     <button class="back" type="button" onclick="location.href='/shopcreate'">店舗を登録する</button>
   </div>
 </body>

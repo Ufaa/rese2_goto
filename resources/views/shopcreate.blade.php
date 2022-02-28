@@ -75,6 +75,10 @@
     width: 200px;
   }
 
+  .shopmanager_id_input {
+    display: none;
+  }
+
   .error {
     color: red;
     font-weight: bold;
@@ -109,7 +113,7 @@
     <form action="/create" method="post">
       @csrf
       <table>
-        <input type="int" name="shopmanager_id" value="{{Auth::user()->id}}" style="display:none;">
+        <input type="int" class="shopmanager_id_input" name="shopmanager_id" value="{{Auth::user()->id}}">
         <tr>
           <th>店舗名</th>
           <td>

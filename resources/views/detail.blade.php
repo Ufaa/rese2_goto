@@ -11,22 +11,6 @@
     margin: 0 0 0 80px;
   }
 
-  th {
-    background-color: #289ADC;
-    color: white;
-    padding: 5px 40px;
-  }
-
-  tr:nth-child(odd) td {
-    background-color: #FFFFFF;
-  }
-
-  td {
-    padding: 25px 40px;
-    background-color: #EEEEEE;
-    text-align: center;
-  }
-
   .back {
     height: 30px;
     width: 30px;
@@ -107,6 +91,11 @@
     border-radius: 0 0 5px 5px;
   }
 
+  .Auth_input,
+  .shop_id_input {
+    display: none;
+  }
+
   .error {
     color: red;
     font-weight: bold;
@@ -144,14 +133,13 @@
     </div>
   </div>
 
-
   <div class="reservation">
     <p class="reservation-title">予約</p>
     <div class="reservation-input">
       <form action="/add" method="POST">
         @csrf
-        <input type="text" name="user_id" value="{{Auth::id()}}" style="display:none">
-        <input type="text" name="shop_id" value="{{$item->id}}" style="display:none">
+        <input type="text" class="Auth_input" name="user_id" value="{{Auth::id()}}">
+        <input type="text" class="shop_id_input" name="shop_id" value="{{$item->id}}">
         <div class="reservation-date">
           @error('start_date')
           <p class="error">{{$message}}</p>
@@ -194,6 +182,5 @@
         </div>
       </form>
     </div>
-
   </div>
 </div>
