@@ -110,13 +110,6 @@ class ShopController extends Controller
     return redirect('/shopmanage/shop');
   }
 
-//店舗情報削除機能（※一時的）
-  public function destroy(Shop $item)
-  {
-    $item->delete();
-    return redirect('/');
-  }
-
   //いいね機能
   //  引数のIDに紐づく店舗にLIKEする
   //  @param $id 店舗ID
