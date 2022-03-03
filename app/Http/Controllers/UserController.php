@@ -20,7 +20,9 @@ class UserController extends Controller
         $userlikes = Like::where('user_id', Auth::id())->get();
         // Reviewテーブルの中でuser_idとログインidが一致し、今日より後のものを複数取得する
         $reviews = Reservation::where('user_id', Auth::id())->where('start_at', '<', Carbon::now())->get();
-
+        
+        //除去 review::allの中に reviewモデルのレコードのreservation_id Auth::id　があるかどうか  foreach文
+        //$complete_review = Review::where//('reservation_id', Reservation::'reservation_id');
 
         return view('mypage',compact('userreservation','userlikes','reviews'));
     }
