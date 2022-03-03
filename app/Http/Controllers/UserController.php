@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
-use App\Models\like;
+use App\Models\Like;
 use App\Models\Review;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
