@@ -229,7 +229,7 @@
 <div class="contents">
   <div class="user-reservation-area">
     <p class="user-reservation-title">予約状況</p>
-    @foreach ($userreservation ?? '' as $reservation)
+    @foreach ($userreservation as $reservation)
     <div class="reservation-card">
       <div class="reservation-card-header">
         <div class="clock-icon">
