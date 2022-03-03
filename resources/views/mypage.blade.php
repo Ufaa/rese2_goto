@@ -389,7 +389,7 @@
             </td>
           </tr>
         </table>
-        <input type="text" class="reservation_id-input" name="reservation_id" value="{{$reservation->id}}">
+        <input type="text" class="reservation_id-input" name="reservation_id" value="{{$review->id}}">
       </form>
     </div>
     @endforeach
