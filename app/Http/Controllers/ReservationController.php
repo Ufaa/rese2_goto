@@ -10,13 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class ReservationController extends Controller
 {
-    //予約一覧表示
-    public function index(Request $request)
-    {
-        $reservation = Reservation::all();
-        return view('reservation')->with('reservations', $reservation);
-    }
-
     //予約追加機能
     public function add()
     {

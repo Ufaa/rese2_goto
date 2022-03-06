@@ -10,15 +10,16 @@ use App\Http\Requests\ShopcreateRequest;
 use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
-//一覧表示
+
 {
+  //一覧表示
   public function index(Request $request)
   {
     $items = Shop::all();
     return view('index', ['items' => $items]);
   }
 
-//詳細表示
+  //詳細表示
   public function show(int $id)
   {
     $item = Shop::find($id);
@@ -140,4 +141,4 @@ class ShopController extends Controller
     return redirect()->back();
   }
 
-  }
+}

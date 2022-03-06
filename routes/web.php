@@ -35,7 +35,6 @@ Route::get('/find', [ShopController::class, 'find'])->middleware('auth');
 Route::post('/find', [ShopController::class, 'search'])->middleware('auth');
 
 //予約追加機能
-Route::get('/reservation', [ReservationController::class, 'index'])->name('reservation')->middleware('auth');
 Route::get('/add', [ReservationController::class, 'add'])->middleware('auth');
 Route::post('/add', [ReservationController::class, 'create'])->middleware('auth');
 //予約完了ページ
@@ -48,7 +47,6 @@ Route::get('/shop/like/{id}', [ShopController::class, 'like'])->name('shop.like'
 Route::get('/shop/unlike/{id}', [ShopController::class, 'unlike'])->name('shop.unlike')->middleware('auth');
 
 //評価機能
-Route::get('/review/{reservation_id}', [ReviewController::class, 'review'])->name('review')->middleware('auth');
 Route::get('/reviewadd', [ReviewController::class, 'add'])->name('review.add')->middleware('auth');
 Route::post('/reviewadd', [ReviewController::class, 'create'])->middleware('auth');
 
