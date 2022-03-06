@@ -307,10 +307,6 @@
               </button>
             </td>
         </form>
-        <!-- 要変更 -->
-        <form action="{{route('review',$reservation->shop->id)}}" method="get">
-          <button type="submit" class="btn-review">評価する</button>
-        </form>
         </tr>
 
       </table>

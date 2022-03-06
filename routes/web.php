@@ -48,7 +48,7 @@ Route::get('/shop/like/{id}', [ShopController::class, 'like'])->name('shop.like'
 Route::get('/shop/unlike/{id}', [ShopController::class, 'unlike'])->name('shop.unlike')->middleware('auth');
 
 //評価機能
-Route::get('/review/{reservation_id}', [ReviewController::class, 'review'])->name('review')->middleware('auth')->middleware('auth');
+Route::get('/review/{reservation_id}', [ReviewController::class, 'review'])->name('review')->middleware('auth');
 Route::get('/reviewadd', [ReviewController::class, 'add'])->name('review.add')->middleware('auth');
 Route::post('/reviewadd', [ReviewController::class, 'create'])->middleware('auth');
 
