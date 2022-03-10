@@ -256,7 +256,7 @@
           <tr>
             <th>shop</th>
             <td>{{$reservation->shop->name}}</td>
-            <td> {!! QrCode::size(100)->generate(('{{Auth::user()->name}}')) !!}</td>
+            <td></td>
           </tr>
           <tr>
             <th>Date</th>
