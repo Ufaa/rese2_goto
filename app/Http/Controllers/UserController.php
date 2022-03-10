@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservation;
 use App\Models\Like;
-use App\Models\Review;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,15 +13,12 @@ class UserController extends Controller
     public function mypage()
     // ２つの要素を１つのメソッドで遂行する。
     {
-        // Reservationテーブルの中でuser_idとログインidが一致し、今日より後のものを複数取得する
+        // Reservationテーブルの中でuser_idとログインidが一致し、今日より前のものを複数取得する
         $userreservation = Reservation::where('user_id', Auth::id())->where('start_at', '>' ,Carbon::now())->get();
         // Likeテーブルの中でuser_idとログインidが一致するものを複数取得する
         $userlikes = Like::where('user_id', Auth::id())->get();
         // Reviewテーブルの中でuser_idとログインidが一致し、今日より後のものを複数取得する
         $reviews = Reservation::where('user_id', Auth::id())->where('start_at', '<', Carbon::now())->get();
-        
-        //除去 review::allの中に reviewモデルのレコードのreservation_id Auth::id　があるかどうか  foreach文
-        //$complete_review = Review::where//('reservation_id', Reservation::'reservation_id');
 
         return view('mypage',compact('userreservation','userlikes','reviews'));
     }

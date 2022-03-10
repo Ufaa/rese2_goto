@@ -67,10 +67,10 @@ class ShopmanagerController extends Controller
     }
 
     //店舗代表者一覧表示
-    public function shopmanagers_index(Request $request)
+    public function shopmanagers_index()
     {
-    $shopmanagers = User::where('role','5')->get();
-    return view('shopmanagers', ['shopmanagers' => $shopmanagers]);
+        $shopmanagers = User::where('role','5')->get();
+        return view('shopmanagers', ['shopmanagers' => $shopmanagers]);
     }
 
     //店舗代表者登録機能
@@ -96,10 +96,10 @@ class ShopmanagerController extends Controller
 
     public function send_email(Request $request)
     {
-    $mail_text = new MailTest();
-    $mail_text->to($request->reservation_email);
-    $mail_text->subject('メールテストタイトル');
-    $mail_text->text('emails.body', ['body' => $request->mailbody]);
+        $mail_text = new MailTest();
+        $mail_text->to($request->reservation_email);
+        $mail_text->subject('メールテストタイトル');
+        $mail_text->text('emails.body', ['body' => $request->mailbody]);
 
         Mail::to('to_address@example.com')->send($mail_text);
     }

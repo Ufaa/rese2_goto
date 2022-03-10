@@ -345,7 +345,8 @@
   <div class="user-reservation-review-area">
     <p class="user-reservation-title">レビュー</p>
     @foreach ($reviews as $review)
-    <div class="reservation-card">
+    @if(!$review->review)
+        <div class="reservation-card">
       <div class="reservation-card-header">
       </div>
       <form action="/reviewadd" method="POST">
@@ -388,6 +389,7 @@
         <input type="text" class="reservation_id-input" name="reservation_id" value="{{$review->id}}">
       </form>
     </div>
+    @endif
     @endforeach
   </div>
   @endsection
