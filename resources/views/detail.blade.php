@@ -117,7 +117,6 @@
       margin: 0 5%;
     }
 
-
     .reservation {
       position: unset;
       height: auto;
