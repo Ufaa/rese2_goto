@@ -56,6 +56,7 @@
     width: 40%;
     margin: 0 5%;
     background-color: #005FFF;
+    border-radius: 5px;
   }
 
   .shop-create-title {
@@ -99,7 +100,7 @@
 
     .header {
       position: unset;
-      padding: 10px;
+      padding: 5px;
     }
 
     .header-left {

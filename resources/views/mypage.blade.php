@@ -213,12 +213,13 @@
 
     .header {
       position: unset;
-      padding: 10px;
+      padding: 5px;
     }
 
     .header-left {
       position: unset;
       width: auto;
+      margin: 0;
     }
 
     .header-right {
@@ -245,7 +246,7 @@
     .user-reservation-title {
       font-size: 16px;
       font-weight: bold;
-      margin-left: 5%;
+      margin-left: 5px;
     }
 
     .user-like-area {
@@ -258,7 +259,7 @@
     .user-like-title {
       font-size: 16px;
       font-weight: bold;
-      margin-left: 5%;
+      margin-left: 5px;
     }
 
     .user-reservation-review-area {
@@ -270,7 +271,7 @@
     .user-reservation-title {
       font-size: 16px;
       font-weight: bold;
-      margin-left: 5%;
+      margin-left: 5px;
     }
 
     .reservation-card {
