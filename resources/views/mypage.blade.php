@@ -203,6 +203,72 @@
     font-weight: bold;
     margin: 0 0 0 15px;
   }
+
+  @media screen and (max-width: 768px) {
+
+    th,
+    td {
+      padding: 5px 10px 5px 10px;
+    }
+
+    .header {
+      position: unset;
+      padding: 10px;
+    }
+
+    .header-left {
+      position: unset;
+      width: auto;
+    }
+
+    .header-right {
+      position: unset;
+      width: auto;
+      height: auto;
+    }
+
+    .login-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .contents {
+      position: unset;
+    }
+
+    .user-reservation-area {
+      position: unset;
+      width: auto;
+      margin: 0;
+    }
+
+    .user-reservation-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .user-like-area {
+      position: unset;
+      width: auto;
+      height: auto;
+      margin: 0;
+    }
+
+    .user-like-title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .user-reservation-review-area {
+      position: unset;
+      width: auto;
+      margin: 0;
+    }
+
+    .reservation-card {
+      padding-bottom: 5px;
+    }
+  }
 </style>
 
 <head>

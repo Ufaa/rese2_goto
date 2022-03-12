@@ -37,6 +37,23 @@
     border-radius: 5px;
     padding: 5px 15px;
   }
+
+  @media screen and (max-width: 768px) {
+    .thanks-area {
+      top: 200px;
+      width: 80%;
+      padding: 10px 10px;
+    }
+
+    .thanks-area p {
+      font-size: 12px;
+      margin: 10px;
+    }
+
+    .back {
+      margin-top: 10px;
+    }
+  }
 </style>
 
 <head>
@@ -45,6 +62,7 @@
 
 
 @section('content')
+
 <body>
   <div class="title"><a href="/">Rese</a>
   </div>
