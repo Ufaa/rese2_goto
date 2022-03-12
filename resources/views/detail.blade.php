@@ -120,7 +120,7 @@
 
     .reservation {
       position: unset;
-      height: 280px;
+      height: auto;
       right: 0px;
       width: auto;
       background-color: #005FFF;
