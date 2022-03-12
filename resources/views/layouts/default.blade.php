@@ -205,8 +205,6 @@
         padding: 150px 10px 0;
         list-style: none;
       }
-
-
     }
   </style>
 </head>

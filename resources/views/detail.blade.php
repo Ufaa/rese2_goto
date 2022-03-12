@@ -101,6 +101,53 @@
     font-weight: bold;
     margin: 0 0 0 30px;
   }
+
+  @media screen and (max-width: 768px) {
+    .contents {
+      position: unset;
+    }
+
+    .detail {
+      position: unset;
+      left: 0px;
+    }
+
+    .detail-area {
+      width: auto;
+      margin: 0 5%;
+    }
+
+
+    .reservation {
+      position: unset;
+      height: 280px;
+      right: 0px;
+      width: auto;
+      background-color: #005FFF;
+      margin: 0 5%;
+      border-radius: 5px;
+    }
+
+    .reservation-title {
+      margin-left: 5%;
+      padding-top: 15px;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .reservation-submit {
+      position: unset;
+      border: none;
+      background-color: #0033FF;
+      color: white;
+      width: 100%;
+      height: 50px;
+      text-align: center;
+      bottom: 0;
+      border-radius: 0 0 5px 5px;
+    }
+  }
 </style>
 
 <head>
@@ -115,7 +162,6 @@
   </div>
 
   <div class="detail">
-    @section('content')
     <div class="detail-area">
       <div class="shop-name-area">
         <button class="back" type="button" onclick="location.href='/'"><i class="fas fa-chevron-left"></i></button>
@@ -130,7 +176,6 @@
       <div class="description">
         {{optional($item)->description}}
       </div>
-      @endsection
     </div>
   </div>
 

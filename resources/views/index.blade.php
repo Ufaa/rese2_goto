@@ -124,7 +124,6 @@
       justify-content: space-between;
       margin: 0 20px 0 0;
     }
-
   }
 </style>
 
