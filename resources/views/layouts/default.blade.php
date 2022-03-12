@@ -202,7 +202,7 @@
 
     @media screen and (max-width: 768px) {
       .menu-content ul {
-        padding: 150px 10px 0;
+        padding: 120px 10px 0;
         list-style: none;
       }
     }

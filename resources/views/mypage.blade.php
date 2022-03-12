@@ -245,6 +245,7 @@
     .user-reservation-title {
       font-size: 16px;
       font-weight: bold;
+      margin-left: 5%;
     }
 
     .user-like-area {
@@ -257,12 +258,19 @@
     .user-like-title {
       font-size: 16px;
       font-weight: bold;
+      margin-left: 5%;
     }
 
     .user-reservation-review-area {
       position: unset;
       width: auto;
       margin: 0;
+    }
+
+    .user-reservation-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-left: 5%;
     }
 
     .reservation-card {

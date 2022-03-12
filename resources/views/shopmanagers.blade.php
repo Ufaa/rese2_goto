@@ -113,7 +113,7 @@
     th,
     td {
       padding: 5px 10px 5px 10px;
-      font-size: 12px;
+      font-size: 10px;
     }
 
     .name,
@@ -171,7 +171,7 @@
       font-size: 16px;
       font-weight: bold;
       margin-top: 30px;
-      margin-left: 5px;
+      margin-left: 10px;
       text-align: left;
     }
   }

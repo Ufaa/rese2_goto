@@ -90,6 +90,7 @@
     th,
     td {
       padding: 5px 10px 5px 10px;
+      font-size: 10px;
     }
 
     th {
@@ -104,6 +105,7 @@
     .header-left {
       position: unset;
       width: auto;
+      margin: 0;
     }
 
     .header-right {
