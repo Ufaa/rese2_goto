@@ -89,7 +89,6 @@
       color: #0033FF;
     }
 
-    /* ここからハンバーガーメニュー */
     .menu-btn {
       position: fixed;
       top: 10px;
@@ -199,6 +198,15 @@
       position: absolute;
       right: 11px;
       top: 16px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .menu-content ul {
+        padding: 150px 10px 0;
+        list-style: none;
+      }
+
+
     }
   </style>
 </head>
