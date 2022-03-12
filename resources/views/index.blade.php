@@ -117,10 +117,20 @@
   .search_input {
     display: none;
   }
+
+  @media screen and (max-width: 768px) {
+    .header {
+      display: block;
+      justify-content: space-between;
+      margin: 0 20px 0 0;
+    }
+
+  }
 </style>
 
 <head>
   <script src="https://kit.fontawesome.com/eb8d65ab2e.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 @section('content')

@@ -195,7 +195,7 @@
 
   .reservation-delete-icon-button {
     background-color: #005FFF;
-    border:none;
+    border: none;
   }
 
   .error {
@@ -207,6 +207,7 @@
 
 <head>
   <script src="https://kit.fontawesome.com/eb8d65ab2e.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 @section('content')
@@ -346,7 +347,7 @@
     <p class="user-reservation-title">レビュー</p>
     @foreach ($reviews as $review)
     @if(!$review->review)
-        <div class="reservation-card">
+    <div class="reservation-card">
       <div class="reservation-card-header">
       </div>
       <form action="/reviewadd" method="POST">

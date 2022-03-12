@@ -37,11 +37,14 @@
     border-radius: 5px;
     padding: 5px 15px;
   }
-
 </style>
 
-@section('content')
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
+
+@section('content')
 <body>
   <div class="title"><a href="/">Rese</a>
   </div>
