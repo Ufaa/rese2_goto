@@ -26,10 +26,8 @@
 
   .header-right {
     position: absolute;
-    height: 800px;
-    right: 0px;
-    width: 40%;
-    margin: 0 5%;
+    left: 25%;
+    top: -140px;
     border-radius: 5px;
   }
 
@@ -109,6 +107,74 @@
     font-weight: bold;
     margin: 0 0 0 30px;
   }
+
+  @media screen and (max-width: 768px) {
+
+    th,
+    td {
+      padding: 5px 10px 5px 10px;
+      font-size: 12px;
+    }
+
+    .name,
+    .email,
+    .password {
+      width: 120%;
+    }
+
+    .header {
+      position: unset;
+      padding: 10px;
+    }
+
+    .header-left {
+      position: unset;
+      width: auto;
+      margin: 0;
+    }
+
+    .header-right {
+      position: unset;
+      width: auto;
+      height: auto;
+    }
+
+    .login-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .contents {
+      position: unset;
+    }
+
+    .shopmanager-create-area {
+      position: unset;
+      width: auto;
+      margin: 0;
+    }
+
+    .shopmanager-create-title {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .shopmanager-list-area {
+      position: unset;
+      width: auto;
+      height: auto;
+      margin: 0;
+    }
+
+    .shopmanager-list-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 30px;
+      margin-left: 5px;
+      text-align: left;
+    }
+  }
 </style>
 
 <head>
@@ -128,9 +194,6 @@
       @endauth
     </div>
     <p class="shopmanager-create-title">新規店舗代表者登録</p>
-  </div>
-  <div class="header-right">
-    <p class="shopmanager-list-title">店舗代表者一覧</p>
   </div>
 </div>
 
@@ -189,6 +252,9 @@
   </div>
 
   <div class="shopmanager-list-area">
+    <div class="header-right">
+      <p class="shopmanager-list-title">店舗代表者一覧</p>
+    </div>
     @foreach($shopmanagers as $shopmanager)
     <div class="shopmanager-list-card">
       <table>

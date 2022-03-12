@@ -26,10 +26,8 @@
 
   .header-right {
     position: absolute;
-    height: 800px;
-    right: 0px;
-    width: 40%;
-    margin: 0 5%;
+    left: 25%;
+    top: -140px;
     border-radius: 5px;
   }
 
@@ -147,6 +145,7 @@
     th,
     td {
       padding: 5px 10px 5px 10px;
+      font-size: 12px;
     }
 
     .header {
@@ -157,6 +156,7 @@
     .header-left {
       position: unset;
       width: auto;
+      margin: 0;
     }
 
     .header-right {
@@ -201,7 +201,8 @@
     .shopmanager-reservation-title {
       font-size: 16px;
       font-weight: bold;
-      margin-top: 0;
+      margin-top: 30px;
+      margin-left: 5px;
       text-align: left;
     }
 
@@ -229,9 +230,6 @@
       @endauth
     </div>
     <p class="shop-edit-title">店舗情報変更</p>
-  </div>
-  <div class="header-right">
-    <p class="shopmanager-reservation-title">あなたの店舗の予約状況</p>
   </div>
 </div>
 
@@ -336,6 +334,9 @@
   </div>
 
   <div class="shopmanager-reservation-area">
+    <div class="header-right">
+      <p class="shopmanager-reservation-title">あなたの店舗の予約状況</p>
+    </div>
     @foreach($shopmanager_reservations as $shopmanager_reservation)
     <div class="shopmanager-reservation-card">
       <div class="shopmanager-reservation-card-header">

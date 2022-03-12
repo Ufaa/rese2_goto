@@ -37,6 +37,23 @@
     border-radius: 5px;
     padding: 5px 15px;
   }
+
+  @media screen and (max-width: 768px) {
+    .shopcreate_request-area {
+      top: 200px;
+      width: 80%;
+      padding: 10px 10px;
+    }
+
+    .shopcreate_request-area p {
+      font-size: 12px;
+      margin: 10px;
+    }
+
+    .back {
+      margin-top: 10px;
+    }
+  }
 </style>
 
 <head>
@@ -44,6 +61,7 @@
 </head>
 
 @section('content')
+
 <body>
   <div class="title"><a href="/">Rese</a>
   </div>
