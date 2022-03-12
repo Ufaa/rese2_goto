@@ -42,7 +42,28 @@
   .reservation_email-input {
     display: none;
   }
+
+  @media screen and (max-width: 768px) {
+    .send-email-area {
+      top: 300px;
+      width: 80%;
+      padding: 10px 10px;
+    }
+
+    .send-email-area p {
+      font-size: 12px;
+      margin: 10px;
+    }
+
+    .back {
+      margin-top: 10px;
+    }
+  }
 </style>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
 @section('content')
 

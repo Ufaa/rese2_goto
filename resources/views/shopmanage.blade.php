@@ -56,6 +56,7 @@
     width: 40%;
     margin: 0 5%;
     background-color: #005FFF;
+    border-radius: 5px;
   }
 
   .shop-edit-title-area {
@@ -139,6 +140,74 @@
     color: red;
     font-weight: bold;
     margin: 0 0 0 30px;
+  }
+
+  @media screen and (max-width: 768px) {
+
+    th,
+    td {
+      padding: 5px 10px 5px 10px;
+    }
+
+    .header {
+      position: unset;
+      padding: 10px;
+    }
+
+    .header-left {
+      position: unset;
+      width: auto;
+    }
+
+    .header-right {
+      position: unset;
+      width: auto;
+      height: auto;
+    }
+
+    .login-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .contents {
+      position: unset;
+    }
+
+    .shop-edit-area {
+      position: unset;
+      width: auto;
+      margin: 0;
+    }
+
+    .shop-edit-title {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .description {
+      width: 100%;
+      height: 30%;
+    }
+
+    .shopmanager-reservation-area {
+      position: unset;
+      width: auto;
+      height: auto;
+      margin: 0;
+    }
+
+    .shopmanager-reservation-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 0;
+      text-align: left;
+    }
+
+    .reservation-card {
+      padding-bottom: 5px;
+    }
   }
 </style>
 

@@ -84,6 +84,64 @@
     font-weight: bold;
     margin: 0 0 0 30px;
   }
+
+  @media screen and (max-width: 768px) {
+
+    th,
+    td {
+      padding: 5px 10px 5px 10px;
+    }
+
+    th {
+      width: 45%;
+    }
+
+    .header {
+      position: unset;
+      padding: 10px;
+    }
+
+    .header-left {
+      position: unset;
+      width: auto;
+    }
+
+    .header-right {
+      position: unset;
+      width: auto;
+      height: auto;
+    }
+
+    .login-name {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .contents {
+      position: unset;
+    }
+
+    .shop-create-area {
+      width: auto;
+      top: auto;
+      margin: 0 5px;
+    }
+
+    .shop-create-title {
+      font-size: 16px;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .name {
+      width: 100%;
+    }
+
+    .description {
+      width: 100%;
+      height: 30%;
+    }
+  }
 </style>
 
 <head>
