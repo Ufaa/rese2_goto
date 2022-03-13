@@ -67,6 +67,7 @@
   </div>
   <div class="done-area">
     <p class="reservation-thanks">ご予約ありがとうございます。</p>
+
     <button class="back" type="button" onclick="location.href='/'">戻る</button>
   </div>
 </body>
