@@ -102,6 +102,7 @@ class ShopmanagerController extends Controller
         $mail_text->text('emails.body', ['body' => $request->mailbody]);
 
         Mail::to('to_address@example.com')->send($mail_text);
+        return redirect('/');
     }
 
 }

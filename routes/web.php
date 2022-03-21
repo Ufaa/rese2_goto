@@ -8,7 +8,12 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ShopmanagerController;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
+
+
+Auth::routes(['verify' => true]);
+
 
 //ユーザー登録機能 laravel Breeze利用
 Route::get('/home', [AuthorController::class, 'index']);
@@ -21,9 +26,10 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //会員登録完了ページ
-Route::get('thanks', [RegisteredUserController::class, 'thanks'])->name('thanks')->middleware('auth');
+Route::middleware(['verified'])->group(function(){
 
-//マイページ
+    Route::get('thanks', [RegisteredUserController::class, 'thanks'])->name('thanks')->middleware('auth');
+    //マイページ
 Route::get('mypage', [UserController::class, 'mypage'])->name('mypage')->middleware('auth');
 
 //店舗一覧ページ
@@ -67,3 +73,5 @@ Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index']
 //メール送信機能
 Route::get('/email/{reservation_id}',[ShopmanagerController::class,'email'])->name('email');
 Route::post('/send_email', [ShopmanagerController::class,'send_email'])->name('send_email');
+
+});
