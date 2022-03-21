@@ -11,7 +11,7 @@ use App\Http\Controllers\ShopmanagerController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
 
-
+//メール認証の宣言
 Auth::routes(['verify' => true]);
 
 
@@ -25,10 +25,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 require __DIR__.'/auth.php';
 
-//会員登録完了ページ
-Route::middleware(['verified'])->group(function(){
+//↓これ以降は認証後のログインが必要
+//Route::middleware(['verified'])->group(function(){
 
-    Route::get('thanks', [RegisteredUserController::class, 'thanks'])->name('thanks')->middleware('auth');
+    //会員登録完了ページ
+Route::get('thanks', [RegisteredUserController::class, 'thanks'])->name('thanks')->middleware('auth');
     //マイページ
 Route::get('mypage', [UserController::class, 'mypage'])->name('mypage')->middleware('auth');
 
@@ -74,4 +75,4 @@ Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index']
 Route::get('/email/{reservation_id}',[ShopmanagerController::class,'email'])->name('email');
 Route::post('/send_email', [ShopmanagerController::class,'send_email'])->name('send_email');
 
-});
+//});
