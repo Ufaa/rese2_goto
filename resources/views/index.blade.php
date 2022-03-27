@@ -1,3 +1,5 @@
+<!-- <link rel="stylesheet" href="{{ asset('css/reset.css') }}"> -->
+
 @extends('layouts.default')
 <style>
   body {

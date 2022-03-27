@@ -10,6 +10,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ShopmanagerController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Models\Review;
 
 //メール認証の宣言
 Auth::routes(['verify' => true]);
@@ -17,9 +18,11 @@ Auth::routes(['verify' => true]);
 
 //ユーザー登録機能 laravel Breeze利用
 Route::get('/home', [AuthorController::class, 'index']);
+
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -75,4 +78,6 @@ Route::get('/shopmanagers', [ShopmanagerController::class, 'shopmanagers_index']
 Route::get('/email/{reservation_id}',[ShopmanagerController::class,'email'])->name('email');
 Route::post('/send_email', [ShopmanagerController::class,'send_email'])->name('send_email');
 
+//レビュー一覧
+//Route::get('/detail/{shop_id}',[ReviewController::class,'review'])->name('review');
 //});

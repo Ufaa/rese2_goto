@@ -222,6 +222,9 @@
             <option value="4">4人</option>
           </select>
         </div>
+        <!-- <div class="shopreviews">
+
+        </div> -->
         <div class="reservation-button-area">
           <input type="submit" class="reservation-submit" value="予約する">
         </div>
