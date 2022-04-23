@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Shopmanager extends Model
 {
+    protected $fillable = ['name','email','password','role']; //保存したいカラム名が複数の場合
+
     //Reservationモデルとのリレーション　多対1　1つの店舗代表者に対する予約は複数ある
     public function reservations()
     {

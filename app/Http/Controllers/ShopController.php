@@ -7,7 +7,7 @@ use App\Models\Like;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\ShopcreateRequest;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\DB; DBクラスは安全性が低い
 
 class ShopController extends Controller
 
@@ -98,16 +98,26 @@ class ShopController extends Controller
 
   public function create(ShopcreateRequest $request)
   {
-    $param = [
+    //Modelで$fillableの指定を忘れずに！
+    Shop::create([
       'shopmanager_id' => $request->shopmanager_id,
       'name' => $request->name,
       'area_id' => $request->area_id,
       'genre_id' => $request->genre_id,
       'description' => $request->description,
       'image_url' => $request->image_url,
-    ];
+    ]);
+    // $param = [
+    //   'shopmanager_id' => $request->shopmanager_id,
+    //   'name' => $request->name,
+    //   'area_id' => $request->area_id,
+    //   'genre_id' => $request->genre_id,
+    //   'description' => $request->description,
+    //   'image_url' => $request->image_url,
+    // ]; DBクラスは安全性が低い
 
-    DB::insert('insert into shops (shopmanager_id, name, area_id, genre_id, description, image_url) values (:shopmanager_id, :name, :area_id, :genre_id, :description, :image_url)', $param);
+    // DB::insert('insert into shops (shopmanager_id, name, area_id, genre_id, description, image_url) values (:shopmanager_id, :name, :area_id, :genre_id, :description, :image_url)', $param);DBクラスは安全性が低い
+    
     return redirect('/shopmanage/shop');
   }
 

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
     use HasFactory;
+    protected $fillable = ['reservation_id', 'user_id', 'rate', 'comment']; //保存したいカラム名が複数の場合
 
     //Userモデルとのリレーション　1対多　1人のユーザーができる評価は複数
     public function user()

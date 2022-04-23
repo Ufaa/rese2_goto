@@ -6,7 +6,7 @@ use App\Models\Reservation;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Review;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\DB; DBクラスは安全性が低い
 
 class ReservationController extends Controller
 {
@@ -19,14 +19,21 @@ class ReservationController extends Controller
     {
         $start_at = $request->start_date.' '.$request->start_time;
 
-        $param = [
+        //Modelで$fillableの指定を忘れずに！
+        Reservation::create([
             'shop_id' => $request->shop_id,
             'user_id' => $request->user_id,
             'start_at' => $start_at,
             'num_of_users' => $request->num_of_users,
-        ];
+        ]);
+        // $param = [
+        //     'shop_id' => $request->shop_id,
+        //     'user_id' => $request->user_id,
+        //     'start_at' => $start_at,
+        //     'num_of_users' => $request->num_of_users,
+        // ]; DBクラスは安全性が低い
 
-        DB::insert('insert into reservations (shop_id, user_id, start_at, num_of_users) values (:shop_id, :user_id, :start_at, :num_of_users)', $param);
+        // DB::insert('insert into reservations (shop_id, user_id, start_at, num_of_users) values (:shop_id, :user_id, :start_at, :num_of_users)', $param); DBクラスは安全性が低い
         return redirect('/done');
     }
 

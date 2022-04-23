@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
+    protected $fillable = ['shop_id', 'user_id', 'start_at', 'num_of_users']; //保存したいカラム名が複数の場合
+
     use HasFactory;
     protected $dates = ['start_at'];
     //Userモデルとのリレーション　1対多　1人の予約に対するユーザー（予約者）は1人

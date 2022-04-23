@@ -8,6 +8,8 @@ use Auth;
 
 class Shop extends Model
 {
+    protected $fillable = ['shopmanager_id', 'name', 'area_id', 'genre_id','description', 'image_url']; //保存したいカラム名が複数の場合
+
     //Areaモデルとのリレーション　多対1　ショップが所属するエリアは一つ
     public function area()
     {

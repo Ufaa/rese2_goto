@@ -7,12 +7,13 @@ use App\Models\Reservation;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\ShopcreateRequest;
 use App\Mail\MailTest;
+use App\Models\Review;
 use Illuminate\Support\Facades\Mail;
 
 class ShopmanagerController extends Controller
@@ -55,14 +56,22 @@ class ShopmanagerController extends Controller
 
     public function shopmanager_index(Request $request)
     {
-        $param = [
-            'reservation_id' => $request->reservation_id,
-            'user_id' => Auth::id(),
-            'rate' => $request->rate,
-            'comment' => $request->comment,
-        ];
+        Review::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request['password']),
+            'role' => $request->role,
+        ]);
 
-        DB::insert('insert into reviews (reservation_id, user_id, rate, comment) values (:reservation_id, :user_id, :rate, :comment)', $param);
+        // $param = [
+        //     'reservation_id' => $request->reservation_id,
+        //     'user_id' => Auth::id(),
+        //     'rate' => $request->rate,
+        //     'comment' => $request->comment,
+        // ];
+
+        // DB::insert('insert into reviews (reservation_id, user_id, rate, comment) values (:reservation_id, :user_id, :rate, :comment)', $param);
+
         return redirect('/mypage');
     }
 
@@ -76,14 +85,22 @@ class ShopmanagerController extends Controller
     //店舗代表者登録機能
     public function shopmanager_create(RegisterRequest $request)
     {
-        $param = [
+        //Modelで$fillableの指定を忘れずに！
+        User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request['password']),
             'role' => $request->role,
-        ];
+        ]);
+        
+        // $param = [
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request['password']),
+        //     'role' => $request->role,
+        // ];
 
-        DB::insert('insert into users (name, email, password, role) values (:name, :email, :password, :role)', $param);
+        // DB::insert('insert into users (name, email, password, role) values (:name, :email, :password, :role)', $param);
         return redirect('/shopmanagers');
     }
 
